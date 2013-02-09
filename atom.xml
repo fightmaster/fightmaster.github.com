@@ -4,7 +4,7 @@
   <title><![CDATA[fightmaster's blog]]></title>
   <link href="http://fightmaster.github.com/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.com/"/>
-  <updated>2013-02-09T18:13:05+04:00</updated>
+  <updated>2013-02-09T18:26:08+04:00</updated>
   <id>http://fightmaster.github.com/</id>
   <author>
     <name><![CDATA[Dmitry Petrov]]></name>
@@ -20,7 +20,7 @@
     <id>http://fightmaster.github.com/blog/2013/02/09/go-go-go</id>
     <content type="html"><![CDATA[<p>О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.</p>
 
-<p>Итак со вторника я начинаю читать лекции по php для @marydruzina. Благодаря github и octopress я надеюсь мечта идиота сбудется
+<p>Итак со вторника я начинаю читать лекции по php. Благодаря github и octopress я надеюсь мечта идиота сбудется
 и блог начнет свою жизнь.</p>
 ]]></content>
   </entry>
