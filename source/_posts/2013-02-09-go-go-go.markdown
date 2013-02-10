@@ -3,7 +3,8 @@ layout: post
 title: "Поехали!"
 date: 2013-02-09 17:36
 comments: true
-categories: [all,life,php]
+categories: [life,blog]
+tags: [life,blog,php]
 ---
 О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.
 
