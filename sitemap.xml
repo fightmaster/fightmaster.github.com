@@ -12,7 +12,7 @@
         <loc>
             http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html
         </loc>
-        <lastmod>2013-02-12T23:23:59+04:00</lastmod>
+        <lastmod>2013-02-12T23:27:46+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/robots.txt</loc>
@@ -36,10 +36,10 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/</loc>
-        <lastmod>2013-02-12T23:23:59+04:00</lastmod>
+        <lastmod>2013-02-12T23:27:46+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/blog/archives/</loc>
-        <lastmod>2013-02-12T23:23:59+04:00</lastmod>
+        <lastmod>2013-02-12T23:27:46+04:00</lastmod>
     </url>
 </urlset>

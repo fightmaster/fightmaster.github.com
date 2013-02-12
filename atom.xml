@@ -4,7 +4,7 @@
   <title><![CDATA[fightmaster's blog]]></title>
   <link href="http://fightmaster.github.com/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.com/"/>
-  <updated>2013-02-12T23:26:44+04:00</updated>
+  <updated>2013-02-12T23:28:20+04:00</updated>
   <id>http://fightmaster.github.com/</id>
   <author>
     <name><![CDATA[fightmaster]]></name>
@@ -19,7 +19,7 @@
     <updated>2013-02-12T23:21:00+04:00</updated>
     <id>http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server</id>
     <content type="html"><![CDATA[<p>Каждый раз, когда я обновляю систему или nginx, я постоянно мучаюсь с настройкой.
-С переходом на <code>php5.4</code> я столкнулся с новой проблемой <code>access denied</code>.
+С переходом на <code>php 5.4</code> я столкнулся с новой проблемой <code>access denied</code>.
 Ниже выкладываю рабочий конфиг для <code>nginx/1.2.6</code> и <code>symfony2</code>;</p>
 
 <!-- more -->
