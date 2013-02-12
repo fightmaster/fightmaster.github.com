@@ -2,7 +2,7 @@
   <h1>Список лекций</h1>
   <ul id="php_lectures">
     {% for page in site.pages %}
-      {% if page.tags contains "php" and page.tags contains "lectures" %}
+      {% if page.lecture %}
           <li class="post">
             <a href="{{ root_url }}{{ page.url }}">{{ page.title }}</a>
           </li>
