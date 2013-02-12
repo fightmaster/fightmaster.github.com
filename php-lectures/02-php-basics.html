@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Поехали! - fightmaster's blog</title>
+  <title>Основы PHP - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло. Итак, со вторника я начинаю читать &hellip;">
+  <meta name="description" content="Основы PHP Feb 11th, 2013 Краткое содержание лекции Теоретические задания |
+Практические задания Синтаксис PHP теги long tags
+short tags
+script tags &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.com/blog/2013/02/09/go-go-go.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/02-php-basics.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -76,15 +79,219 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Поехали!</h1>
-    
-    
+    <h1 class="entry-title">Основы PHP</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-11T22:44:00+04:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time></p>
+  </header>
+  
+  <h3>Краткое содержание лекции</h3>
+
+<p><a href="02-php-basics-theoretical-tasks.html">Теоретические задания</a> |
+<a href="02-php-basics-practical-tasks.html">Практические задания</a></p>
+
+<ul>
+<li>Синтаксис
+
+<ul>
+<li>PHP теги
+
+<ul>
+<li>long tags</li>
+<li>short tags</li>
+<li>script tags</li>
+<li>ASP tags</li>
+<li>best practice</li>
+</ul>
+</li>
+<li>Комментарии
+
+<ul>
+<li>single line</li>
+<li>multi-line</li>
+<li>особенности single line комментариев</li>
+<li>best practice
+
+<ul>
+<li>phpdoc</li>
+<li>когда нужно писать комментарии</li>
+<li>когда не нужно писать комментарии</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Переменные
+
+<ul>
+<li>допустимые имена переменных</li>
+<li>Типы данных
+
+<ul>
+<li>Скалярные
+
+<ul>
+<li>string
+
+<ul>
+<li>не забыть про unicode</li>
+<li>не забыть про лимит</li>
+<li>quoted
+
+<ul>
+<li>single quotes</li>
+<li>double quotes</li>
+<li>Heredoc</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>integer
+
+<ul>
+<li>decimal</li>
+<li>hexadecimal</li>
+<li>octal</li>
+<li>platform dependent</li>
+</ul>
+</li>
+<li>float (double)
+
+<ul>
+<li>standard decimal notations</li>
+<li>scientific notations (1.2e3, 7E-10)</li>
+</ul>
+</li>
+<li>boolean
+
+<ul>
+<li>integer cast</li>
+<li>case-insensitive</li>
+<li>best practice</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Составные
+
+<ul>
+<li>array</li>
+<li>object</li>
+</ul>
+</li>
+<li>Специальные
+
+<ul>
+<li>resource</li>
+<li>null
+
+<ul>
+<li>определение</li>
+<li>приведение к null</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>приведение типов данных</li>
+</ul>
+</li>
+<li>переменная от переменной</li>
+<li>best practice
+
+<ul>
+<li>camalCase</li>
+<li>как не нужно называть переменные</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Константы
+
+<ul>
+<li>свойства</li>
+<li>define</li>
+<li>const</li>
+<li>best practice</li>
+</ul>
+</li>
+<li>Операторы
+
+<ul>
+<li>Присваивания
+
+<ul>
+<li>Оперетор =</li>
+<li>Оператор = и &amp;</li>
+</ul>
+</li>
+<li>Арифметические
+
+<ul>
+<li>&#8221;+&#8221;, &#8220;-&#8220;, &#8220;%&#8221;, &#8220;*&#8221;, &#8220;/&#8221;</li>
+<li>пост и пре инкремент</li>
+<li>оператор +=</li>
+</ul>
+</li>
+<li>Строковые
+
+<ul>
+<li>конкатенация строк</li>
+</ul>
+</li>
+<li>Побитовые
+
+<ul>
+<li>Сдвиг вправо</li>
+<li>Сдвиг влево</li>
+</ul>
+</li>
+<li>Логические
+
+<ul>
+<li>AND</li>
+<li>OR</li>
+<li>XOR</li>
+<li>NOT</li>
+</ul>
+</li>
+<li>Сравнения
+
+<ul>
+<li>== vs ===</li>
+</ul>
+</li>
+<li>Другие
+
+<ul>
+<li>@</li>
+<li>backticks</li>
+<li>instanceof</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
@@ -96,56 +303,13 @@
   
 
 
-<time datetime="2013-02-09T17:36:00+04:00" pubdate data-updated="true">Feb 9<span>th</span>, 2013</time>
-        
-         | <a href="#disqus_thread">Comments</a>
+<time datetime="2013-02-11T22:44:00+04:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time>
         
       </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.</p>
-
-<p>Итак, со вторника я начинаю читать лекции по php. Благодаря github и octopress я надеюсь мечта идиота сбудется,
-и блог начнет свою жизнь.</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
       
+        <div class="sharing">
   
-
-<span class="byline author vcard">Posted by <span class="fn">fightmaster</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-09T17:36:00+04:00" pubdate data-updated="true">Feb 9<span>th</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/life/'>life</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/blog/2013/02/09/go-go-go.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/blog/2013/02/09/go-go-go.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/02-php-basics.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/02-php-basics.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -159,12 +323,9 @@
     
 </div>
 
-    
-    <p class="meta">
       
-      
-    </p>
-  </footer>
+    </footer>
+  
 </article>
 
   <section>
@@ -178,74 +339,43 @@
 <aside class="sidebar">
   
     <section>
-  <h1>Недавние посты</h1>
-  <ul id="recent_posts">
+  <h1>Список лекций</h1>
+  <ul id="php_lectures">
     
-      <li class="post">
-        <a href="/blog/2013/02/09/go-go-go.html">Поехали!</a>
-      </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/00-contents.html">Содержание</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
     
   </ul>
 </section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/fightmaster">@fightmaster</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'fightmaster',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("old_fightmaster", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/old_fightmaster" class="twitter-follow-button" data-show-count="false">Follow @old_fightmaster</a>
-  
-</section>
-
-
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/100149299742617855998?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
 
   
 </aside>
@@ -266,8 +396,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://fightmaster.github.com/blog/2013/02/09/go-go-go.html';
-        var disqus_url = 'http://fightmaster.github.com/blog/2013/02/09/go-go-go.html';
+        var disqus_identifier = 'http://fightmaster.github.com/php-lectures/02-php-basics.html';
+        var disqus_url = 'http://fightmaster.github.com/php-lectures/02-php-basics.html';
         var disqus_script = 'embed.js';
       
     (function () {
