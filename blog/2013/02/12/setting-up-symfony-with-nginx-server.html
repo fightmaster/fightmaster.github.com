@@ -1,24 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[fightmaster's blog]]></title>
-  <link href="http://fightmaster.github.com/atom.xml" rel="self"/>
-  <link href="http://fightmaster.github.com/"/>
-  <updated>2013-02-12T23:26:44+04:00</updated>
-  <id>http://fightmaster.github.com/</id>
-  <author>
-    <name><![CDATA[fightmaster]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Setting up Symfony with Nginx server - fightmaster's blog</title>
+  <meta name="author" content="fightmaster">
 
   
-  <entry>
-    <title type="html"><![CDATA[Setting up Symfony with Nginx server]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html"/>
-    <updated>2013-02-12T23:21:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server</id>
-    <content type="html"><![CDATA[<p>Каждый раз, когда я обновляю систему или nginx, я постоянно мучаюсь с настройкой.
+  <meta name="description" content="Каждый раз, когда я обновляю систему или nginx, я постоянно мучаюсь с настройкой.
+С переходом на php5.4 я столкнулся с новой проблемой access denied &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">fightmaster's blog</a></h1>
+  
+    <h2>Скромный персональный блог</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:fightmaster.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Блог</a></li>
+    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
+    <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Setting Up Symfony With Nginx Server</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-12T23:21:00+04:00" pubdate data-updated="true">Feb 12<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Каждый раз, когда я обновляю систему или nginx, я постоянно мучаюсь с настройкой.
 С переходом на <code>php5.4</code> я столкнулся с новой проблемой <code>access denied</code>.
 Ниже выкладываю рабочий конфиг для <code>nginx/1.2.6</code> и <code>symfony2</code>;</p>
 
@@ -27,7 +115,7 @@
 
 
 
-<figure class='code'><figcaption><span>nginx/conf.d/project (project)</span> <a href='http://fightmaster.github.com/downloads/code/nginx/conf.d/project'>download</a></figcaption>
+<figure class='code'><figcaption><span>nginx/conf.d/project (project)</span> <a href='/downloads/code/nginx/conf.d/project'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -198,29 +286,220 @@
 
 
 <p>Полезная ссылка по теме: <a href="http://wiki.nginx.org/Symfony">http://wiki.nginx.org/Symfony</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Первая лекция: Основы PHP]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/12/first-lecture-php-basics.html"/>
-    <updated>2013-02-12T21:14:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/12/first-lecture-php-basics</id>
-    <content type="html"><![CDATA[<p>Она, кажется, сказала: &#8220;Дима, давай жги&#8221;. 100% посещаемость из двух человек, круто. Выкладываю <a href="http://fightmaster.github.com/php-lectures/02-php-basics.html">материалы</a>.
-Желаю удачи в выполнении домашнего задания :).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Поехали!]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/09/go-go-go.html"/>
-    <updated>2013-02-09T17:36:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/09/go-go-go</id>
-    <content type="html"><![CDATA[<p>О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.</p>
+</div>
 
-<p>Итак, со вторника я начинаю читать лекции по php. Благодаря github и octopress я надеюсь мечта идиота сбудется,
-и блог начнет свою жизнь.</p>
-]]></content>
-  </entry>
+
+  <footer>
+    <p class="meta">
+      
   
-</feed>
+
+<span class="byline author vcard">Posted by <span class="fn">fightmaster</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-12T23:21:00+04:00" pubdate data-updated="true">Feb 12<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/nginx/'>nginx</a>, <a class='category' href='/blog/categories/symfony2/'>symfony2</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+    
+    
+    <div class="rdbWrapper" data-show-read="1" data-show-send-to-kindle="1" data-show-print="1" data-show-email="0" data-orientation="0" data-version="1"></div><script type="text/javascript">(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+    
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/02/12/first-lecture-php-basics.html" title="Previous Post: Первая лекция: Основы PHP">&laquo; Первая лекция: Основы PHP</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Недавние посты</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/02/12/setting-up-symfony-with-nginx-server.html">Setting up Symfony with Nginx server</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/12/first-lecture-php-basics.html">Первая лекция: Основы PHP</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/09/go-go-go.html">Поехали!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/fightmaster">@fightmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'fightmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("old_fightmaster", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/old_fightmaster" class="twitter-follow-button" data-show-count="false">Follow @old_fightmaster</a>
+  
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/100149299742617855998?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - fightmaster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fightmaster';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html';
+        var disqus_url = 'http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

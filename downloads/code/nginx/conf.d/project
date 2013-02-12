@@ -1,0 +1,83 @@
+server {
+    listen  80;
+    server_name project_name;
+    root /project_path/web;
+    index app_dev.php app.php app_test.php;
+
+    ## по умолчанию работает под dev env
+    rewrite ^/app_dev\.php/?(.*)$ /$1 permanent;
+
+    location / {
+        ## данный блок актуален для настройки OPTIONS
+        if ($request_method = OPTIONS ) {
+            ## при необходимости можно указать специфический url
+            add_header Access-Control-Allow-Origin "*";
+            add_header Access-Control-Allow-Methods "GET, OPTIONS, POST, PUT, DELETE";
+            ## при необходимсти добавить заголовки, например X-WSSE
+            add_header Access-Control-Allow-Headers "origin, accept";
+            add_header Access-Control-Allow-Credentials "true";
+            add_header Content-Length 0;
+            return 200;
+        }
+
+        index app_dev.php;
+        try_files $uri @rewriteapp;
+    }
+
+    location @rewriteapp {
+        rewrite ^(.*)$ /app_dev.php/$1 last;
+    }
+
+    ## pass php scripts to fastcgi
+    location ~ ^/(app|app_dev|app_test)\.php(/|$) {
+        fastcgi_pass unix:/tmp/php-fpm.socket;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param  HTTPS off;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+    }
+
+    ## disable viewing .htaccess & .htpassword
+    location ~ /\.ht {
+        deny  all;
+    }
+}
+
+server {
+    listen 443;
+    server_name project_name;
+    root /project_path/web;
+
+    ssl on;
+    ssl_certificate /etc/ssl/certs/project.crt;
+    ssl_certificate_key /etc/ssl/private/project.key;
+
+    # strip app.php/ prefix if it is present
+    rewrite ^/app_dev\.php/?(.*)$ /$1 permanent;
+
+    location / {
+        index app_dev.php;
+        try_files $uri @rewriteapp;
+    }
+
+    location @rewriteapp {
+        rewrite ^(.*)$ /app_dev.php/$1 last;
+    }
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    location ~ ^/(app|app_dev|app_test)\.php(/|$) {
+        fastcgi_pass unix:/tmp/php-fpm.socket;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS on;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+    }
+## disable viewing .htaccess & .htpassword
+    location ~ /\.ht {
+        deny all;
+    }
+}

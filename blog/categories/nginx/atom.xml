@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[fightmaster's blog]]></title>
-  <link href="http://fightmaster.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: nginx | fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.com/blog/categories/nginx/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.com/"/>
   <updated>2013-02-12T23:26:44+04:00</updated>
   <id>http://fightmaster.github.com/</id>
@@ -25,9 +25,7 @@
 <!-- more -->
 
 
-
-
-<figure class='code'><figcaption><span>nginx/conf.d/project (project)</span> <a href='http://fightmaster.github.com/downloads/code/nginx/conf.d/project'>download</a></figcaption>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>nginx/conf.d/project (project)</span> <a href='/downloads/code/nginx/conf.d/project'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -194,32 +192,9 @@
 </span><span class='line'>        <span class="n">deny</span> <span class="n">all</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="err">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Полезная ссылка по теме: <a href="http://wiki.nginx.org/Symfony">http://wiki.nginx.org/Symfony</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Первая лекция: Основы PHP]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/12/first-lecture-php-basics.html"/>
-    <updated>2013-02-12T21:14:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/12/first-lecture-php-basics</id>
-    <content type="html"><![CDATA[<p>Она, кажется, сказала: &#8220;Дима, давай жги&#8221;. 100% посещаемость из двух человек, круто. Выкладываю <a href="http://fightmaster.github.com/php-lectures/02-php-basics.html">материалы</a>.
-Желаю удачи в выполнении домашнего задания :).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Поехали!]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/09/go-go-go.html"/>
-    <updated>2013-02-09T17:36:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/09/go-go-go</id>
-    <content type="html"><![CDATA[<p>О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.</p>
-
-<p>Итак, со вторника я начинаю читать лекции по php. Благодаря github и octopress я надеюсь мечта идиота сбудется,
-и блог начнет свою жизнь.</p>
 ]]></content>
   </entry>
   
