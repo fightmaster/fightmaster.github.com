@@ -4,7 +4,7 @@
   <title><![CDATA[fightmaster's blog]]></title>
   <link href="http://fightmaster.github.com/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.com/"/>
-  <updated>2013-02-12T23:28:20+04:00</updated>
+  <updated>2013-02-14T02:27:17+04:00</updated>
   <id>http://fightmaster.github.com/</id>
   <author>
     <name><![CDATA[fightmaster]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Вторая лекция: Управляющие структуры]]></title>
+    <link href="http://fightmaster.github.com/blog/2013/02/14/second-lecture-control-structures.html"/>
+    <updated>2013-02-14T02:30:00+04:00</updated>
+    <id>http://fightmaster.github.com/blog/2013/02/14/second-lecture-control-structures</id>
+    <content type="html"><![CDATA[<p>Выложены <a href="http://fightmaster.github.com/php-lectures/03-control-structures.html">материалы</a> ко второй лекции. Встретимся через 5.5 часов:).
+Домашнее задание будет доступно в субботу.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up Symfony with Nginx server]]></title>
