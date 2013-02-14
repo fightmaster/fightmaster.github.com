@@ -10,8 +10,7 @@
 
   
   <meta name="description" content="Управляющие структуры Feb 13th, 2013 Краткое содержание лекции Теоретические задания |
-Практические задания
-Лекция содержит много примеров на &hellip;">
+Практические задания Лекция содержит много примеров на &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,8 +99,9 @@
   <h3>Краткое содержание лекции</h3>
 
 <p><a href="03-control-structures-theoretical-tasks.html">Теоретические задания</a> |
-<a href="03-control-structures-practical-tasks.html">Практические задания</a>
-Лекция содержит много примеров на которых объясняется новый материал и закрепляется предыдущий.
+<a href="03-control-structures-practical-tasks.html">Практические задания</a></p>
+
+<p>Лекция содержит много примеров на которых объясняется новый материал и закрепляется предыдущий.
 В конце каждой подглавы есть best practice.</p>
 
 <h4>if</h4>
@@ -241,7 +241,9 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$variable</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'><span class="nv">$variable</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">?:</span> <span class="mi">3</span><span class="p">;</span>
@@ -496,11 +498,11 @@
 </span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;fruit&#39;</span><span class="o">:</span>
 </span><span class='line'>        <span class="k">echo</span> <span class="s2">&quot;i equals &#39;fruit&#39;&quot;</span><span class="p">;</span>
 </span><span class='line'>        <span class="k">break</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;Moscow:</span>
-</span><span class='line'><span class="s1">        echo &quot;i equals &#39;</span><span class="nx">Moscow</span><span class="err">&#39;</span><span class="s2">&quot;;</span>
-</span><span class='line'><span class="s2">        break;</span>
-</span><span class='line'><span class="s2">}</span>
-</span><span class='line'><span class="s2">?&gt;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;Moscow&#39;</span><span class="o">:</span>
+</span><span class='line'>        <span class="k">echo</span> <span class="s2">&quot;i equals &#39;Moscow&#39;&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -528,7 +530,11 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//$i = 0;</span>
+</span><span class='line'><span class="c1">//$i = 1;</span>
 </span><span class='line'><span class="k">switch</span> <span class="p">(</span><span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'><span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
 </span><span class='line'>    <span class="k">echo</span> <span class="s1">&#39;$i maybe 0&#39;</span><span class="p">;</span>

@@ -9,8 +9,8 @@
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Управляющие структуры Feb 13th, 2013 Практические задания Краткое содержание лекции |
-Теоретические задания Пока еще отсутствуют, ждите в субботу &hellip;">
+  <meta name="description" content="Управляющие структуры Feb 14th, 2013 Практические задания Краткое содержание лекции |
+Теоретические задания Задание состоит из 3 типовых и простых &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,7 +93,7 @@
   
 
 
-<time datetime="2013-02-13T02:13:00+04:00" pubdate data-updated="true">Feb 13<span>th</span>, 2013</time></p>
+<time datetime="2013-02-14T23:13:00+04:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time></p>
   </header>
   
   <h3>Практические задания</h3>
@@ -101,7 +101,190 @@
 <p><a href="03-control-structures.html">Краткое содержание лекции</a> |
 <a href="03-control-structures-theoretical-tasks.html">Теоретические задания</a></p>
 
-<p>Пока еще отсутствуют, ждите в субботу</p>
+<p>Задание состоит из 3 типовых и простых задач. При решении разрешается использовать только <strong>пройденный материал</strong>.
+Не разрешается использовать стандартные функции php по работе с массивами (array_*).
+Для подсчета элементов в массиве воспользуйтесь: <code>&lt;?php $numberOfElements = count($array);?&gt;</code></p>
+
+<p>Рекомендуется выполнять задание в простейшем текстовом редакторе с минимальной поддержкой языка.</p>
+
+<p>К каждой задаче прилагается макет решения.</p>
+
+<h3>Вычитания</h3>
+
+<h4>Условие</h4>
+
+<p>Заданы два числа. До тех пор, пока оба они больше нуля, с ними производят одну и ту же операцию: из большего числа вычитают меньшее.
+Если числа равны, то из одного вычитают другое. Например, из пары (4,17) за одну операцию получается пара (4,13), а из пары (5,5) пара (0,5).</p>
+
+<p>Вам задано некоторое количество пар (ai, bi). Сколько операций будет выполнено для каждой из них?</p>
+
+<h4>Макет</h4>
+
+<p>Запустить файл можно командой <code>php subtraction.php</code>.</p>
+
+<figure class='code'><figcaption><span> (subtraction.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/subtraction.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span><span class="c1">//8 операций</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="c1">//4 операций</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="c1">//0 оперций</span>
+</span><span class='line'>    <span class="c1">//ваши данные</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$inputData</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$inputData</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">calculateOperations</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$result</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">calculateOperations</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$numberOfOperations</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">//ваш код</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$numberOfOperations</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Следующий раунд</h3>
+
+<h4>Условие</h4>
+
+<p>&#8220;Участник выходит в следующий раунд соревнований, если он набрал не меньше баллов, чем участник, занявший k-е место, при условии,
+что набранное им число баллов строго положительно&#8230;&#8221; — выдержка из правил соревнований.</p>
+
+<p>Всего в соревновании было n участников (n ≥ k и 1 ≤ k ≤ n ≤ 50), и вам уже известны их баллы. Определите, сколько участников выйдет в следующий раунд.</p>
+
+<h4>Макет</h4>
+
+<p>Запустить файл можно командой <code>php next_round.php</code>.</p>
+
+<figure class='code'><figcaption><span> (next_round.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/next_round.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="c1">//число k и массив очков в убывающем порядке</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span><span class="c1">//6 участников</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="c1">//0 участников</span>
+</span><span class='line'>    <span class="c1">//ваши данные</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$inputData</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">list</span><span class="p">(</span><span class="nv">$k</span><span class="p">,</span> <span class="nv">$points</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$inputData</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">calculateMembersOfNextRound</span><span class="p">(</span><span class="nv">$k</span><span class="p">,</span> <span class="nv">$points</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$result</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">calculateMembersOfNextRound</span><span class="p">(</span><span class="nv">$k</span><span class="p">,</span> <span class="nv">$points</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$membersOfNextRound</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">//ваш код</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$membersOfNextRound</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Double cola</h3>
+
+<h4>Условие</h4>
+
+<p>Шелдон, Леонард, Пенни, Раджеш и Говард стоят в очереди к автомату по продаже баночек с напитком «Double Cola»,
+других людей в очереди нет. Первый в очереди (Шелдон) покупает баночку, выпивает ее содержимое и раздваивается!
+Получившиеся два Шелдона встают в конец очереди. Затем следующий в очереди (Леонард) покупает баночку,
+выпивает и встает в конец очереди в двойном экземпляре, и так далее. Этот процесс продолжается до бесконечности.</p>
+
+<p>Например, третью баночку колы выпьет Пенни, и очередь будет выглядеть так: Раджеш, Говард, Шелдон, Шелдон, Леонард, Леонард, Пенни, Пенни.</p>
+
+<p>Напишите программу, которая выведет имя человека, выпившего n-ую баночку.</p>
+
+<p>Обратите внимание, что в самом начале очередь выглядит так: Шелдон, Леонард, Пенни, Раджеш, Говард. Первым человеком является Шелдон.</p>
+
+<h4>Макет</h4>
+
+<p>Запустить файл можно командой <code>php double_cola.php</code>.</p>
+
+<figure class='code'><figcaption><span> (double_cola.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/double_cola.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1802</span><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">getNameByNumber</span><span class="p">(</span><span class="nv">$n</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$result</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">getNameByNumber</span><span class="p">(</span><span class="nv">$n</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$queue</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Шелдон&#39;</span><span class="p">,</span> <span class="s1">&#39;Леонард&#39;</span><span class="p">,</span> <span class="s1">&#39;Пенни&#39;</span><span class="p">,</span> <span class="s1">&#39;Раджеш&#39;</span><span class="p">,</span> <span class="s1">&#39;Говард&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">//ваш код</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$name</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
   
     <footer>
@@ -119,7 +302,7 @@
   
 
 
-<time datetime="2013-02-13T02:13:00+04:00" pubdate data-updated="true">Feb 13<span>th</span>, 2013</time>
+<time datetime="2013-02-14T23:13:00+04:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time>
         
       </p>
       
