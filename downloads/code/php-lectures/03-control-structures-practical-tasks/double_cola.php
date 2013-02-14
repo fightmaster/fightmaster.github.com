@@ -1,6 +1,10 @@
 <?php
 //массив исходных данных
-$basicData = array(1, 6, 1802);
+$basicData = array(
+    1, //Шелдон
+    6, //Шелдон
+    1802 //Пенни
+);
 foreach ($basicData as $n) {
     $result = getNameByNumber($n);
     echo $result . \PHP_EOL;
