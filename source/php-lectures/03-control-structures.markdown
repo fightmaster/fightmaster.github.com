@@ -13,6 +13,7 @@ lecture: true
 
 [Теоретические задания](03-control-structures-theoretical-tasks.html) |
 [Практические задания](03-control-structures-practical-tasks.html)
+
 Лекция содержит много примеров на которых объясняется новый материал и закрепляется предыдущий.
 В конце каждой подглавы есть best practice.
 
@@ -89,6 +90,7 @@ echo $variable;
 
 ```php
 <?php
+$variable = 2;
 $a = 5;
 //code
 $variable = ($a) ?: 3;
@@ -230,7 +232,7 @@ switch ($i) {
     case 'fruit':
         echo "i equals 'fruit'";
         break;
-    case 'Moscow:
+    case 'Moscow':
         echo "i equals 'Moscow'";
         break;
 }
@@ -239,6 +241,8 @@ switch ($i) {
 
 ```php
 <?php
+//$i = 0;
+//$i = 1;
 switch ($i) {
 case 0:
     echo '$i maybe 0';
