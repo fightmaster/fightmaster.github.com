@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Управляющие структуры"
-date: 2013-02-13 02:14
+date: 2013-02-16 16:14
 comments: true
 sharing: true
 footer: true
