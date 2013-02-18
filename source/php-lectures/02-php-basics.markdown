@@ -62,6 +62,24 @@ lecture: true
                 * приведение к null
         * приведение типов данных
     * переменная от переменной
+    * функции по работе с переменными
+        * boolval, floatval, doubleval, intval, strval
+        * empty, isset, get_defined_vars
+        * gettype. get_resource_type, settype
+        * is_bool
+        * is_int, is_integer, is_long
+        * is_float, is_double, is_real
+        * is_string
+        * is_numeric
+        * is_scalar
+        * is_array
+        * is_object
+        * is_resource
+        * is_callable
+        * is_null
+        * print_r, var_dump, var_export, debug_ zval_ dump
+        * unset
+
     * best practice
         * camalCase
         * как не нужно называть переменные
