@@ -93,7 +93,7 @@
   
 
 
-<time datetime="2013-02-19T01:00:00+04:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time></p>
+<time datetime="2013-02-19T23:00:00+04:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time></p>
   </header>
   
   <h3>Практические задания</h3>
@@ -105,7 +105,139 @@
 
 <p>Упростите решение своей задачи с <a href="03-control-structures-practical-tasks.html">предыдущего урока</a>, используя &#8220;новые&#8221; знания.</p>
 
-<p>Основной список заданий появится во вторник вечером.</p>
+<h3>Оценки</h3>
+
+<h4>Условие</h4>
+
+<p>Вася, а точнее Василий Петрович, — декан одного из факультетов в местном университете. После сессии в его руки попал журнал успеваемости одной из групп.</p>
+
+<p>Всего в этой группе учатся n студентов, а оценки ставились по m предметам. Каждый из студентов по каждому из предметов получил оценку от 1 до 9 включительно.</p>
+
+<p>Назовем студента лучшим по некоторому предмету, если нет студента, который получил оценку выше по этому предмету. Назовем студента успешным, если существует предмет, по которому он лучший.</p>
+
+<p>Ваша задача — найти успешных студентов в группе.</p>
+
+<p>Вам дан двумерный массив со списоком студентов и их успеваемости.</p>
+
+<h4>Макет</h4>
+
+<p>Запустить файл можно командой <code>php marks.php</code>.</p>
+
+<figure class='code'><figcaption><span> (marks.php)</span> <a href='/downloads/code/php-lectures/04-working-with-arrays-practical-tasks/marks.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;Шелдон&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+</span><span class='line'>        <span class="s1">&#39;Леонард&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span class='line'>        <span class="s1">&#39;Пенни&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+</span><span class='line'>        <span class="s1">&#39;Раджеш&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+</span><span class='line'>        <span class="s1">&#39;Говард&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">),</span><span class="c1">//Шелдон лучший в 1 и 3, Леонард - лучший в 1 и 2.</span>
+</span><span class='line'>    <span class="c1">//ваши данные</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$students</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">findSuccessfulStudents</span><span class="p">(</span><span class="nv">$students</span><span class="p">);</span>
+</span><span class='line'>    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">findSuccessfulStudents</span><span class="p">(</span><span class="k">array</span> <span class="nv">$students</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$successfulStudents</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+</span><span class='line'>    <span class="c1">//ваш код</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$successfulStudents</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Печеньки</h3>
+
+<h4>Условие</h4>
+
+<p>Оля пришла в гости к близняшкам Ане и Маше и увидела, что у них есть много печенек. Печеньки разложены в пакетики.
+Поскольку печенек много, Оля решила, что не будет ничего страшного, если она утащит один пакетик.
+Но она не хочет, чтобы сестры ссорились по пустякам при дележе печенек.
+Поэтому Оля хочет утащить один пакетик печенья так, чтобы общее количество печенья в оставшихся пакетиках было четно,
+то есть, чтобы Аня и Маша потом могли поделить его ровно пополам (даже если его останется 0 — главное, чтобы четное количество).</p>
+
+<p>Сколько способов у Оли утащить ровно один пакетик печенья, чтобы суммарное количество печенек в оставшихся пакетиках было четно?</p>
+
+<p>Вам дан массив целых чисел ai — количество печенек в i-ом пакетике.</p>
+
+<h4>Макет</h4>
+
+<p>Запустить файл можно командой <code>php cookies.php</code>.</p>
+
+<figure class='code'><figcaption><span> (cookies.php)</span> <a href='/downloads/code/php-lectures/04-working-with-arrays-practical-tasks/cookies.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="c1">//1</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span><span class="c1">//10</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span><span class="c1">//1</span>
+</span><span class='line'>    <span class="c1">//ваши данные</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$bags</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">calculateWays</span><span class="p">(</span><span class="nv">$bags</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">calculateWays</span><span class="p">(</span><span class="k">array</span> <span class="nv">$bags</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$countWays</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">//ваш код</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$countWays</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
   
     <footer>
@@ -123,7 +255,7 @@
   
 
 
-<time datetime="2013-02-19T01:00:00+04:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
+<time datetime="2013-02-19T23:00:00+04:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
         
       </p>
       

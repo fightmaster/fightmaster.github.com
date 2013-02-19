@@ -330,10 +330,29 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="o">&amp;</span><span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">next</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$element</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nb">current</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li>Как разбить массив <code>array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code> на части по 3 элемента?</li>
 <li>С помощью каких функций можно реализовать очередь FIFO (FirstInFirstOut)?</li>
-<li>Является ли стабильной сортировка <code>sort</code>?</li>
+<li>Является ли стабильной сортировка <code>sort</code>? Объясните свой ответ.</li>
 </ul>
 
 
