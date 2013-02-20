@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Работа со строками - fightmaster's blog</title>
+  <meta name="author" content="fightmaster">
+
+  
+  <meta name="description" content="Работа со строками Feb 21st, 2013 Краткое содержание лекции Теоретические задания |
+Практические задания Возможное представление строки: single &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/05-working-with-strings.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">fightmaster's blog</a></h1>
+  
+    <h2>Скромный персональный блог</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:fightmaster.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Блог</a></li>
+    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
+    <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Работа со строками</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-21T03:00:00+04:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time></p>
+  </header>
+  
+  <h3>Краткое содержание лекции</h3>
+
+<p><a href="05-working-with-strings-theoretical-tasks.html">Теоретические задания</a> |
+<a href="05-working-with-strings-practical-tasks.html">Практические задания</a></p>
+
+<h5>Возможное представление строки:</h5>
+
+<ul>
+<li>single quoted</li>
+<li>double quoted</li>
+<li>heredoc syntax</li>
+<li>nowdoc syntax (since PHP 5.3.0)</li>
+</ul>
+
+
+<p>Возможность обращения к символу строки.</p>
+
+<h4>Функции по работе со строками</h4>
+
+<p>Полный список функций доступен в <a href="http://www.php.net/manual/en/ref.strings.php">документации</a>.</p>
+
+<h5>Функции вывода / ввода данных</h5>
+
+<ul>
+<li><code>void echo ( string $arg1 [, string $... ] )</code>
+
+<ul>
+<li>конструкция языка, а не функция</li>
+<li><code>echo $a;</code></li>
+<li><code>echo ($a, $b);</code> - невалидно</li>
+<li><code>echo $a, $b;</code> - валидно</li>
+<li><code>&lt;?=$a;?&gt;</code></li>
+</ul>
+</li>
+<li><code>int print ( string $arg )</code>
+
+<ul>
+<li>конструкция языка, а не функция</li>
+<li>только один аргумент</li>
+<li>возвращает <strong>всегда</strong> 1</li>
+</ul>
+</li>
+<li><code>int printf ( string $format [, mixed $args [, mixed $... ]] )</code>
+
+<ul>
+<li>выводит на экран отформатированную строку</li>
+<li>возвращает длину выведенной строки</li>
+</ul>
+</li>
+<li><code>string sprintf ( string $format [, mixed $args [, mixed $... ]] )</code></li>
+<li><code>int fprintf ( resource $handle , string $format [, mixed $args [, mixed $... ]] )</code></li>
+<li><code>int vprintf ( string $format , array $args )</code></li>
+<li><code>string vsprintf ( string $format , array $args )</code></li>
+<li><code>int vfprintf ( resource $handle , string $format , array $args )</code></li>
+<li><code>mixed sscanf ( string $str , string $format [, mixed &amp;$... ] )</code></li>
+</ul>
+
+
+<h5>lowercase / uppercase</h5>
+
+<ul>
+<li><code>string strtolower ( string $str )</code></li>
+<li><code>string strtoupper ( string $string )</code></li>
+<li><code>string lcfirst ( string $str )</code></li>
+<li><code>string ucfirst ( string $str )</code></li>
+<li><code>string ucwords ( string $str )</code></li>
+</ul>
+
+
+<h5>Поиск / замена / &#8220;фильтрация&#8221; строк</h5>
+
+<ul>
+<li>strlen
+
+<ul>
+<li><code>int strlen ( string $string )</code></li>
+<li><code>strlen(array(2));</code></li>
+<li>возвращает кол-во байтов, а не символов в строке</li>
+</ul>
+</li>
+<li><code>int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )</code></li>
+<li><code>string strstr ( string $haystack , mixed $needle [, bool $before_needle = false ] )</code> / <code>strchr</code></li>
+<li><p><code>string strrchr ( string $haystack , mixed $needle )</code></p></li>
+<li><p><code>string strtok ( string $str , string $token )</code></p></li>
+<li>strtr делает замену символов в строке
+
+<ul>
+<li><code>string strtr ( string $str , string $from , string $to )</code></li>
+<li><code>string strtr ( string $str , array $replace_pairs )</code></li>
+</ul>
+</li>
+<li><code>string strrev ( string $string )</code></li>
+</ul>
+
+
+<h5>Работа с подстроками</h5>
+
+<ul>
+<li><code>string substr ( string $string , int $start [, int $length ] )</code></li>
+<li><code>mixed substr_replace ( mixed $string , mixed $replacement , mixed $start [, mixed $length ] )</code></li>
+<li><code>int substr_count ( string $haystack , string $needle [, int $offset = 0 [, int $length ]] )</code></li>
+</ul>
+
+
+<h5>Работа с хешами</h5>
+
+<ul>
+<li><code>string sha1 ( string $str [, bool $raw_output = false ] )</code></li>
+<li><code>string sha1_file ( string $filename [, bool $raw_output = false ]</code></li>
+<li><code>md5 — Calculate the md5 hash of a string</code></li>
+<li><code>md5_file — Calculates the md5 hash of a given file</code></li>
+</ul>
+
+
+<h5>&#8220;Работа&#8221; с символами</h5>
+
+<ul>
+<li><code>string chr ( int $ascii )</code></li>
+<li><code>int ord ( string $string )</code></li>
+</ul>
+
+
+<h5>Обработка строк (лишних отступов)</h5>
+
+<ul>
+<li><code>string trim ( string $str [, string $charlist ] )</code></li>
+<li><code>string ltrim ( string $str [, string $charlist ] )</code></li>
+<li><code>string rtrim ( string $str [, string $charlist ] )</code> / chop</li>
+</ul>
+
+
+<h5>&#8220;Полезное&#8221;</h5>
+
+<ul>
+<li><code>string str_shuffle ( string $str )</code></li>
+<li><code>array str_split ( string $string [, int $split_length = 1 ] )</code></li>
+</ul>
+
+
+<h5>Функции для обработки html и специальных символов (самостоятельно)</h5>
+
+<ul>
+<li>strip_tags — Strip HTML and PHP tags from a string</li>
+<li>addcslashes — Quote string with slashes in a C style</li>
+<li>addslashes — Quote string with slashes</li>
+<li>html_entity_decode — Convert all HTML entities to their applicable characters</li>
+<li>htmlentities — Convert all applicable characters to HTML entities</li>
+<li>htmlspecialchars_decode — Convert special HTML entities back to characters</li>
+<li>htmlspecialchars — Convert special characters to HTML entities</li>
+<li>stripcslashes — Un-quote string quoted with addcslashes</li>
+<li>stripslashes — Un-quotes a quoted string</li>
+<li>nl2br — Inserts HTML line breaks before all newlines in a string</li>
+<li>get_html_translation_table — Returns the translation table used by htmlspecialchars and htmlentities</li>
+</ul>
+
+
+<h5>Остальной список (самостоятельно по желанию)</h5>
+
+<ul>
+<li>bin2hex — Convert binary data into hexadecimal representation</li>
+<li>chunk_split — Split a string into smaller chunks</li>
+<li>convert_cyr_string — Convert from one Cyrillic character set to another</li>
+<li>convert_uudecode — Decode a uuencoded string</li>
+<li>convert_uuencode — Uuencode a string</li>
+<li>count_chars — Return information about characters used in a string</li>
+<li>crypt — One-way string hashing</li>
+<li>crc32 — Calculates the crc32 polynomial of a string</li>
+<li>hebrev — Convert logical Hebrew text to visual text</li>
+<li>hebrevc — Convert logical Hebrew text to visual text with newline conversion</li>
+<li>hex2bin — Decodes a hexadecimally encoded binary string</li>
+<li>levenshtein — Calculate Levenshtein distance between two strings</li>
+<li>localeconv — Get numeric formatting information</li>
+<li>money_format — Formats a number as a currency string</li>
+<li>metaphone — Calculate the metaphone key of a string</li>
+<li>nl_langinfo — Query language and locale information</li>
+<li>number_format — Format a number with grouped thousands</li>
+<li>parse_str — Parses the string into variables</li>
+<li>quoted_printable_decode — Convert a quoted-printable string to an 8 bit string</li>
+<li>quoted_printable_encode — Convert a 8 bit string to a quoted-printable string</li>
+<li>quotemeta — Quote meta characters</li>
+<li>setlocale — Set locale information</li>
+<li>similar_text — Calculate the similarity between two strings</li>
+<li>soundex — Calculate the soundex key of a string</li>
+<li>str_ireplace — Case-insensitive version of str_replace.</li>
+<li>str_pad — Pad a string to a certain length with another string</li>
+<li>str_repeat — Repeat a string</li>
+<li>str_replace — Replace all occurrences of the search string with the replacement string</li>
+<li>str_rot13 — Perform the rot13 transform on a string</li>
+<li>str_word_count — Return information about words used in a string</li>
+<li>strcasecmp — Binary safe case-insensitive string comparison</li>
+<li>strcmp — Binary safe string comparison</li>
+<li>strcoll — Locale based string comparison</li>
+<li>strcspn — Find length of initial segment not matching mask</li>
+<li>str_getcsv — Parse a CSV string into an array</li>
+<li>stripos — Find the position of the first occurrence of a case-insensitive substring in a string</li>
+<li>stristr — Case-insensitive strstr</li>
+<li>strnatcasecmp — Case insensitive string comparisons using a &#8220;natural order&#8221; algorithm</li>
+<li>strnatcmp — String comparisons using a &#8220;natural order&#8221; algorithm</li>
+<li>strncasecmp — Binary safe case-insensitive string comparison of the first n characters</li>
+<li>strncmp — Binary safe string comparison of the first n characters</li>
+<li>strpbrk — Search a string for any of a set of characters</li>
+<li>strripos — Find the position of the last occurrence of a case-insensitive substring in a string</li>
+<li>strrpos — Find the position of the last occurrence of a substring in a string</li>
+<li>strspn — Finds the length of the initial segment of a string consisting entirely of characters contained within a given mask.</li>
+<li>substr_compare — Binary safe comparison of two strings from an offset, up to length characters</li>
+<li>wordwrap — Wraps a string to a given number of characters</li>
+</ul>
+
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-21T03:00:00+04:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
+        
+      </p>
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/05-working-with-strings.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/05-working-with-strings.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+    
+    
+    <div class="rdbWrapper" data-show-read="1" data-show-send-to-kindle="1" data-show-print="1" data-show-email="0" data-orientation="0" data-version="1"></div><script type="text/javascript">(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+    
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Список лекций</h1>
+  <ul id="php_lectures">
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/00-contents.html">Содержание</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/03-control-structures.html">Управляющие структуры</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - fightmaster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fightmaster';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fightmaster.github.com/php-lectures/05-working-with-strings.html';
+        var disqus_url = 'http://fightmaster.github.com/php-lectures/05-working-with-strings.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
