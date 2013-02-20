@@ -40,6 +40,7 @@ lecture: true
                     * single quotes
                     * double quotes
                     * Heredoc
+                    * Nowdoc (5.3)
             * integer
                 * decimal
                 * hexadecimal

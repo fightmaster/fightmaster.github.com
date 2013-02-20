@@ -19,7 +19,7 @@ lecture: true
  2. [Основы PHP](02-php-basics.html)
  3. [Управляющие конструкции](03-control-structures.html)
  4. [Работа с массивами](04-working-with-arrays.html)
- 5. Работа со строками
+ 5. [Работа со строками](05-working-with-strings.html)
  6. Регулярные выражения
      6. Основы регулярных выражений
      6. POSIX, PCRE в PHP
