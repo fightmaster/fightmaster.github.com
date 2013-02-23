@@ -2,7 +2,7 @@
 layout: page
 title: "Работа с массивами"
 date: 2013-02-19 01:00
-comments: true
+comments: false
 sharing: true
 footer: true
 sidebar: true

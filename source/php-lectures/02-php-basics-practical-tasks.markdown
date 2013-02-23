@@ -2,7 +2,7 @@
 layout: page
 title: "Основы PHP"
 date: 2013-02-12 01:22
-comments: true
+comments: false
 sharing: true
 footer: true
 sidebar: true

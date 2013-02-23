@@ -2,7 +2,7 @@
 layout: page
 title: "Управляющие структуры"
 date: 2013-02-14 23:13
-comments: true
+comments: false
 sharing: true
 footer: true
 sidebar: true

@@ -2,7 +2,7 @@
 layout: page
 title: "Работа со строками"
 date: 2013-02-21 03:00
-comments: true
+comments: false
 sharing: true
 footer: true
 sidebar: true
