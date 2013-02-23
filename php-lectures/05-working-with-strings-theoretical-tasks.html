@@ -9,8 +9,8 @@
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Работа со строками Feb 21st, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Задание составлено не полностью Что выведут &hellip;">
+  <meta name="description" content="Работа со строками Feb 24th, 2013 Теоретические задания Краткое содержание лекции |
+Практические задания Объясните разницу между single quoted и &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,7 +93,7 @@
   
 
 
-<time datetime="2013-02-21T03:00:00+04:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time></p>
+<time datetime="2013-02-24T00:40:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time></p>
   </header>
   
   <h3>Теоретические задания</h3>
@@ -101,34 +101,75 @@
 <p><a href="05-working-with-strings.html">Краткое содержание лекции</a> |
 <a href="05-working-with-strings-practical-tasks.html">Практические задания</a></p>
 
-<p><em>Задание составлено не полностью</em></p>
+<ol>
+<li>Объясните разницу между single quoted и double quoted.</li>
+<li>Объясните разницу между Heredoc и Newdoc.</li>
+<li>Какой суффикс у функций для работы с мультибайтовыми кодировками?</li>
+<li>С помощью какой функции можно удалить все whitespaces?</li>
+<li>Как можно перемешать все символы в строке?</li>
+</ol>
+
 
 <p>Что выведут на экран следующие блоки кода?</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;?php
-</span><span class='line'>$string = "This is\tan example\nstring";
-</span><span class='line'>
-</span><span class='line'>for ($i = 0; $i &lt; $length = strlen($string); $i++) {
-</span><span class='line'>    echo $string[$i];
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$number</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$fruit</span> <span class="o">=</span> <span class="s1">&#39;яблока&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$string</span> <span class="o">=</span> <span class="s1">&#39;У Маши было %d %s&#39;</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$number</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$string</span> <span class="o">=</span> <span class="s1">&#39;У Маши было %1$d %2$s&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$number</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;%d+%d=&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;?php
-</span><span class='line'>//utf
-</span><span class='line'>echo strlen("Фыва") . \PHP_EOL;
-</span><span class='line'>echo strlen("Asdf") . \PHP_EOL;</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$string</span> <span class="o">=</span> <span class="s2">&quot;This is</span><span class="se">\t</span><span class="s2">an example</span><span class="se">\n</span><span class="s2">string&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$length</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//кодировка utf-8</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Фыва&quot;</span><span class="p">)</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Asdf&quot;</span><span class="p">)</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
   
@@ -147,7 +188,7 @@
   
 
 
-<time datetime="2013-02-21T03:00:00+04:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
+<time datetime="2013-02-24T00:40:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
         
       </p>
       
@@ -171,12 +212,6 @@
     </footer>
   
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -284,22 +319,6 @@
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'fightmaster';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://fightmaster.github.com/php-lectures/05-working-with-strings-theoretical-tasks.html';
-        var disqus_url = 'http://fightmaster.github.com/php-lectures/05-working-with-strings-theoretical-tasks.html';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 

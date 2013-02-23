@@ -9,8 +9,8 @@
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Работа со строками Feb 21st, 2013 Практические задания Краткое содержание лекции |
-Теоретические задания Задание составлено не полностью Дан массив &hellip;">
+  <meta name="description" content="Работа со строками Feb 24th, 2013 Практические задания Краткое содержание лекции |
+Теоретические задания Работа с символами строки Дана следующая &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,7 +93,7 @@
   
 
 
-<time datetime="2013-02-21T03:00:00+04:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time></p>
+<time datetime="2013-02-24T00:40:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time></p>
   </header>
   
   <h3>Практические задания</h3>
@@ -101,9 +101,107 @@
 <p><a href="05-working-with-strings.html">Краткое содержание лекции</a> |
 <a href="05-working-with-strings-theoretical-tasks.html">Теоретические задания</a></p>
 
-<p><em>Задание составлено не полностью</em></p>
+<h3>Работа с символами строки</h3>
 
-<p>Дан массив фраз, определить, является ли это палиндромом.</p>
+<p>Дана следующая строка: &#8220;Начало лекций в 8 часов&#8221;. Выведите на экран четные символы.</p>
+
+<h3>За меня отомстят&#8230;</h3>
+
+<p>Подсчитайте количество:</p>
+
+<ul>
+<li>строк</li>
+<li>запятых</li>
+<li>точек</li>
+<li>предложений (окончанием предложения считать точку или многоточие)</li>
+</ul>
+
+
+<p>в этом стихотворении Алексея Машенцева.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>За меня отомстят. Не пропустит и дня,
+</span><span class='line'>Чтоб не сделать ему на пиджак,
+</span><span class='line'>Ей подаренный мною щенок - за меня,
+</span><span class='line'>И укусит - не сильно, а так.
+</span><span class='line'>Эта черная кошка, которую я
+</span><span class='line'>Перекармливал мясом из щей,
+</span><span class='line'>Перейдет перед ним, отомстив за меня,
+</span><span class='line'>Все дороги, ведущие к ней.
+</span><span class='line'>А когда он обратно дорогой своей
+</span><span class='line'>Будет топать со спичкой в зубах,
+</span><span class='line'>Отомстит за меня... придорожный репей,
+</span><span class='line'>Заплутавшись в его волосах...</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Палиндром</h3>
+
+<p>Дан массив фраз, определить, является ли это палиндромом. Обеспечьте регистронезависимость и отбрасывание символов &#8220;.&#8221; и &#8220;,&#8221;.</p>
+
+<p>Вывести на экран &#8216;YES&#8217; или &#8216;NO&#8217;.</p>
+
+<h4>Макет</h4>
+
+<p>Запустить файл можно командой <code>php palindrome.php</code>.</p>
+
+<figure class='code'><figcaption><span> (palindrome.php)</span> <a href='/downloads/code/php-lectures/05-working-with-strings-practical-tasks/palindrome.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//массив исходных данных</span>
+</span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Мачо, но по ночам.&#39;</span><span class="p">),</span><span class="c1">// YES</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Лев даму с ума свел&#39;</span><span class="p">),</span><span class="c1">//Yes</span>
+</span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Пеле нелеп&#39;</span><span class="p">),</span><span class="c1">//YES</span>
+</span><span class='line'>    <span class="c1">//ваши данные</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$word</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">isPalindrome</span><span class="p">(</span><span class="nv">$word</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;YES&#39;</span> <span class="o">:</span> <span class="s1">&#39;NO&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="nv">$word</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$isPalindrome</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">//ваш код</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$isPalindrome</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
   
     <footer>
@@ -121,7 +219,7 @@
   
 
 
-<time datetime="2013-02-21T03:00:00+04:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time>
+<time datetime="2013-02-24T00:40:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
         
       </p>
       
@@ -145,12 +243,6 @@
     </footer>
   
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -258,22 +350,6 @@
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'fightmaster';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://fightmaster.github.com/php-lectures/05-working-with-strings-practical-tasks.html';
-        var disqus_url = 'http://fightmaster.github.com/php-lectures/05-working-with-strings-practical-tasks.html';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 
