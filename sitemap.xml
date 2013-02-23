@@ -21,6 +21,12 @@
         <lastmod>2013-02-14T02:20:02+04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://fightmaster.github.com/blog/2013/02/24/four-lecture-working-with-strings.html
+        </loc>
+        <lastmod>2013-02-24T00:50:59+04:00</lastmod>
+    </url>
+    <url>
         <loc>http://fightmaster.github.com/robots.txt</loc>
         <lastmod>2013-02-09T17:03:28+04:00</lastmod>
     </url>
@@ -90,10 +96,10 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/</loc>
-        <lastmod>2013-02-14T02:20:02+04:00</lastmod>
+        <lastmod>2013-02-24T00:50:59+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/blog/archives/</loc>
-        <lastmod>2013-02-14T02:20:02+04:00</lastmod>
+        <lastmod>2013-02-24T00:50:59+04:00</lastmod>
     </url>
 </urlset>

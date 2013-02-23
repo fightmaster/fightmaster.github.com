@@ -4,7 +4,7 @@
   <title><![CDATA[Category: php | fightmaster's blog]]></title>
   <link href="http://fightmaster.github.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.com/"/>
-  <updated>2013-02-24T00:45:22+04:00</updated>
+  <updated>2013-02-24T00:52:21+04:00</updated>
   <id>http://fightmaster.github.com/</id>
   <author>
     <name><![CDATA[fightmaster]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Задания к лекции "Работа со строками"]]></title>
+    <link href="http://fightmaster.github.com/blog/2013/02/24/four-lecture-working-with-strings.html"/>
+    <updated>2013-02-24T00:50:00+04:00</updated>
+    <id>http://fightmaster.github.com/blog/2013/02/24/four-lecture-working-with-strings</id>
+    <content type="html"><![CDATA[<p>С небольшим опозданием выложены <a href="/php-lectures/05-working-with-strings.html">задания</a> к четвертой лекции.
+Задача про палиндромы имеет подводные камни, будьте внимательны.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Вторая лекция: Управляющие структуры]]></title>
