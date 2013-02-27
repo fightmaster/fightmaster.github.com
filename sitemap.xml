@@ -31,6 +31,12 @@
         <lastmod>2013-02-09T17:03:28+04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/07-working-with-filesystem-practical-tasks.html
+        </loc>
+        <lastmod>2013-02-27T23:46:10+04:00</lastmod>
+    </url>
+    <url>
         <loc>http://fightmaster.github.com/php-lectures/05-working-with-strings.html</loc>
         <lastmod>2013-02-25T22:14:42+04:00</lastmod>
     </url>
@@ -52,7 +58,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/00-contents.html</loc>
-        <lastmod>2013-02-25T22:13:08+04:00</lastmod>
+        <lastmod>2013-02-27T21:38:46+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -62,7 +68,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/06-regular-expressions.html</loc>
-        <lastmod>2013-02-26T04:00:42+04:00</lastmod>
+        <lastmod>2013-02-27T21:43:44+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -73,6 +79,12 @@
     <url>
         <loc>http://fightmaster.github.com/php-lectures/02-php-basics-practical-tasks.html</loc>
         <lastmod>2013-02-24T00:38:59+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/07-working-with-filesystem-theoretical-tasks.html
+        </loc>
+        <lastmod>2013-02-27T23:46:15+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -93,6 +105,10 @@
             http://fightmaster.github.com/php-lectures/05-working-with-strings-practical-tasks.html
         </loc>
         <lastmod>2013-02-24T00:40:31+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://fightmaster.github.com/php-lectures/07-working-with-filesystem.html</loc>
+        <lastmod>2013-02-28T03:05:06+04:00</lastmod>
     </url>
     <url>
         <loc>

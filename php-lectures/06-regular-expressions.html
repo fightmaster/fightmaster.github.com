@@ -205,14 +205,23 @@
 
 <h4>Квантификаторы</h4>
 
+<p>Квантификаторы могу стоять за:</p>
+
 <ul>
-<li><code>{n}</code> Ровно n раз <code>colou{3}r</code> соответствует <code>colouuur</code></li>
+<li>произвольным, возможно экранированным, символом</li>
+<li>метасимволом &#8220;точка&#8221;</li>
+<li>символьным классом</li>
+<li>ссылкой на предыдущий фрагмент шаблона (см. следующий раздел)</li>
+<li><p>взятой в круглый скобки подмаской (если это не утверждение - см. далее)</p></li>
+<li><p><code>{n}</code> Ровно n раз <code>colou{3}r</code> соответствует <code>colouuur</code></p></li>
 <li><code>{m,n}</code> От m до n включительно <code>colou{2,4}r</code> соответствует <code>colouur, colouuur, colouuuur</code></li>
 <li><code>{m,}</code> Не менее m  <code>colou{2,}r</code> соответствует <code>colouur, colouuur, colouuuur и т. д.</code></li>
 <li><code>{,n}</code> Не более n  <code>colou{,3}r</code> соответствует <code>color, colour, colouur, colouuur</code></li>
 <li><code>*</code> Ноль или более  {0,}  <code>colou*r</code> соответствует <code>color, colour и т. д.</code></li>
 <li><code>+</code> Одно или более  {1,}  <code>olou+r</code> соответствует <code>colour, colouur и т. д. (но не color)</code></li>
-<li><code>?</code> Ноль или одно   {0,1}  <code>colou?r</code> соответствует <code>color, colour</code></li>
+<li><p><code>?</code> Ноль или одно   {0,1}  <code>colou?r</code> соответствует <code>color, colour</code></p></li>
+<li><p>Жадность <code>?</code> после квантификатора</p></li>
+<li>Захватывание <code>+</code> после квантификатора</li>
 </ul>
 
 
@@ -223,11 +232,15 @@
 <li><code>the ((red|white) (king|queen))</code></li>
 <li><code>the ((?:red|white) (king|queen))</code></li>
 <li><code>(?i:saturday|sunday)</code> === <code>(?:(?i)saturday|sunday)</code></li>
-<li><code>(?:(Sat)ur|(Sun))day</code></li>
-<li><code>(?|(Sat)ur|(Sun))day</code></li>
+<li><code>(?:(Sat)ur|(Sun))day</code> vs <code>(?|(Sat)ur|(Sun))day</code></li>
 <li><code>((?i)rah)\s+\1</code></li>
+<li><code>(?P&lt;name&gt;pattern)</code> === <code>(?&lt;name&gt;pattern)</code> === <code>(?'name'pattern)</code></li>
 </ul>
 
+
+<p> Обращение к подмаскам <code>(?P=name)</code>, <code>\k&lt;name&gt;</code>, <code>k'name'</code>, <code>\1</code>, <code>\g1</code>, <code>\g{1}</code></p>
+
+<p> Однократные подмаски &#8220;`(?>\d+)bar</p>
 
 <h4>Просмотр вперед / назад</h4>
 
@@ -246,6 +259,8 @@
 <li><code>(?(n)то|иначе)</code>  Если n-я группа вернула значение, то поиск по условию выполняется по шаблону то, иначе по шаблону иначе. <code>(а)?(?(1)м|п)</code>  м<strong>ам</strong>,<strong>п</strong>а<strong>п</strong></li>
 </ul>
 
+
+<h4>Рекурсия</h4>
 
 <h4>Модификаторы</h4>
 
@@ -351,6 +366,8 @@
       
     
       
+    
+      
           <li class="post">
             <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
           </li>
@@ -383,6 +400,8 @@
       
     
       
+    
+      
           <li class="post">
             <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
           </li>
@@ -394,6 +413,12 @@
           </li>
       
     
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/07-working-with-filesystem.html">Работа с файловой системой</a>
+          </li>
       
     
       
