@@ -23,7 +23,7 @@ lecture: true
  6. [Регулярные выражения](06-regular-expressions.html)
      6. Основы регулярных выражений
      6. POSIX, PCRE в PHP
- 7. Работа с файловой системой
+ 7. [Работа с файловой системой](07-working-with-filesystem.html)
  8. Глобальные переменные в PHP
      8. POST, GET
      8. SESSION
