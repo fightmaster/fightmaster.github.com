@@ -9,8 +9,8 @@
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Работа с файловой системой Feb 28th, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Feb 28th, 2013 Tweet Список лекций &hellip;">
+  <meta name="description" content="Работа с файловой системой Mar 2nd, 2013 Теоретические задания Краткое содержание лекции |
+Практические задания В каких ОС доступна функция chroot? &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,13 +93,46 @@
   
 
 
-<time datetime="2013-02-28T01:00:00+04:00" pubdate data-updated="true">Feb 28<span>th</span>, 2013</time></p>
+<time datetime="2013-03-02T23:30:00+04:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time></p>
   </header>
   
   <h3>Теоретические задания</h3>
 
 <p><a href="07-working-with-filesystem.html">Краткое содержание лекции</a> |
 <a href="07-working-with-filesystem-practical-tasks.html">Практические задания</a></p>
+
+<ul>
+<li>В каких ОС доступна функция <code>chroot</code>?</li>
+<li>Какая разница между <code>opendir</code>, <code>dir</code>, <code>scandir</code>?</li>
+<li>Как можно узнать размер файла?</li>
+<li>Какая разница между функциями <code>unlink</code> и <code>rmdir</code>.</li>
+<li>Что выведут на экран следующие блоки кода:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">dirname</span><span class="p">(</span><span class="nx">__DIR__</span><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">dirname</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">// /home/git/fightmaster.github.com/code.php</span>
+</span><span class='line'><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;/home/fightmaster/&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nb">getcwd</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="nx">__DIR__</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
   
     <footer>
@@ -117,7 +150,7 @@
   
 
 
-<time datetime="2013-02-28T01:00:00+04:00" pubdate data-updated="true">Feb 28<span>th</span>, 2013</time>
+<time datetime="2013-03-02T23:30:00+04:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
         
       </p>
       
