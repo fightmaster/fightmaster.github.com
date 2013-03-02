@@ -64,8 +64,6 @@ public void rewind ([ resource $dir_handle ] )
 ?>
 ```
 
- * ```array scandir ( string $directory [, int $sorting_order = SCANDIR_SORT_ASCENDING [, resource $context ]] )```
-
 ```php
 <?php
 $dir = dir("/etc/php5/");
@@ -78,6 +76,7 @@ if ($dir) {
 ?>
 ```
 
+ * ```array scandir ( string $directory [, int $sorting_order = SCANDIR_SORT_ASCENDING [, resource $context ]] )```
  * ```string getcwd ( void )```
  * ```bool chdir ( string $directory )```
  * ```bool chroot ( string $directory )```
@@ -166,6 +165,7 @@ exit;
  * ```string tempnam ( string $dir , string $prefix )```
  * ```resource tmpfile ( void )```
  * ```string realpath ( string $path )```
+ * ```string basename ( string $path [, string $suffix ] )```
 
 ```php
 <?php
@@ -176,7 +176,6 @@ echo realpath('./../../etc/nginx'); //etc/nginx
 
 #### Самостоятельно при желании
 
- * basename — Возвращает последний компонент имени из указанного пути
  * chgrp — Изменяет группу владельцев файла
  * chmod — Изменяет режим доступа к файлу
  * chown — Изменяет владельца файла

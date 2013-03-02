@@ -13,3 +13,4 @@ tags: [php,lectures]
 [Краткое содержание лекции](06-regular-expressions.html) |
 [Практические задания](06-regular-expressions-practical-tasks.html)
 
+Ожидается в вск вечером, увы :(
