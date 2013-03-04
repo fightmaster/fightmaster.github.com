@@ -15,7 +15,7 @@ lecture: true
 На сайте будут размещены ключевые слова лекций, полезные ссылки, список теоретических и практических задач по каждой из тем.
 
 
- 1. Введение в PHP
+ 1. [Введение в PHP](01-introduction-to-php.html)
  2. [Основы PHP](02-php-basics.html)
  3. [Управляющие конструкции](03-control-structures.html)
  4. [Работа с массивами](04-working-with-arrays.html)
@@ -24,7 +24,7 @@ lecture: true
      6. Основы регулярных выражений
      6. POSIX, PCRE в PHP
  7. [Работа с файловой системой](07-working-with-filesystem.html)
- 8. Глобальные переменные в PHP
+ 8. [Глобальные переменные в PHP](08-global-variables.html)
      8. POST, GET
      8. SESSION
  9. Объекты и классы в PHP
