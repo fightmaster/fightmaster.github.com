@@ -62,7 +62,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/00-contents.html</loc>
-        <lastmod>2013-02-27T21:38:46+04:00</lastmod>
+        <lastmod>2013-03-05T00:29:28+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -75,10 +75,18 @@
         <lastmod>2013-02-27T21:43:44+04:00</lastmod>
     </url>
     <url>
+        <loc>http://fightmaster.github.com/php-lectures/01-introduction-to-php.html</loc>
+        <lastmod>2013-03-05T00:28:39+04:00</lastmod>
+    </url>
+    <url>
         <loc>
             http://fightmaster.github.com/php-lectures/06-regular-expressions-theoretical-tasks.html
         </loc>
         <lastmod>2013-03-03T14:57:45+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://fightmaster.github.com/php-lectures/08-global-variables.html</loc>
+        <lastmod>2013-03-05T00:50:00+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/02-php-basics-practical-tasks.html</loc>
