@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Регулярные выражения"
-date: 2013-02-26 04:00
+date: 2013-03-18 04:00
 comments: false
 sharing: true
 footer: true
@@ -54,6 +54,64 @@ Some people, when confronted with a problem, think
  * ```\s``` === ```[ \t\v\r\n\f]``` Пробельный символ
  * ```\S``` === ```[^\s]``` Не пробельный символ
 
+```php
+<?php
+preg_match_all(
+  '/(\d\d)\d/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 123
+            [1] => 456
+            [2] => 789
+        )
+
+    [1] => Array
+        (
+            [0] => 12
+            [1] => 45
+            [2] => 78
+        )
+
+)
+*/
+
+preg_match_all(
+  '/(\d\d)\D/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 56 
+            [1] => 89 
+            [2] => 10b
+            [3] => 11c
+        )
+
+    [1] => Array
+        (
+            [0] => 56
+            [1] => 89
+            [2] => 10
+            [3] => 11
+        )
+
+)
+*/
+?>
+```
+
 #### Символьные классы POSIX
 
  * ```[:upper:]``` === ```[A-Z]```   Символы верхнего регистра
@@ -98,6 +156,102 @@ Some people, when confronted with a problem, think
  * ```\G``` Предыдущий успешный поиск   ```\Ga``` ***aaa*** aaa (поиск остановился на 4-й позиции — там, где не нашлось a)
  * ```[\dABCDEF]```
 
+```php
+<?php
+preg_match_all(
+  '/(\d\d)\b\D/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 56 
+            [1] => 89 
+        )
+
+    [1] => Array
+        (
+            [0] => 56
+            [1] => 89
+        )
+
+)
+*/
+
+preg_match_all(
+  '/\G(\d\d)/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 12
+            [1] => 34
+            [2] => 56
+        )
+
+    [1] => Array
+        (
+            [0] => 12
+            [1] => 34
+            [2] => 56
+        )
+
+)
+*/
+
+preg_match_all(
+  '/^123/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 123
+        )
+)
+*/
+
+preg_match_all(
+  '/[^123]/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 4
+            [1] => 5
+            [2] => 6
+            [3] =>  
+            [4] => 7
+            [5] => 8
+            [6] => 9
+            [7] =>  
+            [8] => a
+            [9] => 0
+            [10] => b
+            [11] => c
+        )
+)
+*/
+?>
+```
 #### Квантификаторы
 
 Квантификаторы могу стоять за:
@@ -117,7 +271,58 @@ Some people, when confronted with a problem, think
  * ```?``` Ноль или одно   {0,1}  ```colou?r``` соответствует ```color, colour```
 
  * Жадность ```?``` после квантификатора
+
+```php
+<?php
+preg_match_all(
+    '/<.*>/',
+    '<h1>Header</h1><div>body</div>',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => <h1>Header</h1><div>body</div>
+        )
+)
+*/
+
+preg_match_all(
+    '/<.*?>/',
+    '<h1>Header</h1><div>body</div>',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => <h1>
+            [1] => </h1>
+            [2] => <div>
+            [3] => </div>
+        )
+)
+*/
+?>
+```
+
  * Захватывание ```+``` после квантификатора
+
+```php
+<?php
+preg_match_all(
+    '/ab(xa)*+a/',
+    'abxaabxaa',
+    $out
+);
+print_r($out);
+?>
+```
 
 
 #### Подмаски
@@ -125,14 +330,247 @@ Some people, when confronted with a problem, think
  * ```cat(aract|erpillar|)```
  * ```the ((red|white) (king|queen))```
  * ```the ((?:red|white) (king|queen))```
+
+```php
+<?php
+preg_match_all(
+    '/(?:Chapter|Section) [1-9][0-9]{0,1}/U',
+    'Chapter 50  Section 85',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => Chapter 5
+            [1] => Section 8
+        )
+)
+*/
+?>
+```
+
  * ```(?i:saturday|sunday)``` === ```(?:(?i)saturday|sunday)```
  * ```(?:(Sat)ur|(Sun))day``` vs ```(?|(Sat)ur|(Sun))day```
+
+```php
+<?php
+preg_match_all(
+    '/(?:(Chapter)|(Section)) [1-9][0-9]{0,1}/U',
+    'Chapter 50  Section 85',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => Chapter 5
+            [1] => Section 8
+        )
+
+    [1] => Array
+        (
+            [0] => Chapter
+            [1] => 
+        )
+
+    [2] => Array
+        (
+            [0] => 
+            [1] => Section
+        )
+
+)
+*/
+preg_match_all(
+    '/(?|(Chapter)|(Section)) [1-9][0-9]{0,1}/U',
+    'Chapter 50  Section 85',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => Chapter 5
+            [1] => Section 8
+        )
+
+    [1] => Array
+        (
+            [0] => Chapter
+            [1] => Section
+        )
+)
+*/
+preg_match_all(
+    '/(?:(Chapter)|(Section)) [1-9][0-9]{0,1}/U',
+    'Section 85',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => Section 8
+        )
+
+    [1] => Array
+        (
+            [0] => 
+        )
+
+    [2] => Array
+        (
+            [0] => Section
+        )
+
+)
+*/
+preg_match_all(
+    '/(?|(Chapter)|(Section)) [1-9][0-9]{0,1}/U',
+    'Chapter 50  Section 85',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => Section 8
+        )
+
+    [1] => Array
+        (
+            [0] => Section
+        )
+)
+*/
+?>
+```
  * ```((?i)rah)\s+\1```
  * ```(?P<name>pattern)``` === ```(?<name>pattern)``` === ```(?'name'pattern)```
 
  Обращение к подмаскам ```(?P=name)```, ```\k<name>```, ```k'name'```, ```\1```, ```\g1```, ```\g{1}```
 
- Однократные подмаски ```(?>\d+)bar
+
+
+```php
+<?php
+preg_match_all(
+  '/(та|ту)-\1/',
+    'та-та ту-ту та-ту',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => та-та
+            [1] => ту-ту
+        )
+
+    [1] => Array
+        (
+            [0] => та
+            [1] => ту
+        )
+
+)
+*/
+
+preg_match_all(
+  '/(\d\d)\d \1/',
+    '123456 789 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+        )
+
+    [1] => Array
+        (
+        )
+)
+*/
+?>
+```
+
+Что необходимо изменить в последнем примере для получения результата?
+
+```php
+<?php
+preg_match_all(
+  '/(\d\d)\d \1/',
+    '123456 459 a10b11c12',
+    $out
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => 456 45
+        )
+
+    [1] => Array
+        (
+            [0] => 45
+        )
+
+)
+*/
+?>
+```
+
+#### Однократные подмаски ```(?>\d+)bar
+
+```php
+<?php
+preg_match_all(
+  '/\d+foo/',
+    '123456bar',
+    $out
+);
+print_r($out);
+
+preg_match_all(
+  '/(?>\d+)foo/',
+    '123456bar',
+    $out
+);
+print_r($out);
+
+preg_match_all(
+  '/^.*abcd$/',
+    'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    $out
+);
+print_r($out);
+
+preg_match_all(
+  '/^(?>.*)(?<=abcd)/',
+    'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    $out
+);
+print_r($out);
+?>
+```
 
 #### Просмотр вперед / назад
 
@@ -174,13 +612,250 @@ Some people, when confronted with a problem, think
 #### Функции для работы в php
 
  * ```string preg_quote ( string $str [, string $delimiter = null ] )```
+
+Экранирует символы ```\ + * ? [ ^ ] $ ( ) { } = ! < > | : -``` в регулярных выражениях.
+
+
  * ```array preg_grep ( string $pattern , array $input [, int $flags = 0 ] )```
+
  * ```mixed preg_filter ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &$count ]] )```
  * ```mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &$count ]] )```
+
+```php
+<?php
+$subject = array('1', 'а', '2', 'б', '3', 'А', 'Б', '4'); 
+$pattern = array('/\d/', '/[а-я]/', '/[1а]/'); 
+$replace = array('А:$0', 'Б:$0', 'В:$0'); 
+
+print_r(preg_filter($pattern, $replace, $subject)); 
+
+/*
+Array
+(
+    [0] => А:В:1
+    [1] => Б:В:а
+    [2] => А:2
+    [3] => Б:б
+    [4] => А:3
+    [7] => А:4
+)
+*/
+
+print_r(preg_replace($pattern, $replace, $subject)); 
+
+/*
+Array
+(
+    [0] => А:В:1
+    [1] => Б:В:а
+    [2] => А:2
+    [3] => Б:б
+    [4] => А:3
+    [5] => А
+    [6] => Б
+    [7] => А:4
+)
+*/
+?>
+```
+
  * ```array preg_split ( string $pattern , string $subject [, int $limit = -1 [, int $flags = 0 ]] )```
+
+```php
+<?php
+$keywords = preg_split("/[\s,]+/", "hypertext language, programming");
+print_r($keywords);
+/*
+Array
+(
+    [0] => hypertext
+    [1] => language
+    [2] => programming
+)
+*/
+
+$str = 'string';
+$chars = preg_split('//', $str, -1);
+print_r($chars);
+/*
+Array
+(
+    [0] => 
+    [1] => s
+    [2] => t
+    [3] => r
+    [4] => i
+    [5] => n
+    [6] => g
+    [7] => 
+)
+*/
+
+$str = 'string';
+$chars = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
+print_r($chars);
+/*
+Array
+(
+    [0] => s
+    [1] => t
+    [2] => r
+    [3] => i
+    [4] => n
+    [5] => g
+)
+*/
+
+$regexp_code = "/( )/U";
+$regexp_text = "abccaxcc fff";
+$out = preg_split($regexp_code,$regexp_text, -1, PREG_SPLIT_DELIM_CAPTURE);
+print_r($out);
+/*
+Array
+(
+    [0] => abccaxcc
+    [1] =>  
+    [2] => fff
+)
+*/
+
+$regexp_code = "/( )/U";
+$regexp_text = "abccaxcc fff";
+$out = preg_split($regexp_code,$regexp_text, -1, PREG_SPLIT_OFFSET_CAPTURE|PREG_SPLIT_DELIM_CAPTURE);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => abccaxcc
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] =>  
+            [1] => 8
+        )
+
+    [2] => Array
+        (
+            [0] => fff
+            [1] => 9
+        )
+
+)
+*/
+?>
+```
+
  * ```int preg_match ( string $pattern , string $subject [, array &$matches [, int $flags = 0 [, int $offset = 0 ]]] )```
+
+```php
+<?php
+$subject = "abcdef";
+$pattern = '/^def/';
+preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 3);
+print_r($matches);
+/*
+Array
+(
+)
+*/
+
+$subject = "abcdef";
+$pattern = '/def/';
+preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 3);
+print_r($matches);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => def
+            [1] => 3
+        )
+
+)
+*/
+
+$subject = "abcdef";
+$pattern = '/^def/';
+preg_match($pattern, substr($subject,3), $matches, PREG_OFFSET_CAPTURE);
+print_r($matches);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => def
+            [1] => 0
+        )
+
+)
+*/
+?>
+```
+
+
  * ```int preg_match_all ( string $pattern , string $subject [, array &$matches [, int $flags = PREG_PATTERN_ORDER [, int $offset = 0 ]]] )```
+
+```php
+<?php
+preg_match_all(
+    "|<[^>]+>(.*)</[^>]+>|U",
+    "<b>пример: </b><div align=left>это тест</div>",
+    $out, 
+    PREG_PATTERN_ORDER
+);
+print_r($out);
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => <b>пример: </b>
+            [1] => <div align=left>это тест</div>
+        )
+
+    [1] => Array
+        (
+            [0] => пример: 
+            [1] => это тест
+        )
+
+)
+*/
+
+preg_match_all(
+    "|<[^>]+>(.*)</[^>]+>|U",
+    "<b>пример: </b><div align=left>это тест</div>",
+    $out, 
+    PREG_SET_ORDER
+);
+print_r($out);
+
+/*
+Array
+(
+    [0] => Array
+        (
+            [0] => <b>пример: </b>
+            [1] => пример: 
+        )
+
+    [1] => Array
+        (
+            [0] => <div align=left>это тест</div>
+            [1] => это тест
+        )
+
+)
+*/
+?>
+```
  * ```int preg_last_error ( void )```
+
 
 #### Полезные ссылки
 
