@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: php - fightmaster's blog</title>
+  <title>Объекты и классы в PHP. Основы синтаксиса - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Category: php">
+  <meta name="description" content="Объекты и классы в PHP. Основы синтаксиса Mar 31st, 2013 Практические задания Краткое содержание лекции |
+Теоретические задания Задача о &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.comblog/categories/php/index.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-practical-tasks.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,59 +80,90 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Category: Php</h1>
-    
+    <h1 class="entry-title">Объекты и классы в PHP. Основы синтаксиса</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-31T23:30:00+04:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time></p>
   </header>
   
-  <div id="blog-archives" class="category">
+  <h3>Практические задания</h3>
+
+<p><a href="09-objects-and-classes-basic-syntax.html">Краткое содержание лекции</a> |
+<a href="09-objects-and-classes-basic-syntax-theoretical-tasks.html">Теоретические задания</a></p>
+
+<h4>Задача о пользователе.</h4>
+
+<p>Вам необходимо создать класс &#8220;Пользователь&#8221;, основные аттрибуты: имя, фамилия, логин, пароль, дата рождения, дата и время создания (регистрации).
+Скачайте файл <code>createUser.php</code> в директорию с вашим классом. Создайте в нем экземпляр класса, заполните все поля и выведите значения на экран.</p>
+
+<p>Запустить файл можно командой <code>php createUser.php</code>.</p>
+
+<figure class='code'><figcaption><span> (createUser.php)</span> <a href='/downloads/code/php-lectures/09-objects-and-classes-basic-syntax-practical-tasks/createUser.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nb">spl_autoload_register</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$class</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">include_once</span> <span class="nv">$class</span> <span class="o">.</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="c1">//ваш код</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Подсказки: дату предпочтительнее хранить в объекте <code>\DateTime</code>, пароль чаще всего хранится в хешируемом виде (см. функции по работе со строками).</p>
+
+<p>Дополнительное задание: что необходимо сделать, чтобы ваше решение можно было подключить в проект одновременно с решением коллег? Произведите соответствующие изменения (будьте внимательны, autloader в createUser.php не является универсальным, вы вправе его изменять при необходимости).</p>
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
 
 
 
   
-  <h2>2013</h2>
 
-<article>
+
+<time datetime="2013-03-31T23:30:00+04:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time>
+        
+      </p>
+      
+        <div class="sharing">
   
-<h1><a href="/blog/2013/02/24/four-lecture-working-with-strings.html">Задания к лекции "Работа со строками"</a></h1>
-<time datetime="2013-02-24T00:50:00+04:00" pubdate><span class='month'>Feb</span> <span class='day'>24</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/lectures/'>lectures</a>, <a class='category' href='/blog/categories/php/'>php</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-practical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-practical-tasks.html" >Tweet</a>
   
-<h1><a href="/blog/2013/02/14/second-lecture-control-structures.html">Вторая лекция: Управляющие структуры</a></h1>
-<time datetime="2013-02-14T02:30:00+04:00" pubdate><span class='month'>Feb</span> <span class='day'>14</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/lectures/'>lectures</a>, <a class='category' href='/blog/categories/php/'>php</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
   
-<h1><a href="/blog/2013/02/12/first-lecture-php-basics.html">Первая лекция: Основы PHP</a></h1>
-<time datetime="2013-02-12T21:14:00+04:00" pubdate><span class='month'>Feb</span> <span class='day'>12</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/lectures/'>lectures</a>, <a class='category' href='/blog/categories/php/'>php</a></span>
-</footer>
-
-
-</article>
-
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+    
+    
+    <div class="rdbWrapper" data-show-read="1" data-show-send-to-kindle="1" data-show-print="1" data-show-email="0" data-orientation="0" data-version="1"></div><script type="text/javascript">(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+    
 </div>
 
+      
+    </footer>
   
 </article>
 
@@ -285,19 +317,6 @@
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'fightmaster';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 
