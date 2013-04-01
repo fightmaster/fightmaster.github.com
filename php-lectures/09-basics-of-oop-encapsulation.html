@@ -110,7 +110,8 @@
 <p>Допустим, что мы начинающий php-джуниор, а какой джуниор не пишет свою cms или сайт на plain php?
 Как работает любая хорошая авторизация? Есть страница регистрации, в конце выполнения скрипта новому пользователю отправляется ссылка с подтверждением.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (registration.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step1/registration.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -123,7 +124,6 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//registration.php</span>
 </span><span class='line'>
@@ -137,14 +137,14 @@
 </span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nb">mail</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Отлично! Спустя некоторое время, мы решили, что админу хорошо бы знать о новых зарегистрированных пользователях.
 Что мы делаем? Естественно копируем-вставляем и решаем задачу за 2 минуты.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (confirm.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step1/confirm.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -158,9 +158,8 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
+<span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//confirm.php</span>
-</span><span class='line'>
 </span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'><span class="c1">//code</span>
@@ -168,10 +167,13 @@
 </span><span class='line'>
 </span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
 </span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="s1">&#39;http://google.com&#39;</span>
+</span><span class='line'><span class="p">);</span>
 </span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nb">mail</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -195,20 +197,19 @@
 
 <p>А еще так часто бывает, что в 6 месте реализовывали не вы, а кто-то другой.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (another.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step1/another.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//код другого программиста</span>
 </span><span class='line'><span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$msg</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$to</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nb">mail</span><span class="p">(</span><span class="nv">$to</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$msg</span><span class="p">);</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -227,7 +228,8 @@
 
 <p>Мое предложение, давайте вот весь этот небольшой алгоритм послания email инкапсулируем в какой-нибудь класс.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (MailService.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step2/MailService.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -255,7 +257,6 @@
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
-<span class='line-number'>29</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * The service sends an email to user</span>
@@ -284,13 +285,47 @@
 </span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Посмотрим, каким стал код в наших файлах.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (registration.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step2/registration.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//registration.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span> (confirm.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step2/confirm.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -307,44 +342,6 @@
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//registration.php</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
-</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//confirm.php</span>
-</span><span class='line'>
 </span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'><span class="c1">//code</span>
@@ -353,23 +350,24 @@
 </span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="s1">&#39;http://google.com&#39;</span>
+</span><span class='line'><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (another.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step2/another.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//код другого программиста</span>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
@@ -377,7 +375,6 @@
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -393,7 +390,8 @@
 
 <p>Какая же скрытая проблема существует?</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (another2.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step2/another2.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -412,7 +410,6 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//код другого программиста</span>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
@@ -432,13 +429,13 @@
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Секретное сообщение&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Пароли всех пользвателей&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>или</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (another3.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step2/another3.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -451,7 +448,6 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//код другого программиста</span>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
@@ -465,7 +461,6 @@
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Сообщение&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -479,7 +474,8 @@
 
 <p>Инкапсуляция позволяет вам скрыть свойства класса и внутреннюю его реализацию от стороннего мира.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (MailService.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step3/MailService.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -519,7 +515,6 @@
 <span class='line-number'>38</span>
 <span class='line-number'>39</span>
 <span class='line-number'>40</span>
-<span class='line-number'>41</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * The service sends an email to user</span>
@@ -560,13 +555,47 @@
 </span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Изменим, последний раз наши plain php файлы. Шутка!</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (registration.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step3/registration.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//registration.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span> (confirm.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step3/confirm.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -584,46 +613,6 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//registration.php</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
-</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//confirm.php</span>
-</span><span class='line'>
 </span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'><span class="c1">//code</span>
@@ -631,18 +620,20 @@
 </span><span class='line'>
 </span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
 </span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="s1">&#39;http://google.com&#39;</span>
+</span><span class='line'><span class="p">);</span>
 </span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (another.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step3/another.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -650,7 +641,6 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//код другого программиста</span>
 </span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
@@ -659,14 +649,14 @@
 </span><span class='line'>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Что скажете теперь? Вообще-то, получился какой-то отстой. Что делать, если мы в одном скрипте захотим послать 2 email?
 Создавать новый экземпляр класса? Давайте значит производить снова рефакторинг кода.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (MailService.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step4/MailService.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -727,7 +717,6 @@
 <span class='line-number'>59</span>
 <span class='line-number'>60</span>
 <span class='line-number'>61</span>
-<span class='line-number'>62</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * The service sends an email to user</span>
@@ -789,13 +778,13 @@
 </span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (registration.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step4/registration.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -809,8 +798,6 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//registration.php</span>
 </span><span class='line'>
@@ -820,19 +807,16 @@
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
-</span><span class='line'>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (confirm.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step4/confirm.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -851,9 +835,8 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
+<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//confirm.php</span>
-</span><span class='line'>
 </span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'><span class="c1">//code</span>
@@ -861,7 +844,11 @@
 </span><span class='line'>
 </span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
 </span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="s1">&#39;http://google.com&#39;</span>
+</span><span class='line'><span class="p">);</span>
 </span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
@@ -869,13 +856,11 @@
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (another.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step4/another.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -886,7 +871,6 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//код другого программиста</span>
 </span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
@@ -898,14 +882,14 @@
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Теперь мы можем смело производить внутри класса и алгоритма любые изменения.
 Давайте изменим свойство <code>$subject</code> на <code>$title</code>, а также алгоритм отправки сообщения.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (MailService.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-encapsulation/step5/MailService.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -979,7 +963,6 @@
 <span class='line-number'>72</span>
 <span class='line-number'>73</span>
 <span class='line-number'>74</span>
-<span class='line-number'>75</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * The service sends an email to user</span>
@@ -1054,7 +1037,6 @@
 </span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
