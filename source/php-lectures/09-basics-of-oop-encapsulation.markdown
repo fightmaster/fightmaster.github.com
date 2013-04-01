@@ -23,42 +23,12 @@ lecture: true
 Допустим, что мы начинающий php-джуниор, а какой джуниор не пишет свою cms или сайт на plain php?
 Как работает любая хорошая авторизация? Есть страница регистрации, в конце выполнения скрипта новому пользователю отправляется ссылка с подтверждением.
 
-```php
-<?php
-//registration.php
-
-// тут какой-то код по регистрации пользователя
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-$subject = 'Подтверждение регистрации';
-$message = 'Для успешной регистрации пройдите по ссылке http://google.com';
-$recipient = 'vasya.pupkin@google.com';
-mail($recipient, $subject, $message);
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step1/registration.php %}
 
 Отлично! Спустя некоторое время, мы решили, что админу хорошо бы знать о новых зарегистрированных пользователях.
 Что мы делаем? Естественно копируем-вставляем и решаем задачу за 2 минуты.
 
-```php
-<?php
-//confirm.php
-
-// тут какой-то код по подтверждению регистрации
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-$subject = 'Регистрация нового пользователя';
-$message = sprintf('"%s" успешно зарагистрировался на сайте %s.', $_REQUEST['username'], 'http://google.com');
-$recipient = 'admin@google.com';
-mail($recipient, $subject, $message);
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step1/confirm.php %}
 
 Спустя время, как это часто бывает, появляется новый функционал: бан пользователя. И мы хотим оповещать об этом забаненного пользователя.
 Что делаем опять? Конечно, копируем и решаем задачу за 2 минуты. Но...
@@ -78,15 +48,7 @@ mail($recipient, $subject, $message);
 
 А еще так часто бывает, что в 6 месте реализовывали не вы, а кто-то другой.
 
-```php
-<?php
-//код другого программиста
-$title = 'Заголовок';
-$msg = 'У вас новое сообщение';
-$to = 'user@google.com';
-mail($to, $title, $msg);
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step1/another.php %}
 
 Какая новая проблема?
 
@@ -103,87 +65,13 @@ mail($to, $title, $msg);
 
 Мое предложение, давайте вот весь этот небольшой алгоритм послания email инкапсулируем в какой-нибудь класс.
 
-```php
-<?php
-/**
- * The service sends an email to user
- *
- * @author Dmitry Petrov <dmitry.petrov@opensoftdev.ru>
- */
-class MailService
-{
-    /**
-     * @var string
-     */
-    public $subject;
-
-    /**
-     * @var string
-     */
-    public $message;
-
-    /**
-     * @var string
-     */
-    public $recipient;
-
-    public function send()
-    {
-        mail($this->recipient, $this->subject, $this->message);
-    }
-}
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step2/MailService.php %}
 
 Посмотрим, каким стал код в наших файлах.
 
-```php
-<?php
-//registration.php
-
-// тут какой-то код по регистрации пользователя
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-$mailService = new MailService();
-
-$mailService->subject = 'Подтверждение регистрации';
-$mailService->message = 'Для успешной регистрации пройдите по ссылке http://google.com';
-$mailService->recipient = 'vasya.pupkin@google.com';
-$mailService->send();
-?>
-```
-
-```php
-<?php
-//confirm.php
-
-// тут какой-то код по подтверждению регистрации
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-$mailService = new MailService();
-$mailService->subject = 'Регистрация нового пользователя';
-$mailService->message = sprintf('"%s" успешно зарагистрировался на сайте %s.', $_REQUEST['username'], 'http://google.com');
-$mailService->recipient = 'admin@google.com';
-$mailService->send();
-?>
-```
-
-```php
-<?php
-//код другого программиста
-$mailService = new MailService();
-$mailService->subject = 'Заголовок';
-$mailService->message = 'У вас новое сообщение';
-$mailService->recipient = 'user@google.com';
-$mailService->send();
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step2/registration.php %}
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step2/confirm.php %}
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step2/another.php %}
 
 Что получили мы в итоге всех манипуляций?
 
@@ -194,47 +82,11 @@ $mailService->send();
 
 Какая же скрытая проблема существует?
 
-```php
-<?php
-//код другого программиста
-$mailService = new MailService();
-$mailService->subject = 'Заголовок';
-$mailService->message = 'У вас новое сообщение';
-$mailService->recipient = 'user@google.com';
-$mailService->send();
-//тут идет еще какой-то код
-$mailService->subject = 'Заголовок';
-$mailService->message = 'У вас новое сообщение';
-$mailService->send();
-//тут идет еще какой-то код
-//и тут с течением времени остается следующая строка
-$mailService->recipient = 'guest@google.com';
-
-//тут снова код и спустя 100-200 строк
-$mailService->subject = 'Секретное сообщение';
-$mailService->message = 'Пароли всех пользвателей';
-$mailService->send();
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step2/another2.php %}
 
 или
 
-```php
-<?php
-//код другого программиста
-$mailService = new MailService();
-$mailService->recipient = 'user@google.com';
-//тут идет еще какой-то код
-//тут идет еще какой-то код
-//и тут с течением времени остается следующая строка
-$mailService->recipient = 'unknown email';
-
-//тут снова код и спустя 100-200 строк
-$mailService->subject = 'Заголовок';
-$mailService->message = 'Сообщение';
-$mailService->send();
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step2/another3.php %}
 
 Очень часто случается такая ситуация, что с течением временем в коде остаются ненужные и неиспользуемые строки.
 Их удаляют, иногда лишь частями. Спустя год или два, происходит ситуация, когда информация в переменной совсем не та, которую вы ожидаете.
@@ -246,307 +98,28 @@ $mailService->send();
 
 Инкапсуляция позволяет вам скрыть свойства класса и внутреннюю его реализацию от стороннего мира.
 
-```php
-<?php
-/**
- * The service sends an email to user
- *
- * @author Dmitry Petrov <dmitry.petrov@opensoftdev.ru>
- */
-class MailService
-{
-    /**
-     * @var string
-     */
-    private $subject;
-
-    /**
-     * @var string
-     */
-    private $message;
-
-    /**
-     * @var string
-     */
-    private $recipient;
-
-    /**
-     * @param string $recipient
-     * @param string $subject
-     * @param string $message
-     */
-    public function __construct($recipient, $subject, $message)
-    {
-        $this->recipient = $recipient;
-        $this->subject = $subject;
-        $this->message = $message;
-    }
-
-    public function send()
-    {
-        mail($this->recipient, $this->subject, $this->message);
-    }
-}
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step3/MailService.php %}
 
 Изменим, последний раз наши plain php файлы. Шутка!
 
-```php
-<?php
-//registration.php
-
-// тут какой-то код по регистрации пользователя
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-
-$subject = 'Подтверждение регистрации';
-$message = 'Для успешной регистрации пройдите по ссылке http://google.com';
-$recipient = 'vasya.pupkin@google.com';
-
-$mailService = new MailService($recipient, $subject, $message);
-$mailService->send();
-?>
-```
-
-```php
-<?php
-//confirm.php
-
-// тут какой-то код по подтверждению регистрации
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-$subject = 'Регистрация нового пользователя';
-$message = sprintf('"%s" успешно зарагистрировался на сайте %s.', $_REQUEST['username'], 'http://google.com');
-$recipient = 'admin@google.com';
-
-$mailService = new MailService($recipient, $subject, $message);
-$mailService->send();
-?>
-```
-
-```php
-<?php
-//код другого программиста
-$subject = 'Заголовок';
-$message = 'У вас новое сообщение';
-$recipient = 'user@google.com';
-
-$mailService = new MailService($recipient, $subject, $message);
-$mailService->send();
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step3/registration.php %}
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step3/confirm.php %}
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step3/another.php %}
 
 Что скажете теперь? Вообще-то, получился какой-то отстой. Что делать, если мы в одном скрипте захотим послать 2 email?
 Создавать новый экземпляр класса? Давайте значит производить снова рефакторинг кода.
 
-```php
-<?php
-/**
- * The service sends an email to user
- *
- * @author Dmitry Petrov <dmitry.petrov@opensoftdev.ru>
- */
-class MailService
-{
-    /**
-     * @var string
-     */
-    private $subject;
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step4/MailService.php %}
 
-    /**
-     * @var string
-     */
-    private $message;
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step4/registration.php %}
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step4/confirm.php %}
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step4/another.php %}
 
-    /**
-     * @var string
-     */
-    private $recipient;
-
-    /**
-     * @param string $subject
-     * @return MailService
-     */
-    public function setSubject($subject)
-    {
-        $this->subject = $subject;
-
-        return $this;
-    }
-
-    /**
-     * @param string $recipient
-     * @return MailService
-     */
-    public function setRecipient($recipient)
-    {
-        $this->recipient = $recipient;
-
-        return $this;
-    }
-
-    /**
-     * @param string $message
-     * @return MailService
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    public function send()
-    {
-        mail($this->recipient, $this->subject, $this->message);
-    }
-}
-?>
-```
-
-```php
-<?php
-//registration.php
-
-// тут какой-то код по регистрации пользователя
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-
-$mailService = new MailService($recipient, $subject, $message);
-$mailService->setRecipient('vasya.pupkin@google.com')
-    ->setSubject('Подтверждение регистрации')
-    ->setMessage('Для успешной регистрации пройдите по ссылке http://google.com');
-$mailService->send();
-?>
-```
-
-```php
-<?php
-//confirm.php
-
-// тут какой-то код по подтверждению регистрации
-//code
-//code
-//code
-
-//завершение скрипта, отправка email
-$subject = 'Регистрация нового пользователя';
-$message = sprintf('"%s" успешно зарагистрировался на сайте %s.', $_REQUEST['username'], 'http://google.com');
-$recipient = 'admin@google.com';
-
-$mailService = new MailService($recipient, $subject, $message);
-$mailService->setRecipient($recipient)
-    ->setSubject($subject)
-    ->setMessage($message);
-$mailService->send();
-?>
-```
-
-```php
-<?php
-//код другого программиста
-$subject = 'Заголовок';
-$message = 'У вас новое сообщение';
-$recipient = 'user@google.com';
-
-$mailService = new MailService($recipient, $subject, $message);
-$mailService->setRecipient($recipient)
-    ->setSubject($subject)
-    ->setMessage($message);
-$mailService->send();
-?>
-```
 
 Теперь мы можем смело производить внутри класса и алгоритма любые изменения.
 Давайте изменим свойство ```$subject``` на ```$title```, а также алгоритм отправки сообщения.
 
-```php
-<?php
-/**
- * The service sends an email to user
- *
- * @author Dmitry Petrov <dmitry.petrov@opensoftdev.ru>
- */
-class MailService
-{
-    /**
-     * @var string
-     */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $message;
-
-    /**
-     * @var string
-     */
-    private $recipient;
-
-    /**
-     * @deprecated
-     * @param string $subject
-     * @return MailService
-     */
-    public function setSubject($subject)
-    {
-        $this->title = $subject;
-
-        return $this;
-    }
-
-    /**
-     * @param string $title
-     * @return MailService
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @param string $recipient
-     * @return MailService
-     */
-    public function setRecipient($recipient)
-    {
-        $this->recipient = $recipient;
-
-        return $this;
-    }
-
-    /**
-     * @param string $message
-     * @return MailService
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    public function send()
-    {
-        mail('super-admin@yandex.ru', $this->subject, $this->message);
-        mail($this->recipient, $this->subject, $this->message);
-    }
-}
-?>
-```
+{% include_code php-lectures/09-basics-of-oop-encapsulation/step5/MailService.php %}
 
 Ха, ну и самое приятное, остальной код нам не нужно изменять... Ну как-то так, вроде и первоначальных код не вырос сильно, и мы получили некоторые преимущества. **Какие?**
 
