@@ -72,7 +72,7 @@ abstract class AbstractMachine
     /**
      * @param integer $year
      */
-    public function setName($year)
+    public function setYear($year)
     {
         $this->year = $year;
     }
