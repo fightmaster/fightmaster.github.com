@@ -92,6 +92,12 @@
     </url>
     <url>
         <loc>
+            http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance-practical-tasks.html
+        </loc>
+        <lastmod>2013-04-02T00:09:53+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
             http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation-theoretical-tasks.html
         </loc>
         <lastmod>2013-04-01T22:56:45+04:00</lastmod>
@@ -119,6 +125,10 @@
             http://fightmaster.github.com/php-lectures/07-working-with-filesystem-theoretical-tasks.html
         </loc>
         <lastmod>2013-03-02T23:32:05+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance.html</loc>
+        <lastmod>2013-04-02T01:44:27+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -161,6 +171,12 @@
             http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html
         </loc>
         <lastmod>2013-02-24T00:38:59+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance-theoretical-tasks.html
+        </loc>
+        <lastmod>2013-04-02T00:09:47+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/03-control-structures.html</loc>

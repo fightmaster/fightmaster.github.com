@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Объекты и классы в PHP. Основы синтаксиса - fightmaster's blog</title>
+  <title>Основы ООП. Наследование - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Объекты и классы в PHP. Основы синтаксиса Mar 31st, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Какие имена классов &hellip;">
+  <meta name="description" content="Основы ООП. Наследование Apr 2nd, 2013 Теоретические задания Краткое содержание лекции |
+Практические задания Apr 2nd, 2013 Tweet Список лекций &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-theoretical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance-theoretical-tasks.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Объекты и классы в PHP. Основы синтаксиса</h1>
+    <h1 class="entry-title">Основы ООП. Наследование</h1>
     <p class="meta">
 
 
@@ -93,106 +93,13 @@
   
 
 
-<time datetime="2013-03-31T23:30:00+04:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time></p>
+<time datetime="2013-04-02T03:00:00+04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time></p>
   </header>
   
   <h3>Теоретические задания</h3>
 
-<p><a href="09-objects-and-classes-basic-syntax.html">Краткое содержание лекции</a> |
-<a href="09-objects-and-classes-basic-syntax-practical-tasks.html">Практические задания</a></p>
-
-<ol>
-<li>Какие имена классов являются валидными?
-
-<ol>
-<li><code>_test</code></li>
-<li><code>test_</code></li>
-<li><code>Test_</code></li>
-<li><code>Test</code></li>
-<li><code>1Test</code></li>
-<li><code>Test1</code></li>
-<li><code>_Хлеб</code></li>
-<li><code>Хл$b</code></li>
-<li><code>Bre$ad</code></li>
-</ol>
-</li>
-<li>Какие способы объявления аттрибута класса валидны? Какие из них не рекомендуются?
-
-<ol>
-<li><code>public $attribute;</code></li>
-<li><code>public $_attribute;</code></li>
-<li><code>public $Attribute;</code></li>
-<li><code>public $UserInfo;</code></li>
-<li><code>public $userInfo;</code></li>
-<li><code>public $userInfo = array();</code></li>
-<li><code>public static $userInfo;</code></li>
-<li><code>static public $userInfo;</code></li>
-<li><code>var $attribute;</code></li>
-<li><code>private $attribute;</code></li>
-<li><code>$attribute;</code></li>
-<li><code>private static $attribute;</code></li>
-<li><code>protected $attribute;</code></li>
-<li><code>final protected $attribute;</code></li>
-<li><code>final public $attribute;</code></li>
-<li><code>final private $attribute;</code></li>
-<li><code>abstract private $attribute;</code></li>
-</ol>
-</li>
-<li>Какие способы объявления методов класса валидны? Какие из них не рекомендуются?
-
-<ol>
-<li><code>function 101advice() {}</code></li>
-<li><code>public function getadvice() {}</code></li>
-<li><code>public function getAdvice() {}</code></li>
-<li><code>function getAdvice() {}</code></li>
-<li><code>final private getAdvice() {}</code></li>
-<li><code>final private static getAdvice() {}</code></li>
-<li><code>abstract protected static function() {}</code></li>
-</ol>
-</li>
-<li>В классе <code>Test</code> объявлена статическая переменная <code>$value = 5;</code>. Какие способы обращения к этой переменной валидны?
-
-<ol>
-<li><code>echo Test::$value;</code></li>
-<li><code>echo Test::value;</code></li>
-<li><code>echo Test::$VALUE;</code></li>
-<li><code>echo TEST::$value;</code></li>
-<li><code>$test = new Test(); echo $test::$value;</code></li>
-<li><code>$test = new Test(); echo $test-&gt;$value;</code></li>
-</ol>
-</li>
-<li>Какие объявления конструктора в классе <code>Test</code> являются невалидными?
-
-<ol>
-<li><code>function __construct() {}</code></li>
-<li><code>public function __construct() {}</code></li>
-<li><code>protected function __construct() {}</code></li>
-<li><code>private function __construct() {}</code></li>
-<li><code>public function __construct($attribute1, $attribute2 = 5) {}</code></li>
-<li><code>function Test() {}</code></li>
-<li><code>function TEST() {}</code></li>
-</ol>
-</li>
-<li>Какие объявления класса являются валидными и при каких условиях?
-
-<ol>
-<li><code>class User {}</code></li>
-<li><code>abstract class User {}</code></li>
-<li><code>final abstract class User {}</code></li>
-<li><code>final class User {}</code></li>
-<li><code>private class User {}</code></li>
-<li><code>class User extends BaseUser {}</code></li>
-<li><code>abstract class User extends BaseUser {}</code></li>
-<li><code>abstract class User extends BaseUser, NullUser {}</code></li>
-<li><code>class User extends BaseUser implements Signed {}</code></li>
-<li><code>class User extends BaseUser implements SignedInterface {}</code></li>
-<li><code>class User extends BaseUser implements SignedInterface, AclInterface, NullableInterface {}</code></li>
-<li><code>abstract class User extends BaseUser implements SignedInterface {}</code></li>
-</ol>
-</li>
-<li>Что такое пространство имен? Для чего нужно и как подключить класс из другого пространства имен?</li>
-</ol>
-
+<p><a href="09-basics-of-oop-inheritance.html">Краткое содержание лекции</a> |
+<a href="09-basics-of-oop-inheritance-practical-tasks.html">Практические задания</a></p>
 
   
     <footer>
@@ -210,13 +117,13 @@
   
 
 
-<time datetime="2013-03-31T23:30:00+04:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time>
+<time datetime="2013-04-02T03:00:00+04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-theoretical-tasks.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance-theoretical-tasks.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
