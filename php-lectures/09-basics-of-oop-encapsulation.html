@@ -1,0 +1,1306 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Основы ООП. Инкапсуляция - fightmaster's blog</title>
+  <meta name="author" content="fightmaster">
+
+  
+  <meta name="description" content="Основы ООП. Инкапсуляция Apr 1st, 2013 Краткое содержание лекции Теоретические задания |
+Практические задания ООП говорят лежит или стоит на 3 китах &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">fightmaster's blog</a></h1>
+  
+    <h2>Скромный персональный блог</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:fightmaster.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Блог</a></li>
+    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
+    <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Основы ООП. Инкапсуляция</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-01T23:00:00+04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time></p>
+  </header>
+  
+  <h3>Краткое содержание лекции</h3>
+
+<p><a href="09-basics-of-oop-encapsulation-theoretical-tasks.html">Теоретические задания</a> |
+<a href="09-basics-of-oop-encapsulation-practical-tasks.html">Практические задания</a></p>
+
+<p>ООП говорят лежит или стоит на 3 китах: инкапсуляция, наследование и полиморфмизм. Мы рассмотрим все эти понятия с практической стороны на php примерах.</p>
+
+<p>Что же такое инкапсуляция? Определение вам даст гугл, википедия и множество других ресурсов. Везде говорится о сокрытии свойств класса от внешнего мира, изолировании логики, сокрытии данных и т.д. Но я бы взял определение несколько шире, заявив, что сам класс является результатом инкапсуляции. Давайте рассмотрим это все на примерах.</p>
+
+<p>Рассмотрим простейший пример. <strong>Внимание, в реальной жизни примеры сложнее, а ситуации абсолютно идентичные ниже изложенной, учтите это.</strong></p>
+
+<p>Допустим, что мы начинающий php-джуниор, а какой джуниор не пишет свою cms или сайт на plain php?
+Как работает любая хорошая авторизация? Есть страница регистрации, в конце выполнения скрипта новому пользователю отправляется ссылка с подтверждением.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//registration.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nb">mail</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Отлично! Спустя некоторое время, мы решили, что админу хорошо бы знать о новых зарегистрированных пользователях.
+Что мы делаем? Естественно копируем-вставляем и решаем задачу за 2 минуты.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//confirm.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nb">mail</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Спустя время, как это часто бывает, появляется новый функционал: бан пользователя. И мы хотим оповещать об этом забаненного пользователя.
+Что делаем опять? Конечно, копируем и решаем задачу за 2 минуты. Но&#8230;</p>
+
+<blockquote><p>Вот руководящий совет, который дал мне Дон Робертс (Don Roberts). Делая что-то в первый раз, вы просто это делаете. Делая что-то аналогичное во второй раз, вы морщитесь от необходимости повторения, но все-таки повторяете то же самое. Делая что-то похожее в третий раз, вы начинаете рефакторинг.</p><footer><strong>[Из книги Мартина Фаулера &#8220;Рефакторинг. Улучшение существующего кода.&#8221;]</strong></footer></blockquote>
+
+
+<p>Это правило трех ударов, и мы всегда им пользуемся на своем проекте. Давайте подумаем, а что можно изменить? Какая проблема стоит перед нами?
+Вы не видите проблемы? В принципе ее сейчас практически нет. Давайте подумаем, где еще мы хотим слать емейлы.</p>
+
+<ul>
+<li>Пришедшее новое личное сообщение</li>
+<li>Кнопочка жалоба и оповещение админа</li>
+<li>Обычная рассылка всем пользователям</li>
+</ul>
+
+
+<p>Я думаю вы сами можете продолжить этот список. После этого у нас уже будет 6 мест, в которых один и тот же алгоритм.</p>
+
+<p>А еще так часто бывает, что в 6 месте реализовывали не вы, а кто-то другой.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//код другого программиста</span>
+</span><span class='line'><span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$msg</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$to</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nb">mail</span><span class="p">(</span><span class="nv">$to</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$msg</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Какая новая проблема?</p>
+
+<p>Подумали? Да, совершенно другой стиль в способе задания имен переменным, что усложняет рефакторинг. Ну это не аргумент, согласен, но может следующее тогда?</p>
+
+<p>Однажды, вам или вашему заказчику пришла в голову идея. Что вот есть замечательная библиотека/компонента, которая выполняет тоже самое. И ее хочется использовать, ну очень хочется.
+Но чтобы вам ее внедрить, вам необходимо исправить 3, 5, 10 классов, проделая там аналогичные операции, снова дублируя код.
+И никто не гарантирует, что после этого ваш код станет лучше, скорее всего он станет еще более запутанее и сложнее.
+Теперь использование сторонней библиотеки раскидано по всему вашему коду. А еще часто бывает, что появляется еще более крутая библиотека, и так далее&#8230;</p>
+
+<p><strong>Я еще раз обращаю ваше внимание, что на этом месте мог быть алгоритм сортировки, расчет самого популярного товара в магазине, расчет статуса вип, расчет величины налога от мощности автомобиля и так далее.</strong></p>
+
+<p>Так что будем делать?</p>
+
+<p>Мое предложение, давайте вот весь этот небольшой алгоритм послания email инкапсулируем в какой-нибудь класс.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="sd">/**</span>
+</span><span class='line'><span class="sd"> * The service sends an email to user</span>
+</span><span class='line'><span class="sd"> *</span>
+</span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensotdev.ru&gt;</span>
+</span><span class='line'><span class="sd"> */</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MailService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$subject</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Посмотрим, каким стал код в наших файлах.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//registration.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//confirm.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//код другого программиста</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Что получили мы в итоге всех манипуляций?</p>
+
+<ul>
+<li>изолировали алгоритм - мы можем подменить алгоритм отправки email в любой момент, при этом код вне класса не изменится</li>
+<li>унифицировали имена переменных</li>
+</ul>
+
+
+<p>Мы произвели инкапсуляцию кода в класс, но мы только подошли к той инкапсуляции, о которой говорится в определениях.</p>
+
+<p>Какая же скрытая проблема существует?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//код другого программиста</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="c1">//тут идет еще какой-то код</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="c1">//тут идет еще какой-то код</span>
+</span><span class='line'><span class="c1">//и тут с течением времени остается следующая строка</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;guest@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//тут снова код и спустя 100-200 строк</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Секретное сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Пароли всех пользвателей&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>или</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//код другого программиста</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//тут идет еще какой-то код</span>
+</span><span class='line'><span class="c1">//тут идет еще какой-то код</span>
+</span><span class='line'><span class="c1">//и тут с течением времени остается следующая строка</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;unknown email&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//тут снова код и спустя 100-200 строк</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Очень часто случается такая ситуация, что с течением временем в коде остаются ненужные и неиспользуемые строки.
+Их удаляют, иногда лишь частями. Спустя год или два, происходит ситуация, когда информация в переменной совсем не та, которую вы ожидаете.
+В первом примере мы послали все пароли какому-то гостю вместо админа.
+Во втором примере вместо email адреса у нас какая-то строка, вместо email адреса. Ничего хорошего из это не выйдет.
+При таком подходе мы не гарантируем нашему методу <code>send</code> достоверность и валидность используемых свойств.</p>
+
+<p>Другой пример, вам необходимо изменить свойство <code>$subject</code> на <code>$title</code>, у вас снова проблемы с поиском и заменой в существующем коде.</p>
+
+<p>Инкапсуляция позволяет вам скрыть свойства класса и внутреннюю его реализацию от стороннего мира.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="sd">/**</span>
+</span><span class='line'><span class="sd"> * The service sends an email to user</span>
+</span><span class='line'><span class="sd"> *</span>
+</span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensotdev.ru&gt;</span>
+</span><span class='line'><span class="sd"> */</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MailService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$subject</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $recipient</span>
+</span><span class='line'><span class="sd">     * @param string $subject</span>
+</span><span class='line'><span class="sd">     * @param string $message</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="nv">$subject</span><span class="p">;</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Изменим, последний раз наши plain php файлы. Шутка!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//registration.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//confirm.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//код другого программиста</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Что скажете теперь? Вообще-то, получился какой-то отстой. Что делать, если мы в одном скрипте захотим послать 2 email?
+Создавать новый экземпляр класса? Давайте значит производить снова рефакторинг кода.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="sd">/**</span>
+</span><span class='line'><span class="sd"> * The service sends an email to user</span>
+</span><span class='line'><span class="sd"> *</span>
+</span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensotdev.ru&gt;</span>
+</span><span class='line'><span class="sd"> */</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MailService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$subject</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $subject</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="nv">$subject</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $recipient</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setRecipient</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $message</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//registration.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по регистрации пользователя</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//confirm.php</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// тут какой-то код по подтверждению регистрации</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'><span class="c1">//code</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span> <span class="s1">&#39;http://google.com&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">)</span>
+</span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
+</span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="c1">//код другого программиста</span>
+</span><span class='line'><span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">)</span>
+</span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
+</span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Теперь мы можем смело производить внутри класса и алгоритма любые изменения.
+Давайте изменим свойство <code>$subject</code> на <code>$title</code>, а также алгоритм отправки сообщения.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="sd">/**</span>
+</span><span class='line'><span class="sd"> * The service sends an email to user</span>
+</span><span class='line'><span class="sd"> *</span>
+</span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensotdev.ru&gt;</span>
+</span><span class='line'><span class="sd"> */</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MailService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$title</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @deprecated</span>
+</span><span class='line'><span class="sd">     * @param string $subject</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="nv">$subject</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $title</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="nv">$title</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $recipient</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setRecipient</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="nv">$recipient</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @param string $message</span>
+</span><span class='line'><span class="sd">     * @return MailService</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="s1">&#39;super-admin@yandex.ru&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+</span><span class='line'>        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ха, ну и самое приятное, остальной код нам не нужно изменять&#8230; Ну как-то так, вроде и первоначальных код не вырос сильно, и мы получили некоторые преимущества. <strong>Какие?</strong></p>
+
+<p>Самый большой бонус, мы теперь легко можем написать юнит тесты к нашему классу и методу send.
+После этого, мы будем точно уверены, что во всех 10 местах наше приложение работает совершенно корректно.</p>
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-01T23:00:00+04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
+        
+      </p>
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+    
+    
+    <div class="rdbWrapper" data-show-read="1" data-show-send-to-kindle="1" data-show-print="1" data-show-email="0" data-orientation="0" data-version="1"></div><script type="text/javascript">(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+    
+</div>
+
+      
+    </footer>
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Список лекций</h1>
+  <ul id="php_lectures">
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/00-contents.html">Содержание</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-objects-and-classes-basic-syntax.html">Объекты и классы в PHP. Основы синтаксиса</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/06-regular-expressions.html">Регулярные выражения</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/01-introduction-to-php.html">Введение в PHP</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-basics-of-oop-encapsulation.html">Основы ООП. Инкапсуляция</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/08-global-variables.html">Глобальные переменные в PHP</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/07-working-with-filesystem.html">Работа с файловой системой</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/03-control-structures.html">Управляющие структуры</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - fightmaster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

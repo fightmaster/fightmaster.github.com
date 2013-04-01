@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Основы PHP - fightmaster's blog</title>
+  <title>Основы ООП. Инкапсуляция - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Основы PHP Feb 12th, 2013 Практические задания Краткое содержание лекции |
-Теоретические задания Следующие куски кода являются рабочими и не &hellip;">
+  <meta name="description" content="Основы ООП. Инкапсуляция Apr 1st, 2013 Теоретические задания Краткое содержание лекции |
+Практические задания Apr 1st, 2013 Tweet Список лекций &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/02-php-basics-practical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation-theoretical-tasks.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Основы PHP</h1>
+    <h1 class="entry-title">Основы ООП. Инкапсуляция</h1>
     <p class="meta">
 
 
@@ -93,85 +93,13 @@
   
 
 
-<time datetime="2013-02-12T01:22:00+04:00" pubdate data-updated="true">Feb 12<span>th</span>, 2013</time></p>
+<time datetime="2013-04-01T23:00:00+04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time></p>
   </header>
   
-  <h3>Практические задания</h3>
+  <h3>Теоретические задания</h3>
 
-<p><a href="02-php-basics.html">Краткое содержание лекции</a> |
-<a href="02-php-basics-theoretical-tasks.html">Теоретические задания</a></p>
-
-<p>Следующие куски кода являются рабочими и не содержат ошибок синтаксиса.
-Измените их на свое усмотрение. Выполнять задание только в простейшем блокноте.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">function</span> <span class="nf">simple</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$B</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;яблоко&#39;</span><span class="p">,</span> <span class="s1">&#39;груша&#39;</span><span class="p">,</span> <span class="s1">&#39;мандарин&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$B</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">function</span> <span class="nf">simple</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$a</span> <span class="o">&gt;</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span> <span class="nv">$a</span><span class="o">&lt;</span> <span class="nv">$b</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">function</span> <span class="nf">simple</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$b</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-</span><span class='line'>    <span class="nv">$c</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span><span class='line'>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$a</span> <span class="k">as</span> <span class="nv">$aa</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nv">$aa</span> <span class="o">&gt;</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nv">$c</span> <span class="o">=</span> <span class="nv">$aa</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nv">$c</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p><a href="09-basics-of-oop-encapsulation.html">Краткое содержание лекции</a> |
+<a href="09-basics-of-oop-encapsulation-practical-tasks.html">Практические задания</a></p>
 
   
     <footer>
@@ -189,13 +117,13 @@
   
 
 
-<time datetime="2013-02-12T01:22:00+04:00" pubdate data-updated="true">Feb 12<span>th</span>, 2013</time>
+<time datetime="2013-04-01T23:00:00+04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/02-php-basics-practical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/02-php-basics-practical-tasks.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation-theoretical-tasks.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
