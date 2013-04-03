@@ -6,7 +6,7 @@ comments: false
 sharing: true
 footer: true    
 sidebar: true
-tags: [php,lectures,array]
+tags: [php,lectures,oop,encapsulation]
 lecture: true
 ---
 ### Краткое содержание лекции

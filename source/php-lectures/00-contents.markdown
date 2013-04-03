@@ -31,7 +31,7 @@ lecture: true
      9. [Основы синтаскиса](09-objects-and-classes-basic-syntax.html)
      9. [Основы ООП. Инкапсуляция](09-basics-of-oop-encapsulation.html)
      9. [Основы ООП. Наследование](09-basics-of-oop-inheritance.html)
-     9. Основы ООП. Полиморфизм.
+     9. [Основы ООП. Полиморфизм](09-basics-of-oop-polymorphism.html)
      9. Магия в PHP
      9. Exceptions в PHP
  10. Стандарты кодирования PSR-0, PSR-1, PSR-2, PSR-3
