@@ -13,7 +13,7 @@ $message = sprintf(
 );
 $recipient = 'admin@google.com';
 
-$mailService = new MailService($recipient, $subject, $message);
+$mailService = new MailService();
 $mailService->setRecipient($recipient)
     ->setSubject($subject)
     ->setMessage($message);
