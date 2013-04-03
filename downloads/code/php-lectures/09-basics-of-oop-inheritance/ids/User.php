@@ -2,7 +2,7 @@
 /**
  * @author Dmitry Petrov <dmitry.petrov@opensoftdev.ru>
  */
-class User extends BasicUser
+class User extends BasicClass
 {
     /**
      * @var string

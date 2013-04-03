@@ -807,7 +807,7 @@
 </span><span class='line'><span class="c1">//code</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//завершение скрипта, отправка email</span>
-</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">);</span>
@@ -851,7 +851,7 @@
 </span><span class='line'><span class="p">);</span>
 </span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
@@ -877,7 +877,7 @@
 </span><span class='line'><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;У вас новое сообщение&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">setRecipient</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="nv">$subject</span><span class="p">)</span>
 </span><span class='line'>    <span class="o">-&gt;</span><span class="na">setMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
