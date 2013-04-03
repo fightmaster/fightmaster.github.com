@@ -68,7 +68,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/00-contents.html</loc>
-        <lastmod>2013-04-01T22:56:51+04:00</lastmod>
+        <lastmod>2013-04-03T22:38:43+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -80,7 +80,7 @@
         <loc>
             http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax.html
         </loc>
-        <lastmod>2013-03-28T05:08:48+04:00</lastmod>
+        <lastmod>2013-04-03T22:43:33+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/06-regular-expressions.html</loc>
@@ -110,7 +110,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation.html</loc>
-        <lastmod>2013-04-01T23:58:28+04:00</lastmod>
+        <lastmod>2013-04-03T22:43:29+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/08-global-variables.html</loc>
@@ -128,7 +128,11 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-basics-of-oop-inheritance.html</loc>
-        <lastmod>2013-04-02T01:44:27+04:00</lastmod>
+        <lastmod>2013-04-03T22:42:59+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://fightmaster.github.com/php-lectures/09-basics-of-oop-polymorphism.html</loc>
+        <lastmod>2013-04-04T02:46:55+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -161,6 +165,18 @@
             http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax-practical-tasks.html
         </loc>
         <lastmod>2013-04-01T20:25:54+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/09-basics-of-oop-polymorphism-practical-tasks.html
+        </loc>
+        <lastmod>2013-04-03T22:43:39+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/09-basics-of-oop-polymorphism-theoretical-tasks.html
+        </loc>
+        <lastmod>2013-04-03T22:42:20+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/07-working-with-filesystem.html</loc>
