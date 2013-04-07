@@ -9,8 +9,8 @@
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Основы ООП. Наследование Apr 2nd, 2013 Практические задания Краткое содержание лекции |
-Теоретические задания Apr 2nd, 2013 Tweet Список лекций &hellip;">
+  <meta name="description" content="Основы ООП. Наследование Apr 7th, 2013 Практические задания Краткое содержание лекции |
+Теоретические задания Транспорт Измените следующий листинг &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,13 +93,179 @@
   
 
 
-<time datetime="2013-04-02T03:00:00+04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time></p>
+<time datetime="2013-04-07T23:00:00+04:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time></p>
   </header>
   
   <h3>Практические задания</h3>
 
 <p><a href="09-basics-of-oop-inheritance.html">Краткое содержание лекции</a> |
 <a href="09-basics-of-oop-inheritance-theoretical-tasks.html">Теоретические задания</a></p>
+
+<h4>Транспорт</h4>
+
+<p>Измените следующий листинг кода на ваше усмотрение.</p>
+
+<figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/task1/index.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$bus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Transport</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$bus</span><span class="o">-&gt;</span><span class="na">owner</span> <span class="o">=</span> <span class="s1">&#39;School&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$bus</span><span class="o">-&gt;</span><span class="na">model</span> <span class="o">=</span> <span class="s1">&#39;BMW&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$bus</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">2013</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$bus</span><span class="o">-&gt;</span><span class="na">driver</span> <span class="o">=</span> <span class="s1">&#39;Don Dead - scool driver&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$bus</span><span class="o">-&gt;</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$airplan</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Transport</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">owner</span> <span class="o">=</span> <span class="s1">&#39;Airflot&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">model</span> <span class="o">=</span> <span class="s1">&#39;TU-154&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">pilot</span> <span class="o">=</span> <span class="s1">&#39;Pilot&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">co_pilot</span> <span class="o">=</span> <span class="s1">&#39;Co-pilot&#39;</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">1600</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$airplan</span><span class="o">-&gt;</span><span class="na">wingspan</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Transport</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$car</span><span class="o">-&gt;</span><span class="na">owner</span> <span class="o">=</span> <span class="s1">&#39;Sam Sam&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$car</span><span class="o">-&gt;</span><span class="na">model</span> <span class="o">=</span> <span class="s1">&#39;bugati&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$car</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">2010</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$car</span><span class="o">-&gt;</span><span class="na">speed</span> <span class="o">=</span> <span class="mi">320</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$car</span><span class="o">-&gt;</span><span class="na">accelerationTo100</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$car</span><span class="o">-&gt;</span><span class="na">airbag</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span> (Transport.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/task1/Transport.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Transport</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$owner</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$model</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var integer</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$year</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$pilot</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$co_pilot</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$driver</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var string</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$wingspan</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var boolean</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$airbag</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var integer</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$speed</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="sd">/**</span>
+</span><span class='line'><span class="sd">     * @var integer</span>
+</span><span class='line'><span class="sd">     */</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nv">$accelerationTo100</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
   
     <footer>
@@ -117,7 +283,7 @@
   
 
 
-<time datetime="2013-04-02T03:00:00+04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
+<time datetime="2013-04-07T23:00:00+04:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
         
       </p>
       
