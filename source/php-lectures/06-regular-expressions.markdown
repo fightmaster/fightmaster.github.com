@@ -436,7 +436,7 @@ Array
 */
 preg_match_all(
     '/(?|(Chapter)|(Section)) [1-9][0-9]{0,1}/U',
-    'Chapter 50  Section 85',
+    'Section 85',
     $out
 );
 print_r($out);
