@@ -11,6 +11,10 @@ lecture: true
 ---
 ### Базовый курс по PHP
 
+{% blockquote [Kees Koster, who among other things is the designer of the CDL language.] %}
+A good programming language is one that helps programmers write good programs. No programming language will prevent its users from writing bad programs.
+{% endblockquote %}
+
 > Курс состоит из небольших лекций. Моя задача задать направление в изучении, поделиться опытом, полезными ссылками и попробовать ответить на любые вопросы.
 На сайте будут размещены ключевые слова лекций, полезные ссылки, список теоретических и практических задач по каждой из тем.
 
@@ -32,7 +36,7 @@ lecture: true
      9. [Основы ООП. Инкапсуляция](09-basics-of-oop-encapsulation.html)
      9. [Основы ООП. Наследование](09-basics-of-oop-inheritance.html)
      9. [Основы ООП. Полиморфизм](09-basics-of-oop-polymorphism.html)
-     9. Магия в PHP
+     9. [Магия в PHP](09-magic-methods-in-php.html)
      9. Exceptions в PHP
  10. Стандарты кодирования PSR-0, PSR-1, PSR-2, PSR-3
  11. Основы АОП. Библиотека go!
