@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Работа со строками - fightmaster's blog</title>
+  <title>Магия в PHP - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Работа со строками Feb 24th, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Объясните разницу между single quoted и &hellip;">
+  <meta name="description" content="Магия в PHP Apr 9th, 2013 Теоретические задания Краткое содержание лекции |
+Практические задания Apr 9th, 2013 Tweet Список лекций Работа со &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/05-working-with-strings-theoretical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-magic-methods-in-php-theoretical-tasks.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Работа со строками</h1>
+    <h1 class="entry-title">Магия в PHP</h1>
     <p class="meta">
 
 
@@ -93,84 +93,13 @@
   
 
 
-<time datetime="2013-02-24T00:40:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time></p>
+<time datetime="2013-04-09T03:00:00+04:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time></p>
   </header>
   
   <h3>Теоретические задания</h3>
 
-<p><a href="05-working-with-strings.html">Краткое содержание лекции</a> |
-<a href="05-working-with-strings-practical-tasks.html">Практические задания</a></p>
-
-<ol>
-<li>Объясните разницу между single quoted и double quoted.</li>
-<li>Объясните разницу между Heredoc и Newdoc.</li>
-<li>Какой суффикс у функций для работы с мультибайтовыми кодировками?</li>
-<li>С помощью какой функции можно удалить все whitespaces?</li>
-<li>Как можно перемешать все символы в строке?</li>
-</ol>
-
-
-<p>Что выведут на экран следующие блоки кода?</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$number</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$fruit</span> <span class="o">=</span> <span class="s1">&#39;яблока&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$string</span> <span class="o">=</span> <span class="s1">&#39;У Маши было %d %s&#39;</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$number</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">);</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
-</span><span class='line'><span class="nv">$string</span> <span class="o">=</span> <span class="s1">&#39;У Маши было %1$d %2$s&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$number</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">);</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$fruit</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;%d+%d=&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$string</span> <span class="o">=</span> <span class="s2">&quot;This is</span><span class="se">\t</span><span class="s2">an example</span><span class="se">\n</span><span class="s2">string&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$length</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="c1">//кодировка utf-8</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Фыва&quot;</span><span class="p">)</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Asdf&quot;</span><span class="p">)</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p><a href="09-magic-methods-in-php.html">Краткое содержание лекции</a> |
+<a href="09-magic-methods-in-php-practical-tasks.html">Практические задания</a></p>
 
   
     <footer>
@@ -188,13 +117,13 @@
   
 
 
-<time datetime="2013-02-24T00:40:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
+<time datetime="2013-04-09T03:00:00+04:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/05-working-with-strings-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/05-working-with-strings-theoretical-tasks.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-magic-methods-in-php-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-magic-methods-in-php-theoretical-tasks.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

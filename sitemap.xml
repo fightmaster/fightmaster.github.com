@@ -41,6 +41,12 @@
         <lastmod>2013-03-02T23:20:21+04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/09-magic-methods-in-php-theoretical-tasks.html
+        </loc>
+        <lastmod>2013-04-08T22:35:00+04:00</lastmod>
+    </url>
+    <url>
         <loc>http://fightmaster.github.com/php-lectures/05-working-with-strings.html</loc>
         <lastmod>2013-02-25T22:14:42+04:00</lastmod>
     </url>
@@ -68,7 +74,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/00-contents.html</loc>
-        <lastmod>2013-04-03T22:38:43+04:00</lastmod>
+        <lastmod>2013-04-08T22:30:41+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -135,6 +141,10 @@
         <lastmod>2013-04-04T02:46:55+04:00</lastmod>
     </url>
     <url>
+        <loc>http://fightmaster.github.com/php-lectures/09-magic-methods-in-php.html</loc>
+        <lastmod>2013-04-09T02:02:17+04:00</lastmod>
+    </url>
+    <url>
         <loc>
             http://fightmaster.github.com/php-lectures/05-working-with-strings-theoretical-tasks.html
         </loc>
@@ -177,6 +187,12 @@
             http://fightmaster.github.com/php-lectures/09-basics-of-oop-polymorphism-theoretical-tasks.html
         </loc>
         <lastmod>2013-04-03T22:42:20+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://fightmaster.github.com/php-lectures/09-magic-methods-in-php-practical-tasks.html
+        </loc>
+        <lastmod>2013-04-08T22:35:17+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/07-working-with-filesystem.html</loc>
