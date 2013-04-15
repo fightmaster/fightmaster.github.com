@@ -337,7 +337,7 @@ class Publication
      *
      * @todo remove stupid comment
      */
-    public function __constructor()
+    public function __construct()
     {
         $this->creationDate = new \DateTime('now');
     }
@@ -411,9 +411,9 @@ class News extends Publication
     private $author;
 
     //такая запись конструктора в дочернем объекте эквивалентна ее отсутствию
-    public function __constructor()
+    public function __construct()
     {
-        parent::__constructor();
+        parent::__construct();
     }
 
     /**
