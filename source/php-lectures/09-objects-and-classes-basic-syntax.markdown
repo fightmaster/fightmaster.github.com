@@ -328,7 +328,7 @@ class Publication
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
@@ -473,7 +473,7 @@ class Publication
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
@@ -581,7 +581,7 @@ class Publication
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
@@ -735,7 +735,7 @@ class Publication implements SignedInterface
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
@@ -878,7 +878,7 @@ abstract class Publication implements SignedInterface
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
@@ -1002,7 +1002,7 @@ abstract class Publication implements SignedInterface
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
@@ -1340,7 +1340,7 @@ abstract class Publication implements SignedInterface
     private $views = 0;
 
     /**
-     * \DateTime
+     * @var \DateTime
      */
     private $creationDate;
 
