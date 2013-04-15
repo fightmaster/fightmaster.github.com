@@ -37,7 +37,7 @@ A good programming language is one that helps programmers write good programs. N
      9. [Основы ООП. Наследование](09-basics-of-oop-inheritance.html)
      9. [Основы ООП. Полиморфизм](09-basics-of-oop-polymorphism.html)
      9. [Магия в PHP](09-magic-methods-in-php.html)
-     9. Exceptions в PHP
+     9. [Исключения в PHP](09-exceptions.html)
  10. Стандарты кодирования PSR-0, PSR-1, PSR-2, PSR-3
  11. Основы АОП. Библиотека go!
 
