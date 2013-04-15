@@ -5,12 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Управляющие структуры - fightmaster's blog</title>
+  <title>Исключения в PHP - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Управляющие структуры Feb 16th, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Что вывведут на экран следующие блоки &hellip;">
+  <meta name="description" content="Исключения в PHP Apr 16th, 2013 Краткое содержание лекции Теоретические задания |
+Практические задания 1
+2
+3
+4
+5
+6
+7
+&lt;?php
+try { throw new \ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/09-exceptions.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +88,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Управляющие структуры</h1>
+    <h1 class="entry-title">Исключения в PHP</h1>
     <p class="meta">
 
 
@@ -93,15 +101,32 @@
   
 
 
-<time datetime="2013-02-16T16:14:00+04:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time></p>
+<time datetime="2013-04-16T03:00:00+04:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time></p>
   </header>
   
-  <h3>Теоретические задания</h3>
+  <h3>Краткое содержание лекции</h3>
 
-<p><a href="03-control-structures.html">Краткое содержание лекции</a> |
-<a href="03-control-structures-practical-tasks.html">Практические задания</a></p>
+<p><a href="09-exceptions-theoretical-tasks.html">Теоретические задания</a> |
+<a href="09-exceptions-practical-tasks.html">Практические задания</a></p>
 
-<p>Что вывведут на экран следующие блоки кода?</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;Error Processing Request&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;Error Processing Request&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$e</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -114,97 +139,13 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$b</span><span class="p">;</span>
-</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="nv">$b</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$b</span> <span class="o">+=</span> <span class="nv">$c</span><span class="p">;</span>
-</span><span class='line'>    <span class="nv">$a</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$c</span><span class="p">;</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$element</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$element</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nx">goto</span> <span class="nx">a</span><span class="p">;</span>
-</span><span class='line'><span class="k">echo</span> <span class="s1">&#39;Foo&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="nx">a</span><span class="o">:</span>
-</span><span class='line'><span class="k">echo</span> <span class="s1">&#39;Bar&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">continue</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//php 5.5</span>
+</span><span class='line'><span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;Error Processing Request&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;Error Processing Request&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$e</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="nx">finally</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="s1">&#39;You see this text always.&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
@@ -231,29 +172,107 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">switch</span> <span class="p">(</span><span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>            <span class="k">continue</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">default</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="s1">&#39;no value&#39;</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>            <span class="k">break</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="nx">Exception</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="cm">/* Properties */</span>
+</span><span class='line'><span class="k">protected</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="p">;</span>
+</span><span class='line'><span class="k">protected</span> <span class="nx">int</span> <span class="nv">$code</span> <span class="p">;</span>
+</span><span class='line'><span class="k">protected</span> <span class="nx">string</span> <span class="nv">$file</span> <span class="p">;</span>
+</span><span class='line'><span class="k">protected</span> <span class="nx">int</span> <span class="nv">$line</span> <span class="p">;</span>
+</span><span class='line'><span class="cm">/* Methods */</span>
+</span><span class='line'><span class="k">public</span> <span class="nx">__construct</span> <span class="p">([</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">[,</span> <span class="nx">int</span> <span class="nv">$code</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">[,</span> <span class="nx">Exception</span> <span class="nv">$previous</span> <span class="o">=</span> <span class="k">NULL</span> <span class="p">]]]</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="nx">string</span> <span class="nx">getMessage</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="nx">Exception</span> <span class="nx">getPrevious</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="nx">mixed</span> <span class="nx">getCode</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="nx">string</span> <span class="nx">getFile</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="nx">int</span> <span class="nx">getLine</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="k">array</span> <span class="nx">getTrace</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">public</span> <span class="nx">string</span> <span class="nx">getTraceAsString</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">public</span> <span class="nx">string</span> <span class="nx">__toString</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+</span><span class='line'><span class="k">final</span> <span class="k">private</span> <span class="nx">void</span> <span class="nx">__clone</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Какая разница между <code>return $a;</code> и <code>return ($a);</code></p>
+<h4>Собственное исключение</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MyException</span> <span class="k">extends</span> <span class="nx">Exception</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">throw</span> <span class="k">new</span> <span class="nx">MyException</span><span class="p">(</span><span class="s1">&#39;Throw exception&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">MyException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getTraceAsString</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>SPL</h4>
+
+<ul>
+<li>Exception
+
+<ul>
+<li>LogicException
+
+<ul>
+<li>BadFunctionCallException
+
+<ul>
+<li>BadMethodCallException</li>
+</ul>
+</li>
+<li>DomainException</li>
+<li>InvalidArgumentException</li>
+<li>LengthException</li>
+<li>OutOfRangeException</li>
+</ul>
+</li>
+<li>RuntimeException
+
+<ul>
+<li>OutOfBoundsException</li>
+<li>OverflowException</li>
+<li>RangeException</li>
+<li>UnderflowException</li>
+<li>UnexpectedValueException</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
 
   
     <footer>
@@ -271,13 +290,13 @@
   
 
 
-<time datetime="2013-02-16T16:14:00+04:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
+<time datetime="2013-04-16T03:00:00+04:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/09-exceptions.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/09-exceptions.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

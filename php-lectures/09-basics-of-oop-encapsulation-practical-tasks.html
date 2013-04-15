@@ -175,7 +175,7 @@
 
 <ul>
 <li>Примените инкапсуляцию. Исправьте на ваше усмотрение код и сохраните решение.</li>
-<li>Удалите из класса Square 1 из двух методов. Измените при необходимости ваше первое решение и сохраните второй вариант решения.</li>
+<li>Удалите из класса Square 1 из двух методов и его использование в <code>index.php</code>. Измените при необходимости ваше первое решение и сохраните второй вариант решения.</li>
 </ul>
 
 
@@ -194,11 +194,11 @@
 <span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
 </span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="nv">$parent</span> <span class="o">=</span> <span class="k">new</span> <span class="k">Parent</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$parent</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ParentClass</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$child</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Child</span><span class="p">();</span>
-</span><span class='line'><span class="nv">$child</span><span class="o">-&gt;</span><span class="na">print</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$child</span><span class="o">-&gt;</span><span class="na">printData</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$child</span><span class="o">-&gt;</span><span class="na">d</span> <span class="o">=</span> <span class="s1">&#39;string&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$child</span><span class="o">-&gt;</span><span class="na">print</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$child</span><span class="o">-&gt;</span><span class="na">printData</span><span class="p">();</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -224,19 +224,19 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Child</span> <span class="k">extends</span> <span class="k">Parent</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Child</span> <span class="k">extends</span> <span class="nx">ParentClass</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">public</span> <span class="nv">$d</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">_printVars</span><span class="p">()</span>
 </span><span class='line'>    <span class="p">{</span>
 </span><span class='line'>        <span class="nb">printf</span><span class="p">(</span>
-</span><span class='line'>            <span class="s1">&#39;$a = %s; $b = %s; $c = %s; $d = %d; $e = %e&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s1">&#39;$a = %s; $b = %s; $c = %s; $d = %d;&#39;</span><span class="p">,</span>
 </span><span class='line'>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">?</span> <span class="s1">&#39;true&#39;</span> <span class="o">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span><span class="p">,</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">d</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
 </span><span class='line'>        <span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">print</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">printData</span><span class="p">()</span>
 </span><span class='line'>    <span class="p">{</span>
 </span><span class='line'>        <span class="k">echo</span> <span class="nb">get_class</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 </span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_printVars</span><span class="p">();</span>
@@ -255,7 +255,7 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Parent</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">ParentClass</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">public</span> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'>    <span class="k">public</span> <span class="nv">$b</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
@@ -347,6 +347,8 @@
       
     
       
+    
+      
           <li class="post">
             <a href="/php-lectures/09-objects-and-classes-basic-syntax.html">Объекты и классы в PHP. Основы синтаксиса</a>
           </li>
@@ -368,6 +370,14 @@
     
       
     
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-exceptions.html">Исключения в PHP</a>
+          </li>
       
     
       

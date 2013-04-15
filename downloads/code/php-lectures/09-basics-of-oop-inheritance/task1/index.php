@@ -11,7 +11,7 @@ $airplan->owner = 'Airflot';
 $airplan->model = 'TU-154';
 $airplan->year = 2000;
 $airplan->pilot = 'Pilot';
-$airplan->co_pilot = 'Co-pilot'
+$airplan->co_pilot = 'Co-pilot';
 $airplan->speed = 1600;
 $airplan->wingspan = 50;
 
