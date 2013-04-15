@@ -1,5 +1,5 @@
 <?php
-class Parent
+class ParentClass
 {
     public $a = 0;
     public $b = true;

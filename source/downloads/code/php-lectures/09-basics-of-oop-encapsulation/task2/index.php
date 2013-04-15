@@ -1,7 +1,7 @@
 <?php
 //code
-$parent = new Parent();
+$parent = new ParentClass();
 $child = new Child();
-$child->print();
+$child->printData();
 $child->d = 'string';
-$child->print();
+$child->printData();
