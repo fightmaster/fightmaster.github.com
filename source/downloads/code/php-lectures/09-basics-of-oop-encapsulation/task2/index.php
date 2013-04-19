@@ -3,5 +3,5 @@
 $parent = new ParentClass();
 $child = new Child();
 $child->printData();
-$child->d = 'string';
+$child->setD('string');
 $child->printData();

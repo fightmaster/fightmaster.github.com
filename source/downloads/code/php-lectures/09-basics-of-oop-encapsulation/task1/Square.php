@@ -1,5 +1,5 @@
 <?php
-class Square
+class UploadFilesToFedex
 {
     /**
      * @var float
@@ -11,13 +11,11 @@ class Square
      */
     public $b = 0;
 
-    public function calculateSquare()
+    public function uploadFiles()
     {
         return $this->a * $this->b;
     }
 
-    public function isQuadrate()
-    {
-        return $this->a == $this->b;
-    }
+    public function getFiles(){}
+    public function removeFiles(){}
 }

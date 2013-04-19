@@ -41,9 +41,10 @@ final private void __clone ( void )
 ```php
 <?php
 try {
+    //code
     throw new \Exception("Error Processing Request", 1);
 } catch (\Exception $e) {
-    throw new \Exception("Error Processing Request", 1, $e);
+    throw new \MyException("Error Processing Request", 1, $e);
 }
 ?>
 ```
@@ -53,6 +54,7 @@ try {
 //php 5.5
 try {
     throw new \Exception("Error Processing Request", 1);
+    //code
 } catch (\Exception $e) {
     throw new \Exception("Error Processing Request", 1, $e);
 } finally {
@@ -98,7 +100,7 @@ try {
 } catch (\Exception $e) {
      echo $e->getMessage() . \PHP_EOL;
      echo $e->getTraceAsString();
- }
+}
 ?>
 ```
 
