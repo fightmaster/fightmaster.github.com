@@ -74,7 +74,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/00-contents.html</loc>
-        <lastmod>2013-04-16T00:26:31+04:00</lastmod>
+        <lastmod>2013-04-22T22:57:35+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -84,13 +84,13 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-exceptions-theoretical-tasks.html</loc>
-        <lastmod>2013-04-16T00:29:38+04:00</lastmod>
+        <lastmod>2013-04-22T21:52:56+04:00</lastmod>
     </url>
     <url>
         <loc>
             http://fightmaster.github.com/php-lectures/09-objects-and-classes-basic-syntax.html
         </loc>
-        <lastmod>2013-04-15T22:37:10+04:00</lastmod>
+        <lastmod>2013-04-22T21:52:56+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/06-regular-expressions.html</loc>
@@ -120,11 +120,11 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-exceptions-practical-tasks.html</loc>
-        <lastmod>2013-04-16T00:29:40+04:00</lastmod>
+        <lastmod>2013-04-22T21:52:56+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-exceptions.html</loc>
-        <lastmod>2013-04-16T00:49:43+04:00</lastmod>
+        <lastmod>2013-04-22T21:52:56+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation.html</loc>
@@ -154,7 +154,7 @@
     </url>
     <url>
         <loc>http://fightmaster.github.com/php-lectures/09-magic-methods-in-php.html</loc>
-        <lastmod>2013-04-15T22:37:10+04:00</lastmod>
+        <lastmod>2013-04-22T21:52:56+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -180,7 +180,7 @@
         <loc>
             http://fightmaster.github.com/php-lectures/09-basics-of-oop-encapsulation-practical-tasks.html
         </loc>
-        <lastmod>2013-04-15T22:37:10+04:00</lastmod>
+        <lastmod>2013-04-22T21:52:56+04:00</lastmod>
     </url>
     <url>
         <loc>
@@ -231,6 +231,10 @@
             http://fightmaster.github.com/php-lectures/04-working-with-arrays-theoretical-tasks.html
         </loc>
         <lastmod>2013-02-24T00:38:59+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://fightmaster.github.com/php-lectures/10-coding-standard.html</loc>
+        <lastmod>2013-04-23T00:56:36+04:00</lastmod>
     </url>
     <url>
         <loc>http://fightmaster.github.com/</loc>

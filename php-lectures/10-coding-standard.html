@@ -5,12 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Управляющие структуры - fightmaster's blog</title>
+  <title>Стандарты кодирования - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Управляющие структуры Feb 16th, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Что вывведут на экран следующие блоки &hellip;">
+  <meta name="description" content="Стандарты кодирования Mar 28th, 2013 Краткое содержание лекции FIG - Framework Interoperability Group
+PSR-0
+PSR-1
+PSR-2
+PSR-3
+Zend 1
+PEAR PSR-0 ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.com/php-lectures/10-coding-standard.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +85,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Управляющие структуры</h1>
+    <h1 class="entry-title">Стандарты кодирования</h1>
     <p class="meta">
 
 
@@ -93,126 +98,26 @@
   
 
 
-<time datetime="2013-02-16T16:14:00+04:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time></p>
+<time datetime="2013-03-28T04:00:00+04:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time></p>
   </header>
   
-  <h3>Теоретические задания</h3>
+  <h3>Краткое содержание лекции</h3>
 
-<p><a href="03-control-structures.html">Краткое содержание лекции</a> |
-<a href="03-control-structures-practical-tasks.html">Практические задания</a></p>
-
-<p>Что вывведут на экран следующие блоки кода?</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span><span class='line'><span class="nv">$c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$b</span><span class="p">;</span>
-</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="nv">$b</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$b</span> <span class="o">+=</span> <span class="nv">$c</span><span class="p">;</span>
-</span><span class='line'>    <span class="nv">$a</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$c</span><span class="p">;</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li><a href="http://www.php-fig.org/">FIG - Framework Interoperability Group</a></li>
+<li><a href="10-coding-standard-psr-0.html">PSR-0</a></li>
+<li><a href="10-coding-standard-psr-1.html">PSR-1</a></li>
+<li><a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md">PSR-2</a></li>
+<li><a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md">PSR-3</a></li>
+<li><a href="http://framework.zend.com/manual/1.12/en/coding-standard.html">Zend 1</a></li>
+<li><a href="http://pear.php.net/manual/ru/standards.php">PEAR</a></li>
+</ul>
 
 
+<h4>PSR-0</h4>
 
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nv">$element</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$element</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nx">goto</span> <span class="nx">a</span><span class="p">;</span>
-</span><span class='line'><span class="k">echo</span> <span class="s1">&#39;Foo&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="c1">//code</span>
-</span><span class='line'><span class="nx">a</span><span class="o">:</span>
-</span><span class='line'><span class="k">echo</span> <span class="s1">&#39;Bar&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">continue</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/10-coding-standard-psr-0/index.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -231,29 +136,129 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
+<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">switch</span> <span class="p">(</span><span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>            <span class="k">continue</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
-</span><span class='line'>        <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">default</span><span class="o">:</span>
-</span><span class='line'>            <span class="k">echo</span> <span class="s1">&#39;no value&#39;</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</span><span class='line'>            <span class="k">break</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="nb">spl_autoload_register</span><span class="p">(</span><span class="s1">&#39;autoload_function&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">function</span> <span class="nf">autoload_function</span><span class="p">(</span><span class="nv">$className</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$className</span> <span class="o">=</span> <span class="nb">ltrim</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$fileName</span>  <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$namespace</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$lastNsPos</span> <span class="o">=</span> <span class="nb">strrpos</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$namespace</span> <span class="o">=</span> <span class="nx">substr</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$lastNsPos</span><span class="p">);</span>
+</span><span class='line'>        <span class="nv">$className</span> <span class="o">=</span> <span class="nx">substr</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="nv">$lastNsPos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="nv">$fileName</span>  <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;\\&#39;</span><span class="p">,</span> <span class="nx">DIRECTORY_SEPARATOR</span><span class="p">,</span> <span class="nv">$namespace</span><span class="p">)</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$fileName</span> <span class="o">.=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="nx">DIRECTORY_SEPARATOR</span><span class="p">,</span> <span class="nv">$className</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">require</span> <span class="nv">$fileName</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span><span class='line'><span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster\PHPLecture</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster_PHPLectureUnderscore</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster\underscore_directory\PHPLecture</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</span><span class='line'><span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster\PHP_Lecture</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Какая разница между <code>return $a;</code> и <code>return ($a);</code></p>
+<figure class='code'><figcaption><span> (PHPLecture.php)</span> <a href='/downloads/code/php-lectures/10-coding-standard-psr-0/Fightmaster/PHPLecture.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">namespace</span> <span class="nx">Fightmaster</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PHPLecture</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">__FILE__</span> <span class="o">.</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">.</span> <span class="nx">__CLASS__</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span> (PHPLectureUnderscore.php)</span> <a href='/downloads/code/php-lectures/10-coding-standard-psr-0/Fightmaster/PHPLectureUnderscore.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Fightmaster_PHPLectureUnderscore</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">__FILE__</span> <span class="o">.</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">.</span> <span class="nx">__CLASS__</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span> (PHPLecture.php)</span> <a href='/downloads/code/php-lectures/10-coding-standard-psr-0/Fightmaster/underscore_directory/PHPLecture.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">namespace</span> <span class="nx">Fightmaster\underscore_directory</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PHPLecture</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">__FILE__</span> <span class="o">.</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">.</span> <span class="nx">__CLASS__</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span> (Lecture.php)</span> <a href='/downloads/code/php-lectures/10-coding-standard-psr-0/Fightmaster/PHP/Lecture.php'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">namespace</span> <span class="nx">Fightmaster</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PHP_Lecture</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">__FILE__</span> <span class="o">.</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">.</span> <span class="nx">__CLASS__</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
   
     <footer>
@@ -271,13 +276,13 @@
   
 
 
-<time datetime="2013-02-16T16:14:00+04:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
+<time datetime="2013-03-28T04:00:00+04:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/03-control-structures-theoretical-tasks.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.com/php-lectures/10-coding-standard.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.com/php-lectures/10-coding-standard.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
