@@ -271,7 +271,7 @@ public function checkSomethingRestrictionsProvider()
 /**
  * @test
  * @backupGlobals enabled
- * @dataProvider getGlobalProvider
+ * @dataProvider getGlobalsProvider
  * 
  * @param boolean $a
  * @param boolean $b
@@ -288,7 +288,7 @@ public function getGlobals($a, $b, $expectedResult)
 /**
  * @return array
  */
-public function getGlobalProvider()
+public function getGlobalsProvider()
 {
     return array(
         array(true, true, array('a_value' => true, 'b_value' => true)),
