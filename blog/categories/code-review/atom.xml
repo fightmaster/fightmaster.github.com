@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: code review | fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io/blog/categories/code-review/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io/"/>
+  <updated>2014-01-19T13:11:20+04:00</updated>
+  <id>http://fightmaster.github.io/</id>
+  <author>
+    <name><![CDATA[fightmaster]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Все дело в том, что так бывает...]]></title>
+    <link href="http://fightmaster.github.io/blog/2013/10/17/the-whole-point-is-that-it-happens.html"/>
+    <updated>2013-10-17T23:00:00+04:00</updated>
+    <id>http://fightmaster.github.io/blog/2013/10/17/the-whole-point-is-that-it-happens</id>
+    <content type="html"><![CDATA[<p>Именно так начинается одно из моих любимых стихотворений. Я собирался сегодня прийти домой и пописать код, но внезапно мне пришла в голову мораль одной басни, сюжет которой случился днем. Рекомендую уделить немного времени, хотя бы потому что это случалось с вами.</p>
+
+<!-- more -->
+
+
+<p>В статье про <a href="http://fightmaster.github.io/blog/2013/09/25/code-review.html">код ревью</a> был &ldquo;запрос&rdquo; на практическую сторону. Но руки не доходят написать что-то, да и сделать это достаточно сложно, по крайней мере в том виде, в котором я вижу. Скорее всего, она появится из таких маленьких статей, как эта.</p>
+
+<h3>Кусочек сыра</h3>
+
+<p>Сегодня попался на глаза вот такой кусочек кода.</p>
+
+<p>```php
+&lt;?php
+//code
+if (!Utilities::arrayContains($array1, $array2)) {</p>
+
+<pre><code>return false;
+</code></pre>
+
+<p>}
+//code
+?>
+```</p>
+
+<p>Думаю что-то не так. Создают функцию в классе <code>Utilities</code> только тогда, когда не могут определить ее принадлежность. Что уже странно. Во-вторых, ну название. Вроде бы и понятно все, с другой стороны, не внушает какого-то доверия.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @param array $array1
+ * @param array $array2
+ * @return boolean
+ </em>/
+public static function arrayContains(array $array1, array $array2)
+{</p>
+
+<pre><code>foreach ($array1 as $value1) {
+    if (!in_array($value1, $array2)) {
+        return false;
+    }
+}
+
+return true;
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Действительно, несколько раз пробегаю глазами, так как боюсь упустить что-то, заставляя себя поверить в увиденное. Аккуратно оставляю предложение заменить содержание на <code>&lt;?php empty(array_diff($array1, $array2));?&gt;</code>, переименовать или удалить метод.</p>
+
+<p>В итоге вечером получаем&hellip;</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @param array $array1
+ * @param array $array2
+ * @return boolean
+ </em>/
+public static function isArrayDiff(array $array1, array $array2)
+{</p>
+
+<pre><code>$diff = array_diff($array1, $array2);
+
+return empty($diff);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<h3>Про лису</h3>
+
+<p>Хитрый лис не скажет вороне: &ldquo;Дай сыр, птица&rdquo;. Во-первых, она может не дать его. Во-вторых, навряд ли это чему-то научит, басня-то не получится и морали не будет. Поэтому идеальный вариант для ревью &ndash; это подача чего угодно в наилучшем виде для автора кода. В более сложных случаях я и свой вариант содержания не предлагаю, так как его у меня просто нет. Просто прошу еще раз подумать, в сложных ситуациях спасает парное программирование. При этом не надо выступать в роли оратора или диктатора. Если вы хотите думать за всех, пишите проект один тогда. Не могу сказать, что у меня всегда получается быть хитропопой лисой, но я стараюсь.</p>
+
+<h3>Про чистый код и ворону</h3>
+
+<p>Я думаю, что знаю на 99 процентов причину появления такого метода. Конечно, человек уже наелся определенного куска проекта. Метод вызывается в очень неприятном месте с кучей условных конструкций, хотелось как-то лучше разгрести. Скорее всего, в голову не пришла функция <code>array_diff</code>, и вынос <code>foreach</code> в отдельный метод &ndash; правильный выбор.</p>
+
+<p>Но сам урок начался позже. Методы из двух строчек имеют место быть, все дело в названии. В последнем варианте мы получили обертку над стандартной функцией. В данном контексте она бессмысленна. Если мы захотим реализовать работу со стеком в ООП стиле и обернуть <code>array_pop</code> и <code>array_push</code> в класс и методы, то у нас будет цель и причина всего этого. Здесь цель не прослеживается.</p>
+
+<p>Так что же делать в данном случае? Я бы подумал над куском кода, где это вызывается. Возможно, существует определение этой операции в целом. Ведь массивы что-то содержат, у них есть нормальные имена (в статье они преднамеренно переведены в <code>array1</code> и <code>array2</code>).</p>
+
+<p>Например, если бы <code>array1</code> содержал права пользователя, а <code>array2</code> все необходимые права на просмотр страницы. Тогда, на мой скромный взгляд, метод имеет место быть на 101 процент, с каким-нибудь именем <code>isAllow*</code>.</p>
+
+<p>Если мы не можем как-то определить и выделить по смыслу эти строчки, то и выносить их, скорее всего, нет смысла.</p>
+
+<h3>Мораль басни</h3>
+
+<p>Я думаю, стервятники и любители поржать даже не зайдут в этот скромный блог. В чем же я увидел &ldquo;мораль&rdquo; и почему такое название статьи?</p>
+
+<p>Вы что-то прочитали, у вас куча идей и желание все перехерачить. А что-то идеальное лежит почему-то всегда на &ldquo;горном перевале&rdquo;. Так бывает, что на эмоциях мы проскакиваем его. Прочитали о паттернах &ndash; давай плодить из plain php кучу классов, выстраивать архитектуру, которая в итоге ничуть не понятнее. Прочитали дядюшку Боба &ndash; давай все дробить без остановки. Прочитали про agile &ndash; давай ломать работу проекта. Прочитали статью &ndash; давай сразу внедрять.</p>
+
+<p>Я сам постоянно допускаю подобные ошибки, но при этом думаю, что это правильно. Продолжая горную тему: это лучше, чем сидеть перед перевалом всю жизнь, не совершая каких-то дерзких попыток покорения вершин, или вообще спуститься в долину со словами: &ldquo;Да ну нафиг эти горы&rdquo;. С приобретением опыта наши просчеты уменьшаются, а какими путниками мы станем, зависит только от нас.</p>
+
+<p>Статью завершу словами: &ldquo;Лучше гор могут быть только горы, на которых никто не бывал&rdquo;.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unit Tests. Data provider без головной боли]]></title>
+    <link href="http://fightmaster.github.io/blog/2013/10/05/unit-tests-data-provider-without-a-headache.html"/>
+    <updated>2013-10-05T01:00:00+04:00</updated>
+    <id>http://fightmaster.github.io/blog/2013/10/05/unit-tests-data-provider-without-a-headache</id>
+    <content type="html"><![CDATA[<p>Недавно текущий проект перевалил за 1500 юнит тестов. Захотелось подвести какой-то итог. И сегодня не будет какого-то рецепта: &ldquo;А делайте так &ndash; получите счастье&rdquo;. Посмотрим на примерах, как можно сделать что-то иначе. Внимание, очень много странных букв под php синтаксисом.</p>
+
+<!-- more -->
+
+
+<p>Мы с вами не на пробежке, разогреваться нам не надо, начнем сразу с кода. Примеры вымышленные, и я буду использовать аббревиатуру uut (Unit Under Test).</p>
+
+<h3>isPositiveNumber($number)</h3>
+
+<p>```php
+&lt;?php
+public function isPositiveNumber($number)
+{</p>
+
+<pre><code>return ($number &gt; 0)
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Тест мог бы выглядеть так:</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ </em>/
+public function isPositiveNumber()
+{</p>
+
+<pre><code>$result = $this-&gt;uut-&gt;isPositiveNumber(1);
+$this-&gt;assertTrue($result);
+
+$result = $this-&gt;uut-&gt;isPositiveNumber(0);
+$this-&gt;assertFalse($result);
+
+$result = $this-&gt;uut-&gt;isPositiveNumber(-1);
+$this-&gt;assertFalse($result);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Или так:</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ </em>/
+public function isPositiveNumberTrueScenario()
+{</p>
+
+<pre><code>$result = $this-&gt;uut-&gt;isPositiveNumber(1);
+$this-&gt;assertTrue($result);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @test
+ </em>/
+public function isPositiveNumberFalseScenario()
+{</p>
+
+<pre><code>$result = $this-&gt;uut-&gt;isPositiveNumber(0);
+$this-&gt;assertFalse($result);
+
+$result = $this-&gt;uut-&gt;isPositiveNumber(-1);
+$this-&gt;assertFalse($result);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Мы пишем и пишем так тесты, пока кто-то не прочитает официальную документацию и не узнает, а что такое Data Providers: <a href="http://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">phpunit.de</a>. Чаще всего нам необходимо протестировать метод с разными входными данными и проверить результат. Вот для избежания дублирования тестов и придумали эти провайдеры.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ * @dataProvider isPositiveNumberProvider
+ *
+ * @param integer $inputData
+ * @param boolean $expectedResult
+ </em>/
+public function isPositiveNumber($inputData, $expectedResult)
+{</p>
+
+<pre><code>$result = $this-&gt;uut-&gt;isPositiveNumber($inputData);
+$this-&gt;assertEquals($expectedResult, $result);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @return array
+ </em>/
+public function isPositiveNumberProvider()
+{</p>
+
+<pre><code>return array(
+    array(1, true),
+    array(0, false),
+    array(0, false)
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Кажется мы нашли решение для всего и плодим тесты одни за другим&hellip;</p>
+
+<h3>Простота &ndash; залог успеха</h3>
+
+<p>Написав первую главу, я понял, что не могу придумать адекватный пример для второй. А по ощущениям, я большую часть жизни так писал. Несколько дней искал объяснение этому факту. Пришел к выводу, что наш код со временем стал чище, и такие тесты практически вымерли.</p>
+
+<p>Отступление&hellip; В день выпуска статьи у меня был небольшой митинг с коллегой, который завершился словами: &ldquo;Если разбить метод на три, как я предложил, то и с тестированием проблем не будет&rdquo;. Не могу утверждать, что мои слова действительно помогут, но они заставили меня еще раз задуматься о необходимости писать тесты.</p>
+
+<p>Беря любой старый пример, я понимаю, что можно было написать по-другому. Или, как я недавно начал говорить, &ldquo;выпендриться&rdquo; и написать код мечты. Поэтому придется пойти на откровения дальше, взяв не самый хороший код из жизни.</p>
+
+<h3>Юнит тесты поздней осенью</h3>
+
+<p>Утро, поздняя осень, за окном холодно и темно. Вы приходите на работу в часов эдак семь или раньше. Идете на кухню, наливаете себе кофе, медленно и молчаливо пьете, с коллегой, девушкой, думая о том, что надо бы написать к коду тест.</p>
+
+<p>Когда-то и кто-то что-то написал, дальше всем миром это апгрейдили, апгрейдили, а вчера вам пришлось снова что-то туда добавить. При этом вы были уставший, и вам срать было на этот старый код. Да и сейчас, наверное, особенно отношение не изменилось, просто ночью проснулся профессионализм.</p>
+
+<p>Медленно мысли о &ldquo;надо написать&rdquo; перерастают в &ldquo;как написать&rdquo;. В голове прокручиваются воспоминания о том, а что же делает код. У вас есть некие данные, из которых собирается какая-то сущность. При этом накладывается куча всевозможных &ldquo;бизнес&rdquo; ограничений на входную информацию. Что-то вроде сахар не может быть синим, а картошка не может доставлена в ресторан без лука, а помол кофе может быть лишь трех видов, а третий вид поставляется только из Африки. Вроде и валидация, а с другой стороны ничего стандартного не прикрепишь.</p>
+
+<p>В итоге в отведенные два часа из трех вы вчера написали что-то наподобие этому, plain php.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @param Model $model
+ * @throws CustomException
+ </em>/
+protected function checkSomethingRestrictions(Model $model)
+{</p>
+
+<pre><code>$linkedModel = $model-&gt;getLinkedModel();
+if ($linkedModel &amp;&amp; $model-&gt;hasSomething()) {
+    throw new CustomException('Failed 1', 1);
+}
+
+//code - code - code
+
+if ($model-&gt;isEnabled() &amp;&amp; $something == false) {
+    throw new CustomException('Failed 17', 17);
+}
+</code></pre>
+
+<p>?>
+```</p>
+
+<p>Проснувшись и преодолев чувство стыда за написанное, вы пишите быстренько тест.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ * @dataProvider checkSomethingRestrictionsProvider
+ *
+ * @param string $modelReference
+ * @param string $exceptionMessage
+ * @param integer|null $exceptionCode
+ </em>/
+public function checkSomethingRestrictions($modelReference, $exceptionMessage = null, $exceptionCode = null)
+{</p>
+
+<pre><code>if ($exceptionMessage !== null || $exceptionCode !== null) {
+    $this-&gt;setExpectedException('CustomException', $exceptionMessage, $exceptionCode);
+}
+
+$model = $this-&gt;referenceRepository-&gt;getReference($modelReference);
+$this-&gt;uut-&gt;checkSomethingRestrictions($model);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @return array
+ </em>/
+public function checkSomethingRestrictionsProvider()
+{</p>
+
+<pre><code>return array(
+    array('model_1'),
+    array('model_2'),
+    array('model_3'),
+    array('model_4'),
+    array('model_5'),
+    array('model_6'),
+    array('model_7'),
+    array('model_8'),
+    array('model_9'),
+    array('invalid_model_1', 'Failed 1', 1),
+    array('invalid_model_2', 'Failed 2', 2),
+    array('invalid_model_3', 'Failed 3', 3),
+    array('invalid_model_5', 'Failed 5', 5),
+    array('invalid_model_4', 'Failed 4', 4),
+    array('invalid_model_6', 'Failed 6', 6),
+    array('invalid_model_7', 'Failed 7', 7),
+    array('invalid_model_8', 'Failed 8', 8),
+    array('invalid_model_9', 'Failed 9', 9),
+    array('invalid_model_10', 'Failed 10', 10),
+    array('invalid_model_11', 'Failed 11', 11),
+    array('invalid_model_12', 'Failed 12', 12),
+    array('invalid_model_13', 'Failed 13', 13),
+    array('invalid_model_14', 'Failed 14', 14),
+    array('invalid_model_15', 'Failed 15', 15),
+    array('invalid_model_16', 'Failed 16', 16),
+    array('invalid_model_17', 'Failed 17', 17)
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Конечно, слово &ldquo;быстро&rdquo; не совсем к месту. Создали кучу фикстур для тестирования различных ситуаций и закомитили.</p>
+
+<p>К сожалению, пример попал в 7 или 8 из 10. Имена переменных вымышленные, но размер дата провайдера совершенно реален.</p>
+
+<p>Тут самое время вернуться к статье о <a href="fightmaster.github.io/blog/2013/09/25/code-review.html">код ревью</a>. Система код ревью &ndash; это машина будущего, она переносит ваших коллег на полгода вперед, тем самым предоставляя возможность изменить ход событий, избежать тупления над кодом и тестом.</p>
+
+<p><blockquote><p>При написании кода мы стараемся дать сразу понять: что делает метод, что возвращает, что хранит переменная и т.д..</p></p><p><p>При написании теста мы стараемся показать сразу: что тестируем и какую ситуацию описывают входные данные и т.д..</p><footer><strong>fightmaster <a href="http://fightmaster.github.io/blog/2013/09/23/unit-tests.html">http://fightmaster.github.io/blog/2013/09/23/unit-tests.html</a></strong></footer></blockquote></p>
+
+<p>И правда, а что тестируется в итоге? Вот упадет через полгода код на 15 варианте дата провайдера, и чем мне это поможет? Название какой-то фикстуры (о хорошем тоне именования фикстур в следующей серии) ни о чем нам не скажет. Ну пойдем, откроем ее, а дальше что? А вдруг Петя ее поменял, а за ним Саша. А кто из них был не прав? А вдруг в нашей системе изменились требования, и именно этот тест теперь не должен падать при таких условиях. В обшем ничерта непонятно.</p>
+
+<p>Вторая сторона, это добавить что-то в тест. Мы не знаем куда именно добавлять наш вариант. Все равно куда &ndash; не дело. А может наш вариант уже добавлен?</p>
+
+<p>Первое и самое простое, что приходит в голову, оставить просто пояснения, в двух или трех словах выражающие особенность этого кейса.</p>
+
+<p>```php
+&lt;?php</p>
+
+<p>/<em>*
+ * @return array
+ </em>/
+public function checkSomethingRestrictionsProvider()
+{</p>
+
+<pre><code>return array(
+    // model 1, pass
+    array('model_1'),
+    // model 2, pass
+    array('model_2'),
+
+    // code
+    // code
+
+    array('model_7'),
+    // model 8, pass
+    array('model_8'),
+    // model 9, pass
+    array('model_9'),
+    // model 1, unknown attribute, fail
+    array('invalid_model_1', 'Failed 1', 1),
+    // model 2, unknown name, fail
+    array('invalid_model_2', 'Failed 2', 2),
+    // model 3, no assign balck color, fail
+    array('invalid_model_3', 'Failed 3', 3),
+
+    // code
+    // code
+
+    // model 16, unknown name, fail
+    array('invalid_model_16', 'Failed 16', 16),
+    // product WITH color specified, fail
+    array('invalid_model_17', 'Failed 17', 17)
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Теперь мы хотя бы знаем, что хотели сказать авторы. Поддерживать тест теперь намного проще, порог вхождения в код сокращен.</p>
+
+<h3>Бесконечность параметров</h3>
+
+<p>В первых строках этой главы я завис на несколько минут. Все дело в том, что я очень редко вижу методы с большим набором входных параметров. Все знают, что это имеет плачевные последствия, и никто так не пишет нынче. Но почему-то все забывают эти правила при написании тестов. Мне кажется это феномен. Я наблюдал это в других проектах. Да, и где-то в глубине души существует искра надежды, что вы делали также.</p>
+
+<p>Чаще всего в тесте нам нужно сконфигурировать определенную ситуацию. В предыдущей главе это достигалось с помощью фикстур. Часто используются моки или даже сами объекты, последнее конечно неправильно. Но в данных примерах именно они и будут. Так как работа с мок объектами &ndash; это целое искуство, и я не хочу все смешивать.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ * @backupGlobals enabled
+ * @dataProvider getGlobalsProvider
+ *
+ * @param boolean $a
+ * @param boolean $b
+ * @param array $expectedResult
+ </em>/
+public function getGlobals($a, $b, $expectedResult)
+{</p>
+
+<pre><code>$GLOBALS['a'] = $a;
+$GLOBALS['b'] = $b;
+$result = $this-&gt;uut-&gt;getGlobals();
+$this-&gt;assertSame($expectedResult, $result);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @return array
+ </em>/
+public function getGlobalsProvider()
+{</p>
+
+<pre><code>return array(
+    array(true, true, array('a_value' =&gt; true, 'b_value' =&gt; true)),
+    array(true, false, array('a_value' =&gt; true, 'b_value' =&gt; false)),
+    array(false, true, array('a_value' =&gt; false, 'b_value' =&gt; true)),
+    array(false, false, array('a_value' =&gt; false, 'b_value' =&gt; false)),
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Такой вот незамысловатый пример. Через некоторое время использование дата провайдера таким образом превращается в привычку. И в результате&hellip;</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ * @dataProvider findBySearchMappingProvider
+ *
+ * @param string|null $color
+ * @param string|null $size
+ * @param integer|null $width
+ * @param integer|null $length
+ * @param integer|null $height
+ * @param boolean|null $enabled
+ * @param array $expectedReferences
+ * @param integer $expectedResultCount
+ </em>/
+public function findBySearchMapping($color, $size, $width, $length, $height, $enabled, $expectedReferences, $expectedResultCount)
+{</p>
+
+<pre><code>$expectedResults = array();
+foreach ($expectedReferences as $referenceName) {
+    $expectedResults[] = $this-&gt;referenceRepository-&gt;getReference($referenceName);
+}
+
+$searchMapping = new SearchMapping();
+$searchMapping-&gt;setColor($color)
+    -&gt;setSize($size)
+    -&gt;setWidth($width)
+    -&gt;setLength($length)
+    -&gt;setHeight($height)
+    -&gt;setEnabled($enabled);
+
+$results = $this-&gt;uut-&gt;findBySearchMapping($searchMapping);
+
+$this-&gt;assertCount($expectedResultCount, $results);
+$this-&gt;assertContainsOnlyInstancesOf('SomeInterface', $results);
+$this-&gt;assertEquals($expectedResults, $results);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @return array
+ </em>/
+public function findBySearchMappingProvider()
+{</p>
+
+<pre><code>return array(
+    array(null, null, null, null, null, null, array('model_1', 'model_2', 'model_3', 'model_4', 'model_5', 'model_6'), 6),
+    array('black', null, null, null, null, null, array('model_1'), 1),
+    array('red', null, null, null, null, null, array('model_2'), 1),
+    array('NOTEXIST', null, null, null, null, null, array(), 0),
+    array(null, 'XL', null, null, null, null, array('model_1', 'model_2', 'model_3', 'model_4', 'model_6'), 5),
+    array(null, 'M', null, null, null, null, array('model_5'), 1),
+    array('black', 'XL', null, null, null, null, array('model_1'), 1),
+    array('black', 'M', null, null, null, null, array(), 0),
+    array('black', 'XL', 1, 1, 23, null, array(), 0),
+    array(null, null, null, null, null, true, array('model_1', 'model_3', 'model_4', 'model_5', 'model_6'), 5),
+    array(null, null, null, null, null, false, array('model_2'), 1),
+    array(null, null, null, 5, null, null, array('model_3'), 1),
+    array(null, null, null, 1000, null, null, array(), 0),
+    array(null, null, null, null, 1, null, array('model_1', 'model_6'), 2),
+    array(null, null, null, null, 100, null, array(), 0)
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Когда это видишь первый раз на ревью, сначала прощаешь или не придаешь значение. Но команда &ndash; это лавина, особенно, если задание в релизе способствует появлению таких провайдеров. Иногда количество параметров достигало до 15. И в какой-то момент понимаешь, что надо брать ситуацию под контроль. Это осознание усиливается, когда в одном PR (Pull Request) несколько таких примеров. Что же делать?</p>
+
+<p>Естественно, сначала оставляем комментарии, что-то вроде такого.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @return array
+ </em>/
+public function findBySearchMappingProvider()
+{</p>
+
+<pre><code>return array(
+    //$color, $size, $width, $length, $height, $enabled, $expectedReferences, $expectedResultCount
+    //find all models
+    array(null, null, null, null, null, null, array('model_1', 'model_2', 'model_3', 'model_4', 'model_5', 'model_6'), 6),
+    //find models by the color
+    array('black', null, null, null, null, null, array('model_1'), 1),
+    //find models by the color
+    array('red', null, null, null, null, null, array('model_2'), 1),
+    //trying find models by the non-existent color
+    array('NOTEXIST', null, null, null, null, array(), 0),
+    //find models by the size
+    array(null, 'XL', null, null, null, array('model_1', 'model_2', 'model_3', 'model_4', 'model_6'), 5),
+    //find models by the size
+    array(null, 'M', null, null, null, array('model_5'), 1),
+
+    // code
+    // code
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Так как это минимум умственных и временных затрат для достижения компромисса между программистом и владельцем продукта.</p>
+
+<h3>Не комментируйте плохой код — перепишете его.</h3>
+
+<p>Спустя время мы нашли несколько решений. До сих пор у меня нет объяснения, почему они сразу не всплыли. Вспомним цитату выше. Нам нужно всего лишь показать, что мы хотим протестировать. А многочисленные <code>null</code> лишь говорят о том, что эти значения нас не интересуют для этого теста.</p>
+
+<p>Воспользуемся советом дядюшки Боба.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @return array
+ </em>/
+public function findBySearchMappingProvider()
+{</p>
+
+<pre><code>return array(
+    // find all models
+    array(
+        array(), 
+        array('model_1', 'model_2', 'model_3', 'model_4', 'model_5', 'model_6'),
+         6
+     ),
+    array(
+        array('color' =&gt; 'black'), 
+        array('model_1'), 
+        1
+    ),
+    array(
+        array('color' =&gt; 'red'),
+        array('model_2'),
+        1
+    ),
+    array(
+        array('color' =&gt; 'NOTEXIST'),
+        array(),
+        0
+    ),
+    array(
+        array('size' =&gt; 'XL'),
+        array('model_1', 'model_2', 'model_3', 'model_4', 'model_6'),
+        5
+    ),
+    array(
+        array('size' =&gt; 'M'),
+        array('model_5'),
+        1
+    ),
+    array(
+        array('color' =&gt; 'black', 'size' =&gt; 'XL'),
+        array('model_1'),
+        1
+    ),
+    array(
+        array('color' =&gt; 'black', 'size' =&gt; 'M'),
+        array(),
+        0
+    ),
+    array(
+        array('color' =&gt; 'black', 'size' =&gt; 'XL', 'width' =&gt; 1, 'length' =&gt;, 'height' =&gt; 23),
+        array(),
+        0
+    ),
+    array(
+        array('enabled' =&gt; true),
+        array('model_1', 'model_3', 'model_4', 'model_5', 'model_6'),
+        5
+    ),
+    array(
+        array('enabled' =&gt; false),
+        array('model_2'),
+        1
+    ),
+    array(
+        array('length' =&gt; 5),
+        array('model_3'),
+        1
+    ),
+    array(
+        array('length' =&gt; 1000),
+        array(),
+        0
+    ),
+    array(
+        array('height' =&gt; 1),
+        array('model_1', 'model_6'),
+        2
+    ),
+    array(
+        array('height' =&gt; 100),
+        array(),
+        0
+    )
+);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Вуаля, ассоциативные массивы спасают этот мир. Ключ массива выступает в роли комментария, и необходимость онного чаще всего излишне теперь (хотя НЕ всегда). Осталось теперь поправить сам код теста.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ * @dataProvider findBySearchMappingProvider
+ *
+ * @param array $dataMapping
+ * @param array $expectedReferences
+ * @param integer $expectedResultCount
+ </em>/
+public function findBySearchMapping($mappingData, $expectedReferences, $expectedResultCount)
+{</p>
+
+<pre><code>$expectedResults = array();
+foreach ($expectedReferences as $referenceName) {
+    $expectedResults[] = $this-&gt;referenceRepository-&gt;getReference($referenceName);
+}
+
+$searchMapping = new SearchMapping();
+$searchMapping-&gt;setColor(isset($mappingData['color']) ? $mappingData['color'] : null)
+    -&gt;setSize(isset($mappingData['size']) ? $mappingData['size'] : null)
+    -&gt;setWidth(isset($mappingData['width']) ? $mappingData['width'] : null)
+    -&gt;setLength(isset($mappingData['length']) ? $mappingData['length'] : null)
+    -&gt;setHeight(isset($mappingData['heigth']) ? $mappingData['height'] : null)
+    -&gt;setEnabled(isset($mappingData['enabled']) ? $mappingData['enabled'] : null);
+
+$results = $this-&gt;uut-&gt;findBySearchMapping($searchMapping);
+
+$this-&gt;assertCount($expectedResultCount, $results);
+$this-&gt;assertContainsOnlyInstancesOf('SomeInterface', $results);
+$this-&gt;assertEquals($expectedResults, $results);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<h3>Рефакторинг</h3>
+
+<p>Но негоже оставлять в таком виде тест, вдруг кто-то решит взять на заметку этот совет.</p>
+
+<p>Во-первых, блок, получающий ожидаемые объекты, един как минимум для этого тест кейса. Во-вторых, тоже самое можно сказать про создание конфигурируемого объекта. При этом чаще всего это мок объект, и он используется в других тестах. В-третьих, я ненавижу параметр $expectedCounts, тем более когда есть набор ожидаемых объектов.</p>
+
+<p>```php
+&lt;?php
+/<em>*
+ * @test
+ * @dataProvider findBySearchMappingProvider
+ *
+ * @param array $dataMapping
+ * @param array $expectedReferences
+ </em>/
+public function findBySearchMapping(array $mappingData, array $expectedReferences)
+{</p>
+
+<pre><code>$expectedResults = $this-&gt;getSomethingByReferences($expectedReferences);
+$searchMapping = $this-&gt;getSearchMapping($mappingData);
+
+$results = $this-&gt;uut-&gt;findBySearchMapping($searchMapping);
+
+$this-&gt;assertCount(count($expectedResults), $results);
+$this-&gt;assertContainsOnlyInstancesOf('SomeInterface', $results);
+$this-&gt;assertEquals($expectedResults, $results);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @return array
+ </em>/
+public function findBySearchMappingProvider()
+{</p>
+
+<pre><code>return array(
+    // find all models
+    array(
+        array(), 
+        array('model_1', 'model_2', 'model_3', 'model_4', 'model_5', 'model_6')
+     ),
+    array(
+        array('color' =&gt; 'black'),
+        array('model_1')
+    ),
+
+    //code
+
+    array(
+        array('color' =&gt; 'black', 'size' =&gt; 'XL', 'width' =&gt; 1, 'length' =&gt;, 'height' =&gt; 23),
+        array()
+    ),
+    array(
+        array('enabled' =&gt; true),
+        array('model_1', 'model_3', 'model_4', 'model_5', 'model_6')
+    ),
+
+    //code
+);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @param array $references
+ * @return SomeInterface[]
+ </em>/
+private function getSomethingByReferences(array $references)
+{</p>
+
+<pre><code>$models = array();
+foreach ($references as $referenceName) {
+    $models[] = $this-&gt;referenceRepository-&gt;getReference($referenceName);
+}
+
+return $models;
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * @param array $mappingData
+ * @return SearchMapping
+ </em>/
+private function getSearchMapping(array $mappingData)
+{</p>
+
+<pre><code>$searchMapping = new SearchMapping();
+$searchMapping-&gt;setColor(isset($mappingData['color']) ? $mappingData['color'] : null)
+    -&gt;setSize(isset($mappingData['size']) ? $mappingData['size'] : null)
+    -&gt;setWidth(isset($mappingData['width']) ? $mappingData['width'] : null)
+    -&gt;setLength(isset($mappingData['length']) ? $mappingData['length'] : null)
+    -&gt;setHeight(isset($mappingData['heigth']) ? $mappingData['height'] : null)
+    -&gt;setEnabled(isset($mappingData['enabled']) ? $mappingData['enabled'] : null);
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<h3>Заключение</h3>
+
+<p>Последний мой PR содержал data provider для сложного поиска c около 70 вариантами. И знаете, он выглядит &ldquo;удобоваримо&rdquo;. Я придерживаюсь такого правила, если, прокручивая провайдер колесиком мышки, вы все прекрасно понимаете &ndash; значит проверка на качество пройдена.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Код ревью]]></title>
+    <link href="http://fightmaster.github.io/blog/2013/09/25/code-review.html"/>
+    <updated>2013-09-25T23:50:00+04:00</updated>
+    <id>http://fightmaster.github.io/blog/2013/09/25/code-review</id>
+    <content type="html"><![CDATA[<p>Решил разбавить тематику и написать что-то вроде справочника, на который всегда можно дать ссылку и обновить. Некоторые вещи лучше не внедрять без объяснений. Нельзя сказать, завтра вы будете применять agile, парное программирование, tdd, так как это делают все крутые ребята.</p>
+
+<!-- more -->
+
+
+<p>Я не могу работать без код ревью, также как и писать код без тестов. Если из описания вакансии следует, что ребята не пишут тестов, не имеют практики проведения код ревью, мучаются с svn и так далее, я моментально закрываю страницу.</p>
+
+<p>Причин такого &ldquo;неадекватного&rdquo; поведения несколько, попробую хотя бы половину вспомнить и перечислить.</p>
+
+<h3>Саморазвитие</h3>
+
+<p>Невозможно саморазвитие в индивидуальном творчестве. Теорию черпать можно от соседа или книжек. Практика хорошо улучшается, когда тебя критикуют другие, и когда ты смотришь чужой код. Так исчезают собственные помарки, и ты невольно перенимаешь что-то лучшее от соседа. Иначе ваш профессионализм превращается в самолюбование. Никто и никогда не скажет и не спросит: &ldquo;что за гавно? что за ерунда написана? какой баран это написал?&rdquo;. Да и если вы, глядя случайно в чей-то код, такое кричали, это не означает, что от вас мусора меньше, неправда ли?</p>
+
+<h3>Знание проекта</h3>
+
+<p>Знание проекта, того что в нем происходит, не проходит мимо тебя. Ты знаешь, что делает или сделал сосед. Иначе, можно дать просто права на push всем участникам, и каждый будет писать свой проект. Если вам не повезет, и каждый из участников проекта делает индивидуально большой кусок кода от 0 до 100 процентов, то через полгода вы не сможете вернуть свои глаза на место при необходимости внести даже небольшие изменения. Это равносильно тому, что программиста с улицы взять и посадить писать код. Будут только вздохи, охи, ахи, периодическая ругань. Одни эмоции и переживания, никакого кодинга. Возможна и другая ситуация, что вы железный дровосек без сердца, и можете только рубить лес от точки А до точки Б, не задумываясь о том, зачем этот лес посадили, и почему вы вырубаете именно эту часть леса.</p>
+
+<h3>Мы одна команда, одной крови</h3>
+
+<p>Рано или поздно возникнет ситуация, когда вы с соседом сделаете одну и ту же вещь по-разному. Сложно сразу что-то такое вспомнить. Хотя бы следующие простейшие примеры.</p>
+
+<p><code>php
+&lt;?php
+$string1 = '$a = ' . $a . ', $b = ' . $b . ', $a + $b = ' . $c;
+//or
+$string1 = sprintf('$a = %d, $b = %d, $a + $b = %d', $a, $b, $c);
+?&gt;
+</code></p>
+
+<p>```php
+&lt;?php
+$array = array(1, 2, 3, 4, 5);</p>
+
+<p>foreach ($array as $key => $value) {</p>
+
+<pre><code># code...
+</code></pre>
+
+<p>}</p>
+
+<p>for ($i = 0; $i &lt; $countElements = $count($array); $i++) {</p>
+
+<pre><code># code...
+</code></pre>
+
+<p>}</p>
+
+<p>$i = 0;
+$countElements = $count($array);
+while ($i &lt; $countElements) {</p>
+
+<pre><code># code...
+</code></pre>
+
+<p>}
+?>
+```</p>
+
+<p>Со временем даже от таких мелочей проект превращается в помойку. Сначала мы получаем два стиля в разных кусках кода, постепенно они перемешиваются, и &hellip;</p>
+
+<p>Со сложными примерами, когда какая-то логика приложения делается по-разному, результат еще более близок к могиле. Вы либо получаете дублирование кода, либо первый результат в более плачевном виде. Например, кто-то бросает эксепшины, кто-то возвращает true/false, кто-то в строковом виде сообщение об ошибке, четвертый создает методы &ldquo;черные дыры&rdquo;.</p>
+
+<p>При код ревью команда самоорганизуется, выбирая те или иные правила, соглашения, best practice, и придерживается их. В результате сам код проекта &ndash; единое целое. Его можно теперь разделить по времени: &ldquo;что мы вот так писали очень давно, были молоыде и не опытные, а вот так еще раньше&rdquo;. Но невозможно будет сказать, что это Вася гавнокодит так, а это вот Петькина козюлька. Никаких личностей.</p>
+
+<h3>Звезда по имени Я</h3>
+
+<p>Проходит звездность, приходит профессионализм. Это чаще всего заметно на &ldquo;новичках&rdquo;. Всю жизнь ты писал так и никак иначе, а тут тебе на ревью: &ldquo;что за ерунда?&rdquo;. Главное правильно отнестись к этому. Через это все прошли, никто не родился архитектором, никто не получил опыт при рождении.</p>
+
+<h3>Банальности</h3>
+
+<p>В заключении стоит привести какие-то очевидные плюсы:</p>
+
+<ul>
+<li>опечатки, от них никто не застрахован;</li>
+<li>плохое настроение/погода &ndash; часто причина детских ошибок даже у опытных мастеров;</li>
+<li>большой таск &ndash; вообще это язва, это главное скопление дурных ошибок, автора уже тошнит от кода, глаза слепаются и хочется скорей-скорей и что-то новое.</li>
+</ul>
+
+
+<h3>Парное программирование</h3>
+
+<p>В самой последний момент пришло в голову следующее определение. Код ревью &ndash; это парное программирование офф-лайн, а я к этой практике совсем неравнодушен. Большинство идей, от простых до архитектурных, приходило мне в голову, только когда я смотрел на чужой код. Свежий взгляд он всегда ценее, чем уставший. Тем более для тебя все написали, а если еще и код понятный, то посидеть и подумать одно удовольствие.</p>
+
+<p>Очень часто, вы что-то прочитаете, услышите, а применить и самому написать некогда. Большая вероятность, что сосед уже это пишет и вам нужно только просто глянуть ;).</p>
+
+<h3>Полезные ссылки</h3>
+
+<p>Вообще, в сети много статей разных на эту тему. Но одна ссылка мне очень понравилась. Там наверняка есть все, что я забыл рассказать, в тезисах.</p>
+
+<ul>
+<li><a href="http://www.mindmeister.com/ru/234594602/code-review-2">code review</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Unit Tests - fightmaster's blog</title>
+  <meta name="author" content="fightmaster">
+
+  
+  <meta name="description" content="Свершилось, я начинаяю писать цикл статей про unit tests.
+С января 2013 года я начал задумываться о создании курса по тестированию, разработке через &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fightmaster.github.io/blog/2013/09/23/unit-tests.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">fightmaster's blog</a></h1>
+  
+    <h2>Скромный персональный блог</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:fightmaster.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Блог</a></li>
+    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
+    <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Unit Tests</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-23T23:30:00+04:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://fightmaster.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Свершилось, я начинаяю писать цикл статей про unit tests.
+С января 2013 года я начал задумываться о создании курса по тестированию, разработке через тестирование, но времени катастрофически на это нет. При этом стали &ldquo;проходить мимо&rdquo; интересные моменты из реальной жизни, которые потом в будущем просто не собрать. В итоге месяца два назад я решил, что буду &ldquo;по горячим следам&rdquo; писать статьи, а затем как-то курс сам собой образуется.</p>
+
+<!-- more -->
+
+
+<h3>Зачем же нужны тесты?</h3>
+
+<p>Вообще отрицать пользу каких-либо тестов &ndash; ненормально. Я считаю, что нельзя называть код чистым, если он не покрыт тестами. Как минимум, совсем плохой код вы не сможете просто протестировать.</p>
+
+<p>Дальше идет интересная закономерность, чем проще писать тест, тем лучше ваш код. Если вам тяжело протестировать ваш класс/метод, значит скорее всего в нем ощибка, допустим архитектурная. Простые примеры:</p>
+
+<ul>
+<li>метод берет на себя слишком много обязанностей</li>
+<li>класс имеет много зависимостей</li>
+</ul>
+
+
+<p>Да и потом в будущем вы что-то меняете, с тестами вы чувствуюте себя уверенее :), что ничего не сломали.</p>
+
+<h3>Так почему же большинство не пишет тесты?</h3>
+
+<p>Из адекватных объяснений у меня есть только два: не умеют и не могут, а скорее не хотят. На самом деле на своей шкуре знаю, как тяжело внедрить тестирование в большой проект, который годами развивался без тестов. На текущем моем проекте, как мне известно, до меня два раза пытались внедрить юнит тесты, затем я еще предпринимал попытки две или три.</p>
+
+<p>Но внедрить тесты и начать их писать &ndash; дело не сложное. Думаю большинство так или иначе начинало это делать. Самое главное продолжить их поддерживать. Рано или поздно написание теста превращается в какое-то мучение, и большинство бросает это благородное занятие.</p>
+
+<p>Причин возникновения таких ситуаций множество. Самая банальная и первая &ndash; генерация фикстур. Из теории, а возможно и из определения unit test (<a href="http://en.wikipedia.org/wiki/Unit_testing">wiki</a>), следует, что каждый тест должен быть полностью независим от других. Это означает, что перед каждым тестом вы должны заполнять базу данных своими индивидуальными фикстурами. А структура базы у долгосрочных проектов меняется, и все фикстуры падают. И так далее. При этом эта проблема возникает постоянно с ростом проекта. Сейчас, при написании статьи, я подумал, что на текущем моем проекте такая проблема снова есть и мучает всех. Буду думать&hellip;</p>
+
+<p>Существует много других поводов сказать: &ldquo;что ложь и неправда, что писать код с тестами быстрее и удобнее&rdquo;. Нехватка опытных специалистов, времени на разработку &ndash; губительно сказываается для многих проектов разного уровня и масштаба.</p>
+
+<h3>Что же делать?</h3>
+
+<p>Вообще, код юнит тестов такой же код, он требует постоянного рефакторинга. Если вы не будете его улучшать, следить за ним, то его невозможно будет поддерживать. Чем понятнее и выразителен тест для другого программиста, тем лучше.</p>
+
+<p>При написании кода мы стараемся дать сразу понять: что делает метод, что возвращает, что хранит переменная и т.д..</p>
+
+<p>При написании теста мы стараемся показать сразу: что тестируем и какую ситуацию описывают входные данные и т.д..</p>
+
+<p>В идеальном мире у вас чистые и понятные тесты с красивым и простым кодом проекта. Эти две составляющие подвергаются непрерывному рефакторингу и развитию.</p>
+
+<h3>О чем шла речь вначале?</h3>
+
+<p>Так вот в данном цикле статей, я не буду рассказывать о каких-то азах, которые можно прочитать в документации или на вики. В основном здесь будут публиковаться интересные на мой взгляд решения, правила, находки, best practice для меня на данный момент, которые я и мои коллеги применяем, а может хотим лишь применить :).</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">fightmaster</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-23T23:30:00+04:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/unit-tests/'>unit tests</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/blog/2013/09/23/unit-tests.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/blog/2013/09/23/unit-tests.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" title="Previous Post: Как увидеть и применить паттерны проектирования?">&laquo; Как увидеть и применить паттерны проектирования?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/09/25/code-review.html" title="Next Post: Код ревью">Код ревью &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/30/amazon-or-the-client-always-right.html">Amazon, или клиент всегда прав</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/17/the-whole-point-is-that-it-happens.html">Все дело в том, что так бывает...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/05/unit-tests-data-provider-without-a-headache.html">Unit Tests. Data Provider без головной боли</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/28/ohio-river-greenway-5-k.html">Ohio River Greenway 5K</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/25/code-review.html">Код ревью</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/fightmaster">@fightmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'fightmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/100149299742617855998?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - fightmaster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fightmaster';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fightmaster.github.io/blog/2013/09/23/unit-tests.html';
+        var disqus_url = 'http://fightmaster.github.io/blog/2013/09/23/unit-tests.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

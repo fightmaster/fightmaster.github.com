@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: symfony2 | fightmaster's blog]]></title>
-  <link href="http://fightmaster.github.com/blog/categories/symfony2/atom.xml" rel="self"/>
-  <link href="http://fightmaster.github.com/"/>
-  <updated>2013-04-23T00:59:49+04:00</updated>
-  <id>http://fightmaster.github.com/</id>
+  <link href="http://fightmaster.github.io/blog/categories/symfony2/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io/"/>
+  <updated>2014-01-19T13:11:20+04:00</updated>
+  <id>http://fightmaster.github.io/</id>
   <author>
     <name><![CDATA[fightmaster]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setting up Symfony with Nginx server]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server.html"/>
+    <link href="http://fightmaster.github.io/blog/2013/02/12/setting-up-symfony-with-nginx-server.html"/>
     <updated>2013-02-12T23:21:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/12/setting-up-symfony-with-nginx-server</id>
+    <id>http://fightmaster.github.io/blog/2013/02/12/setting-up-symfony-with-nginx-server</id>
     <content type="html"><![CDATA[<p>Каждый раз, когда я обновляю систему или nginx, я постоянно мучаюсь с настройкой.
 С переходом на <code>php 5.4</code> я столкнулся с новой проблемой <code>access denied</code>.
 Ниже выкладываю рабочий конфиг для <code>nginx/1.2.6</code> и <code>symfony2</code>;</p>
@@ -26,7 +26,7 @@
 
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>nginx/conf.d/project (project)</span> <a href='/downloads/code/nginx/conf.d/project'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>

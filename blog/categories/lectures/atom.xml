@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: lectures | fightmaster's blog]]></title>
-  <link href="http://fightmaster.github.com/blog/categories/lectures/atom.xml" rel="self"/>
-  <link href="http://fightmaster.github.com/"/>
-  <updated>2013-04-23T00:59:49+04:00</updated>
-  <id>http://fightmaster.github.com/</id>
+  <link href="http://fightmaster.github.io/blog/categories/lectures/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io/"/>
+  <updated>2014-01-19T13:11:20+04:00</updated>
+  <id>http://fightmaster.github.io/</id>
   <author>
     <name><![CDATA[fightmaster]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Задания к лекции "Работа со строками"]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/24/four-lecture-working-with-strings.html"/>
+    <link href="http://fightmaster.github.io/blog/2013/02/24/four-lecture-working-with-strings.html"/>
     <updated>2013-02-24T00:50:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/24/four-lecture-working-with-strings</id>
+    <id>http://fightmaster.github.io/blog/2013/02/24/four-lecture-working-with-strings</id>
     <content type="html"><![CDATA[<p>С небольшим опозданием выложены <a href="/php-lectures/05-working-with-strings.html">задания</a> к четвертой лекции.
 Задача про палиндромы имеет подводные камни, будьте внимательны.</p>
 ]]></content>
@@ -25,9 +25,9 @@
   
   <entry>
     <title type="html"><![CDATA[Вторая лекция: Управляющие структуры]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/14/second-lecture-control-structures.html"/>
+    <link href="http://fightmaster.github.io/blog/2013/02/14/second-lecture-control-structures.html"/>
     <updated>2013-02-14T02:30:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/14/second-lecture-control-structures</id>
+    <id>http://fightmaster.github.io/blog/2013/02/14/second-lecture-control-structures</id>
     <content type="html"><![CDATA[<p>Выложены <a href="/php-lectures/03-control-structures.html">материалы</a> ко второй лекции. Встретимся через 5.5 часов:).
 Домашнее задание будет доступно в субботу.</p>
 ]]></content>
@@ -35,10 +35,10 @@
   
   <entry>
     <title type="html"><![CDATA[Первая лекция: Основы PHP]]></title>
-    <link href="http://fightmaster.github.com/blog/2013/02/12/first-lecture-php-basics.html"/>
+    <link href="http://fightmaster.github.io/blog/2013/02/12/first-lecture-php-basics.html"/>
     <updated>2013-02-12T21:14:00+04:00</updated>
-    <id>http://fightmaster.github.com/blog/2013/02/12/first-lecture-php-basics</id>
-    <content type="html"><![CDATA[<p>Она, кажется, сказала: "Дима, давай жги". 100% посещаемость из двух человек, круто. Выкладываю <a href="/php-lectures/02-php-basics.html">материалы</a>.
+    <id>http://fightmaster.github.io/blog/2013/02/12/first-lecture-php-basics</id>
+    <content type="html"><![CDATA[<p>Она, кажется, сказала: &ldquo;Дима, давай жги&rdquo;. 100% посещаемость из двух человек, круто. Выкладываю <a href="/php-lectures/02-php-basics.html">материалы</a>.
 Желаю удачи в выполнении домашнего задания :).</p>
 ]]></content>
   </entry>
