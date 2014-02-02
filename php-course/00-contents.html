@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Основы PHP - fightmaster's blog</title>
+  <title>Содержание курса - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Основы PHP Feb 11th, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Укажите рекомендуемый php tag в настоящее время. &hellip;">
+  <meta name="description" content="Содержание курса Feb 2nd, 2014 Продвинутый курс по PHP Ровно год назад я прочитал лекции по php.
+Я мечтал о продолжении и долго думал о формате, как &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.io/php-lectures/02-php-basics-theoretical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.io/php-course/00-contents.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
@@ -81,7 +81,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Основы PHP</h1>
+    <h1 class="entry-title">Содержание курса</h1>
     <p class="meta">
 
 
@@ -94,140 +94,94 @@
   
 
 
-<time datetime="2013-02-11T23:44:00+04:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time></p>
+<time datetime="2014-02-02T21:44:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time></p>
   </header>
   
-  <h3>Теоретические задания</h3>
+  <h4>Продвинутый курс по PHP</h4>
 
-<p><a href="02-php-basics.html">Краткое содержание лекции</a> |
-<a href="02-php-basics-practical-tasks.html">Практические задания</a></p>
+<p>Ровно год назад я прочитал <a href="/php-lectures/00-contents.html">лекции</a> по php.
+Я мечтал о продолжении и долго думал о формате, как лучше сделать уклон на практику.
+За этот год накопилось несколько проектов/задач, которые хотелось бы сделать, но у меня нет на это времени.
+При этом на них можно попробовать или отработать определенные навыки.
+Я хочу взять 2-3 команды по 1-2 человека, и сделать задачи с модерированием разработки, акцентированием внимания на выбранный уклон.</p>
 
-<ol>
-<li>Укажите рекомендуемый php tag в настоящее время.</li>
-<li>Что будет в результате выполнения <code>&lt;?= $expression = 5; ?&gt;</code> и почему?</li>
-<li>Как можно запретить использование коротких php тегов?</li>
-<li>Какие из примеров являются single line комментариями?
+<p>В общем, очередная авантюра на месяц-два: ).</p>
 
-<ol>
-<li><code># comment</code></li>
-<li><code># comment #</code></li>
-<li><code>% comment %</code></li>
-<li><code>/ comment /</code></li>
-<li><code>// comment</code></li>
-<li><code>// comment ?&gt;</code></li>
-</ol>
-</li>
-<li>Как можно записать multi-line комментарий?</li>
-<li>Укажите невалидные именsа переменных
+<p>Каждый проект подразумевает прокачку скилла самого процесса разработки.
+Я буду акцентировать внимание на важность осмысления чего мы хотим сделать, на разбиение задач, на их эстимацию.
+Я надеюсь, что получится показать, на сколько мелкие детали в самой разработке способны улучшить производительность и качество.</p>
 
-<ol>
-<li><code>$variable</code></li>
-<li><code>$_variable</code></li>
-<li><code>$var4able</code></li>
-<li><code>$переменная</code></li>
-<li><code>$4fun</code></li>
-<li><code>$1_нах</code></li>
-<li><code>$peer-to-peer</code></li>
-<li><code>$peerToPeer</code></li>
-</ol>
-</li>
-<li>Сколько типов данных в PHP?</li>
-<li>Сколько байт в символе строки?</li>
-<li>Какое ограничение на длину строки?</li>
-<li> Какое отличие между одинарными и двойными кавычками?</li>
-<li> Какой синтаксис у Heredoc?</li>
-<li> Какое максимальное число integer?</li>
-<li> Какое представление числа является невалидным? Чему равны значения?
+<p>В каждом проекте можно уделить внимание всем видам тестирования: bdd (behat), tdd (phpspec), unit tests (phpunit) или попробовать полный стек codeception.</p>
 
-<ol>
-<li><code>$integer = 010;</code></li>
-<li><code>$integer = 012;</code></li>
-<li><code>$integer = 0x0;</code></li>
-<li><code>$integer = 0xA;</code></li>
-<li><code>$integer = 123;</code></li>
-</ol>
-</li>
-<li> Чему равно <code>$float = 3e4;</code></li>
-<li> Проставьте true/false напротив каждого утверждения
+<p>Но при этом в зависимости от задач, есть возможность попробовать научится видеть и испльзовать те или иные паттерны проектирования.
+Они преднамеренно не упоминаются на этой странице.</p>
+
+<h3>Технологии</h3>
+
+<p>BDD &ndash; Behaviour Driven Development, представлен в php <a href="http://behat.org">Behat</a>.
+У большинства, если и есть опыт работы, то больше относительно веб.
+Но это не совсем корректное представление, на самом деле его использует при разработке всего, в том числе и библиотек, консольных команд.</p>
+
+<p>TDD &ndash; Test Driven Development, представлен в php <a href="http://www.phpspec.net/">PhpSpec</a>.
+Это о разработке через спецификацию. Вы пишите спецификацию, генерируете по ней готовый шаблон для кода.
+Реализуете его, запускаете спецификацию и она проходит, если код возвращает ожидаемый результат.</p>
+
+<p>PhpUnit &ndash; юнит тесты. Люди делятся на две категории, которые умеют писать тесты и пишут, и те, кто бросил не разобравшись.
+При правильном подходе, при постоянном рефакторинге, при правильном отношении &ndash; вы будете ежедневно получать профит от вашей разработки.</p>
+
+<p>Value-Oriented-Programming &ndash; термин от Anthony Ferrara, изложенный хорошо в <a href="http://blog.ircmaxell.com/2013/11/beyond-object-oriented-programming.html">Beyond Object Oriented Programming</a>.
+Это первый шаг в сторону DDD, некоторые еще называют это правильным ООП.</p>
+
+<p>DDD &ndash; Domain Driven Design и CQRS &ndash; command-query responsibility segregation, event sourcing &ndash; связанные так или иначе вещи.
+Эти две категории будут оставлены для экспериментов в следующем году.</p>
+
+<h3>Проекты</h3>
+
+<p>Возможно, потенциальные популярные решения?</p>
 
 <ol>
-<li><code>true == 1</code></li>
-<li><code>true == 5</code></li>
-<li><code>true == -5</code></li>
-<li><code>true === 1</code></li>
-<li><code>true == 'string'</code></li>
-<li><code>true == ''</code></li>
-<li><code>1 == '1'</code></li>
-<li><code>1 === 1</code></li>
-<li><code>1 === '1'</code></li>
-<li><code>array(1,2) == 1</code></li>
-<li><code>array(1,2) == true</code></li>
-<li><code>array() == true</code></li>
-<li><code>array() == 1</code></li>
-</ol>
-</li>
-<li> Определите константу PER_PAGE со значением 50</li>
-<li> Составьте &ldquo;Hello World&rdquo;, используя данные переменные: <code>$hello = 'Hello'; $world = 'World';</code></li>
-<li> Для чего нужен символ <code>@</code> в PHP?</li>
-<li> Чему будет равно <code>$a</code>?
-
-<ol>
-<li><code>$a = 25 % 5;</code></li>
-<li><code>$a = 25 / 5;</code></li>
-</ol>
-</li>
-<li> Что будет выведено на экран в следующих листингах?</li>
+<li><a href="01-sismo.html">Конфигуратор для Sismo</a></li>
+<li><a href="02-simple-text-editor.html">Простой текстовый редактор</a></li>
 </ol>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Генераторы</p>
+
+<ol>
+<li><a href="03-route-generator.html">Генератор роутинга</a></li>
+<li><a href="04-serializer-generator.html">Генератор для сериализации</a></li>
+<li><a href="05-php-wsdl-proxy-generator.html">opensoft/php-wsdl-proxy-generator</a></li>
+<li>&hellip;&hellip; ваши идеи? &hellip;&hellip;&hellip;</li>
+</ol>
 
 
+<p>Врапперы</p>
+
+<ol>
+<li><a href="06-epl-wrapper.html">opensoft/epl</a></li>
+<li><a href="07-git-wrapper.html">git/git-merge-tool</a></li>
+<li>&hellip;&hellip; ваши идеи? &hellip;&hellip;&hellip;.</li>
+</ol>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> </span><span class="cp">&lt;?php</span>
-</span><span class='line'> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Разное:</p>
+
+<ol>
+<li><a href="08-parsers.html">Парсеры больших файлов</a></li>
+<li><a href="09-simple-serializer-2.html">simple-serializer 2.0</a></li>
+</ol>
 
 
+<h3>Общие слова</h3>
 
+<p>Возможно, первые два проекта выделяются фундаментальностью сформулированной задачи. Но мне лично хотелось обратить внимание на rest задачи.
+<a href="03-route-generator.html">Генератор роутинга</a>, <a href="04-serializer-generator.html">Генератор для сериализации</a>, <a href="09-simple-serializer-2.html">simple-serializer 2.0</a>
+ &ndash; имеют спрос сейчас на нашем проекте. Последняя из них, имеет очень высокий приоритет.
+Также, решение рест задач и текущая моя работа, откроет возможность создать аналог <a href="http://www.apigility.org/">apigility</a>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> </span><span class="cp">&lt;?php</span>
-</span><span class='line'> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="o">++</span><span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Почти во всех задачах вы познакомитесь с консольной компонентой симфони, получите опыт написания open source библиотек и бандлов.</p>
 
+<p>Некоторые решения можно написать на <a href="http://zephir-lang.com/index.html">Zephir</a>.</p>
 
   
     <footer>
@@ -245,13 +199,13 @@
   
 
 
-<time datetime="2013-02-11T23:44:00+04:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time>
+<time datetime="2014-02-02T21:44:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-lectures/02-php-basics-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-lectures/02-php-basics-theoretical-tasks.html" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-course/00-contents.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-course/00-contents.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

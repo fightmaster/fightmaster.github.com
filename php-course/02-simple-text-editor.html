@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Основы PHP - fightmaster's blog</title>
+  <title>Простой текстовый редактор - fightmaster's blog</title>
   <meta name="author" content="fightmaster">
 
   
-  <meta name="description" content="Основы PHP Feb 11th, 2013 Теоретические задания Краткое содержание лекции |
-Практические задания Укажите рекомендуемый php tag в настоящее время. &hellip;">
+  <meta name="description" content="Простой текстовый редактор Feb 2nd, 2014 Описание Идеей этого проекта послужил OneupUploaderBundle.
+Этот бандл отличается от всех свои конкурентов &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fightmaster.github.io/php-lectures/02-php-basics-theoretical-tasks.html">
+  <link rel="canonical" href="http://fightmaster.github.io/php-course/02-simple-text-editor.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
@@ -81,7 +81,7 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Основы PHP</h1>
+    <h1 class="entry-title">Простой текстовый редактор</h1>
     <p class="meta">
 
 
@@ -94,139 +94,51 @@
   
 
 
-<time datetime="2013-02-11T23:44:00+04:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time></p>
+<time datetime="2014-02-02T21:44:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time></p>
   </header>
   
-  <h3>Теоретические задания</h3>
+  <h5>Описание</h5>
 
-<p><a href="02-php-basics.html">Краткое содержание лекции</a> |
-<a href="02-php-basics-practical-tasks.html">Практические задания</a></p>
+<p>Идеей этого проекта послужил <a href="https://github.com/1up-lab/OneupUploaderBundle">OneupUploaderBundle</a>.
+Этот бандл отличается от всех свои конкурентов тем, чтоон не привязывает вас жестко к какому-то js клиенту,
+к какому-то способу хранения информации в базе данных, к какому-то хранилищу файлов.
+Также бандл предоставляет возможность создания целого множества конфигураций, т.е. однаконфигурация будет для автарок, другая для фотографий,
+третья для работы с текстовыми файлами.
+При этом он не заставляет вас думать и решать проблему непосредственной загрузки файлов и безопасности.</p>
 
-<ol>
-<li>Укажите рекомендуемый php tag в настоящее время.</li>
-<li>Что будет в результате выполнения <code>&lt;?= $expression = 5; ?&gt;</code> и почему?</li>
-<li>Как можно запретить использование коротких php тегов?</li>
-<li>Какие из примеров являются single line комментариями?
+<p>Именно этого мне лично никогда не хватало в работе с текстовыми данными. Всегда, когда мне нужно создать страничку новостей или блога,
+я вынужден либо создавать все с нуля, либо использовать решения, привязанные к чему-то конкретно.
+Или еще хуже, использовать различные сложные связки готовых решений.</p>
 
-<ol>
-<li><code># comment</code></li>
-<li><code># comment #</code></li>
-<li><code>% comment %</code></li>
-<li><code>/ comment /</code></li>
-<li><code>// comment</code></li>
-<li><code>// comment ?&gt;</code></li>
-</ol>
-</li>
-<li>Как можно записать multi-line комментарий?</li>
-<li>Укажите невалидные именsа переменных
+<h5>Аналоги</h5>
 
-<ol>
-<li><code>$variable</code></li>
-<li><code>$_variable</code></li>
-<li><code>$var4able</code></li>
-<li><code>$переменная</code></li>
-<li><code>$4fun</code></li>
-<li><code>$1_нах</code></li>
-<li><code>$peer-to-peer</code></li>
-<li><code>$peerToPeer</code></li>
-</ol>
-</li>
-<li>Сколько типов данных в PHP?</li>
-<li>Сколько байт в символе строки?</li>
-<li>Какое ограничение на длину строки?</li>
-<li> Какое отличие между одинарными и двойными кавычками?</li>
-<li> Какой синтаксис у Heredoc?</li>
-<li> Какое максимальное число integer?</li>
-<li> Какое представление числа является невалидным? Чему равны значения?
+<p>Аналогичных решений на данный момент не известно.</p>
+
+<h5>Целевая аудитория</h5>
+
+<p>Большое количество веб студий, фрилансеров, частных проектов, работающих с симфони.</p>
+
+<h5>Задачи</h5>
+
+<p>Необходимо решить аналогичные задачи, как у OneupUploaderBundle. Создать абстракцию между UI, обработкой информации и способом ее хранения.
+Будет полезной также возможность создания множества конфигураций, так, чтобы легко иметь разные настройки у новостей или комментариев.</p>
+
+<h5>Подводные камни</h5>
 
 <ol>
-<li><code>$integer = 010;</code></li>
-<li><code>$integer = 012;</code></li>
-<li><code>$integer = 0x0;</code></li>
-<li><code>$integer = 0xA;</code></li>
-<li><code>$integer = 123;</code></li>
-</ol>
-</li>
-<li> Чему равно <code>$float = 3e4;</code></li>
-<li> Проставьте true/false напротив каждого утверждения
-
-<ol>
-<li><code>true == 1</code></li>
-<li><code>true == 5</code></li>
-<li><code>true == -5</code></li>
-<li><code>true === 1</code></li>
-<li><code>true == 'string'</code></li>
-<li><code>true == ''</code></li>
-<li><code>1 == '1'</code></li>
-<li><code>1 === 1</code></li>
-<li><code>1 === '1'</code></li>
-<li><code>array(1,2) == 1</code></li>
-<li><code>array(1,2) == true</code></li>
-<li><code>array() == true</code></li>
-<li><code>array() == 1</code></li>
-</ol>
-</li>
-<li> Определите константу PER_PAGE со значением 50</li>
-<li> Составьте &ldquo;Hello World&rdquo;, используя данные переменные: <code>$hello = 'Hello'; $world = 'World';</code></li>
-<li> Для чего нужен символ <code>@</code> в PHP?</li>
-<li> Чему будет равно <code>$a</code>?
-
-<ol>
-<li><code>$a = 25 % 5;</code></li>
-<li><code>$a = 25 / 5;</code></li>
-</ol>
-</li>
-<li> Что будет выведено на экран в следующих листингах?</li>
+<li>Существует возможность запутаться, за что и где какая абстракция отвечает.</li>
+<li>Стоит помнить, что у вас нет ничего (автора, место для хранения данных, место откуда они приходят)</li>
+<li>При использовании Event Dispatcher придется задуматься о целостности данных и простоте решения</li>
 </ol>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<h5>Дополнительные задачи</h5>
 
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> </span><span class="cp">&lt;?php</span>
-</span><span class='line'> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="nv">$b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x"> </span><span class="cp">&lt;?php</span>
-</span><span class='line'> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="o">++</span><span class="nv">$a</span><span class="p">;</span>
-</span><span class='line'> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<ol>
+<li>Интеграция с популярными бандлами, преднастройка</li>
+<li>Абстракция от симфони</li>
+<li>Создание api</li>
+</ol>
 
 
   
@@ -245,13 +157,13 @@
   
 
 
-<time datetime="2013-02-11T23:44:00+04:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time>
+<time datetime="2014-02-02T21:44:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-lectures/02-php-basics-theoretical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-lectures/02-php-basics-theoretical-tasks.html" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-course/02-simple-text-editor.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-course/02-simple-text-editor.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

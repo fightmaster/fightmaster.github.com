@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Генератор роутинга - fightmaster's blog</title>
+  <meta name="author" content="fightmaster">
+
+  
+  <meta name="description" content="Генератор роутинга Feb 2nd, 2014 Описание Потенциально роутинг для рест апи может выглядеть так. 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fightmaster.github.io/php-course/03-route-generator.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">fightmaster's blog</a></h1>
+  
+    <h2>Скромный персональный блог</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:fightmaster.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Блог</a></li>
+    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
+    <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Генератор роутинга</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-02T21:44:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time></p>
+  </header>
+  
+  <h5>Описание</h5>
+
+<p>Потенциально роутинг для рест апи может выглядеть так.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_cget</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/districts.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">cget</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">GET</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_get</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">get</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">GET</span>
+</span><span class='line'>    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_post</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">post</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">POST</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_cpost</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">cpost</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">POST</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_put</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">put</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">PUT</span>
+</span><span class='line'>    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_patch</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">patch</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">PATCH</span><span class="p-Indicator">,</span><span class="nv">POST</span><span class="p-Indicator">]</span>
+</span><span class='line'>    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">fightmaster_admin_api_district_delete</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">delete</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DELETE</span>
+</span><span class='line'>    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>А теперь внмательно посмотрите, что надо сделать, чтобы создать роутинг для аналогичного ресурса? Скопировать?</p>
+
+<h5>Аналоги</h5>
+
+<p>Symfony поставляет из коробки несколько генераторов, <a href="https://github.com/sensiolabs/SensioGeneratorBundle">SensioGeneratorBundle</a>. Но они слишком общие, нет чего-то точечного.
+Меня не устраивает CRUD стандартный, как и многих других разработчиков, а части какие-то сгенерировать нельзя.
+Можно перенастроить шаблоны для всей генерации, но это не решает проблему, доставляет больше неудобств.</p>
+
+<h5>Целевая аудитория</h5>
+
+<p>Аудитория зависит от поставленных и выполненных задач. Есть потенциальная возможность внедрить это в сам фреймворк.</p>
+
+<h5>Задачи</h5>
+
+<p>Необходимо генерировать файлы для роутинга. Как ни странно, такая простая на первый взгляд задача может вырасти в нечто большее.
+Для начала нужно сделать рабочий прототип, его код может быть будет меньше 50 строк.</p>
+
+<h5>Подводные камни</h5>
+
+<p>При написании консольных команд, главное не впасть в plain code:
+<a href="https://github.com/sensiolabs/SensioGeneratorBundle/blob/master/Command/GenerateControllerCommand.php">GenerateControllerCommand.php</a>,
+<a href="https://github.com/sensiolabs/SensioGeneratorBundle/blob/master/Generator/ControllerGenerator.php">ControllerGenerator.php</a>.</p>
+
+<h5>Дополнительные задачи</h5>
+
+<ol>
+<li>Возможность легко и просто настраивать шаблон для генерации</li>
+<li>Команда валидации файлов роутинга</li>
+<li>Интерактивный режим команды</li>
+<li>Можно создать свой crud генератор, более настраиваемый, чем от сенсиолабс</li>
+</ol>
+
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-02T21:44:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+        
+      </p>
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-course/03-route-generator.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-course/03-route-generator.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Список лекций</h1>
+  <ul id="php_lectures">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-exceptions.html">Исключения в PHP</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-basics-of-oop-encapsulation.html">Основы ООП. Инкапсуляция</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-objects-and-classes-basic-syntax.html">Объекты и классы в PHP. Основы синтаксиса</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/07-working-with-filesystem.html">Работа с файловой системой</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/03-control-structures.html">Управляющие структуры</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/00-contents.html">Содержание</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/01-introduction-to-php.html">Введение в PHP</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-basics-of-oop-polymorphism.html">Основы ООП. Полиморфизм</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-basics-of-oop-inheritance.html">Основы ООП. Наследование</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/08-global-variables.html">Глобальные переменные в PHP</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/09-magic-methods-in-php.html">Магия в PHP</a>
+          </li>
+      
+    
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/06-regular-expressions.html">Регулярные выражения</a>
+          </li>
+      
+    
+      
+          <li class="post">
+            <a href="/php-lectures/10-coding-standard.html">Стандарты кодирования</a>
+          </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - fightmaster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
