@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Чистый код. Boolean аттрибут - fightmaster's blog</title>
+  <meta name="author" content="fightmaster">
+
+  
+  <meta name="description" content="Прошло два месяца с момента публикации последнего поста. Все настолько сильно перевернулось в моих рабочих буднях, что никак не войду в нужный ритм. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fightmaster.github.io/blog/2014/02/02/clean-code-boolean-attribute.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">fightmaster's blog</a></h1>
+  
+    <h2>Скромный персональный блог</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:fightmaster.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Блог</a></li>
+    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
+    <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Чистый код. Boolean аттрибут</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-02T11:43:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://fightmaster.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Прошло два месяца с момента публикации последнего поста. Все настолько сильно перевернулось в моих рабочих буднях, что никак не войду в нужный ритм. Прошу извинить.</p>
+
+<p>Но сегодня пойдет речь не об этом. На работе споткнулся на два интересных момента, а я обещал вам писать о своих приключениях. Попробую рассказать об одном из них.</p>
+
+<!-- more -->
+
+
+<h3>Boolean Attribute</h3>
+
+<p>На мой взгляд, <code>Boolean Attribute</code> особенный итем/тип/термин в ООП. Кажется, что он намного проще <code>Exception</code>, подумаешь, всего лишь два возможных значения: <code>true</code> и <code>false</code>.
+Но то ли я книжек в своей жизни уже перечитал, то ли опыт рефакторинга легаси проекта сказывается.
+Я стал замечать у себя приступы ненависти, самоуничтожения при виде, как люди могут работать с такими аттрибутами.</p>
+
+<h4>Пример номер 1</h4>
+
+<p>В каком-то контроллере какого-то проекта кто-то решил изменить статус.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nv">$vacancy</span><span class="o">-&gt;</span><span class="na">getStatus</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$status</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$status</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$vacancy</span><span class="o">-&gt;</span><span class="na">setStatus</span><span class="p">(</span><span class="nv">$status</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Сколько претензий у вас к этому коду? Лично я затрудняюсь определить для себя, с какой стороны этот код обругать.
+По-моему, автор сам себя запутал. Вообще, это глобальная проблема программиста, что он не знает чего хочет и пишет код.
+Милый друг, остановись и подумай, прекрати смотреть и копипастить.</p>
+
+<h4>Пример номер два</h4>
+
+<p>Бытовой пример, есть некий класс с аттрибутом. Если человек когда-нибудь слышал про <code>is*</code>, то он обязательно напишет слудующее.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$isActivated</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">private</span> <span class="nv">$enabled</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setIsActivated</span><span class="p">(</span><span class="nv">$isActivated</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isActivated</span> <span class="o">=</span> <span class="nv">$isActivated</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getIsActivated</span><span class="p">(</span><span class="nv">$isActivated</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isActivated</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/*</span>
+</span><span class='line'><span class="cm">    public function isIsActivated($isActivated)</span>
+</span><span class='line'><span class="cm">    {</span>
+</span><span class='line'><span class="cm">        return $this-&gt;isActivated;</span>
+</span><span class='line'><span class="cm">    }</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">    public function isActivated($isActivated)</span>
+</span><span class='line'><span class="cm">    {</span>
+</span><span class='line'><span class="cm">        return $this-&gt;isActivated;</span>
+</span><span class='line'><span class="cm">    }</span>
+</span><span class='line'><span class="cm">    */</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">setEnabled</span><span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="nv">$enabled</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEnabled</span><span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/*</span>
+</span><span class='line'><span class="cm">    public function isEnabled($enabled)</span>
+</span><span class='line'><span class="cm">    {</span>
+</span><span class='line'><span class="cm">        return $this-&gt;enabled;</span>
+</span><span class='line'><span class="cm">    }</span>
+</span><span class='line'><span class="cm">    */</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Вообще всевозможных вариаций трудно представить, в зависимости от конекста они вызывают разное &ldquo;фи&rdquo;.</p>
+
+<h4>Это же php</h4>
+
+<p>Этот параграф специально для тех, кто любит поржать над <code>php</code>. Как вы знаете и понимаете, создав <code>setEnabled</code>,
+вы можете вызвать <code>$user-&gt;setEnabled('Ha-ha'); $user-&gt;setEnabled(1); $user-&gt;setEnabled(0);</code>. Немного неприятно.</p>
+
+<h4>Скрытые проблемы</h4>
+
+<p>На самом деле проблема лежит не в самом классе, а там где его используют. Программисты порой создают булевые аттрибуты в качестве индикаторов чего-то.
+И зачастую вызов стандартных <code>set*, get*</code> превращает код в какую-то паутину. Вы не сразу вспоминаете или понимаете, а что на самом деле здесь происходит.
+Это не является какой-то причиной появления гавнокода, но это один из шагов к нему. Трудно превести конкретный пример, искать/описывать лень, но если представить&hellip;</p>
+
+<p>Если мы завели какой-то флаг, значит он для чего-то нужен. Скорее всего, это будет какой-то <code>if</code>, а возможно и не один.
+Соответственно нам не нужен в большинстве случаев <code>get*</code>.
+Самое худшее, если этот флаг влияет на поведение другого аттрибута этого объекта.
+Вызов казалось бы обычного <code>setDeleted</code> может привести к невалидности соседнего аттрибута.
+А пихать дополнительную логику в этот сеттер &ndash; еще хуже.</p>
+
+<h4>Лекарство, но не пуля</h4>
+
+<p>Лично я предпочитаю следующие правила. Аттрибуты делать причастиями: <code>enabled</code>, <code>deleted</code>, <code>activated</code>.
+Вместо <code>get*</code> использовать <code>is*</code>: <code>isEnabled</code>, <code>isDeleted</code>, <code>isActivated</code>.
+Вместо <code>set*</code> создавать методы-глаголы действия: <code>enable</code>, <code>disable</code>, <code>delete</code>, <code>restore</code>, <code>activate</code>, <code>deactivate</code>.</p>
+
+<p>В случаях, когда все-таки ваш фреймворк требует <code>set*</code> метод, использовать что-то вроде этого:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">enable</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">disable</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">setEnabled</span><span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enable</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">disable</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Проблемы с наименованием</h4>
+
+<p>В текущем проекте несколько раз сталкивались с слишком замудренными аттрибутами, к которым хороший глагол сразу не подберешь.
+Мне кажется тут две проблемы: похой скилл подбора имен и сложная логика, пора начать рефакторинг.</p>
+
+<p>Всегда можно однозначно дать определение состояния, в котором находится объект при данном значении аттрибута.
+Соответсвенно есть и название переходов из одного состояния в другое.</p>
+
+<p>Если же состояние определяется сразу несколькими значениями, его формулировка занимает два-три предложения, навряд ли предложенная схема вам подойдет и поможет.
+Скорее всего, она запутает код еще больше. Лучше всего задуматься о пересмотре этого куска кода, попробовать вынести логику в отдельный resolver.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">fightmaster</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-02T11:43:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/boolean-attribute/'>boolean attribute</a>, <a class='category' href='/blog/categories/clean-code/'>clean code</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/blog/2014/02/02/clean-code-boolean-attribute.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/blog/2014/02/02/clean-code-boolean-attribute.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/10/30/amazon-or-the-client-always-right.html" title="Previous Post: Amazon, или клиент всегда прав">&laquo; Amazon, или клиент всегда прав</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/02/clean-code-boolean-attribute.html">Чистый код. Boolean аттрибут</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/30/amazon-or-the-client-always-right.html">Amazon, или клиент всегда прав</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/17/the-whole-point-is-that-it-happens.html">Все дело в том, что так бывает...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/05/unit-tests-data-provider-without-a-headache.html">Unit Tests. Data Provider без головной боли</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/28/ohio-river-greenway-5-k.html">Ohio River Greenway 5K</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/fightmaster">@fightmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'fightmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/100149299742617855998?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - fightmaster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fightmaster';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fightmaster.github.io/blog/2014/02/02/clean-code-boolean-attribute.html';
+        var disqus_url = 'http://fightmaster.github.io/blog/2014/02/02/clean-code-boolean-attribute.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
