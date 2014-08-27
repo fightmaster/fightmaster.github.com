@@ -1,0 +1,24 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">Square</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var float</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var float</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calculateSquare</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isQuadrate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">==</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

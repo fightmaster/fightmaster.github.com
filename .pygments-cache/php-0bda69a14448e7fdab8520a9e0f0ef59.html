@@ -1,0 +1,41 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="sd">/**</span>
+<span class="sd"> * The service sends an email to user</span>
+<span class="sd"> *</span>
+<span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">MailService</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$subject</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$recipient</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $recipient</span>
+<span class="sd">     * @param string $subject</span>
+<span class="sd">     * @param string $message</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="nv">$recipient</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="nv">$subject</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nb">mail</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">recipient</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

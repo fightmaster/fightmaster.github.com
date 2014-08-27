@@ -1,0 +1,34 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="{{ site.baseurl }}">
+            <img src="{{ site.baseurl }}public/avatar.jpeg">
+        </a>
+      </h1>
+      <p class="lead">{{ site.description }}</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Блог</a>
+      <a class="sidebar-nav-item" href="{{ site.baseurl }}php-lectures/00-contents.html">PHP-лекции</a>
+        <a class="sidebar-nav-item" href="{{ site.baseurl }}blog/archives/index.html">Архив</a>
+
+      {% comment %}
+        The code below dynamically generates a sidebar nav of pages with
+        `layout: page` in the front-matter. See readme for usage.
+      {% endcomment %}
+
+      <!--{% assign pages_list = site.pages %}-->
+      <!--{% for node in pages_list %}-->
+        <!--{% if node.title != null %}-->
+          <!--{% if node.layout == "page" %}-->
+            <!--<a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>-->
+          <!--{% endif %}-->
+        <!--{% endif %}-->
+      <!--{% endfor %}-->
+    </nav>
+
+    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+  </div>
+</div>

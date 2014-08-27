@@ -1,0 +1,18 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// тут какой-то код по подтверждению регистрации</span>
+<span class="c1">//code</span>
+<span class="c1">//code</span>
+<span class="c1">//code</span>
+
+<span class="c1">//завершение скрипта, отправка email</span>
+<span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Регистрация нового пользователя&#39;</span><span class="p">;</span>
+<span class="nv">$message</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+    <span class="s1">&#39;&quot;%s&quot; успешно зарагистрировался на сайте %s.&#39;</span><span class="p">,</span>
+    <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;http://google.com&#39;</span>
+<span class="p">);</span>
+<span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;admin@google.com&#39;</span><span class="p">;</span>
+
+<span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>

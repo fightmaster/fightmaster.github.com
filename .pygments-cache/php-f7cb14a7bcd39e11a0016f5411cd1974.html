@@ -1,0 +1,22 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//массив исходных данных</span>
+<span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="c1">//1</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span><span class="c1">//10</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span><span class="c1">//1</span>
+    <span class="c1">//ваши данные</span>
+
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$bags</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">calculateWays</span><span class="p">(</span><span class="nv">$bags</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">calculateWays</span><span class="p">(</span><span class="k">array</span> <span class="nv">$bags</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$countWays</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//ваш код</span>
+
+    <span class="k">return</span> <span class="nv">$countWays</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

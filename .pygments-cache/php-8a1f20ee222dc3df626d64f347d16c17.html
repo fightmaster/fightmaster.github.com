@@ -1,0 +1,16 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//registration.php</span>
+
+<span class="c1">// тут какой-то код по регистрации пользователя</span>
+<span class="c1">//code</span>
+<span class="c1">//code</span>
+<span class="c1">//code</span>
+
+<span class="c1">//завершение скрипта, отправка email</span>
+<span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Подтверждение регистрации&#39;</span><span class="p">;</span>
+<span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;Для успешной регистрации пройдите по ссылке http://google.com&#39;</span><span class="p">;</span>
+<span class="nv">$recipient</span> <span class="o">=</span> <span class="s1">&#39;vasya.pupkin@google.com&#39;</span><span class="p">;</span>
+
+<span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>

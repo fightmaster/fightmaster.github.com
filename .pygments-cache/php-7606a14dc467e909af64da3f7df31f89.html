@@ -1,0 +1,21 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//массив исходных данных</span>
+<span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="c1">//Шелдон</span>
+    <span class="mi">6</span><span class="p">,</span> <span class="c1">//Шелдон</span>
+    <span class="mi">1802</span> <span class="c1">//Пенни</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">getNameByNumber</span><span class="p">(</span><span class="nv">$n</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$result</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">getNameByNumber</span><span class="p">(</span><span class="nv">$n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$queue</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Шелдон&#39;</span><span class="p">,</span> <span class="s1">&#39;Леонард&#39;</span><span class="p">,</span> <span class="s1">&#39;Пенни&#39;</span><span class="p">,</span> <span class="s1">&#39;Раджеш&#39;</span><span class="p">,</span> <span class="s1">&#39;Говард&#39;</span><span class="p">);</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="c1">//ваш код</span>
+
+    <span class="k">return</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

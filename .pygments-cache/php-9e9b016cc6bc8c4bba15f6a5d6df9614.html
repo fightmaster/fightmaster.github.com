@@ -1,0 +1,44 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="sd">/**</span>
+<span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">PrintingPress</span> <span class="k">extends</span> <span class="nx">AbstractMachine</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$speed</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return boolean</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isDuplexPrinting</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return boolean</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isQuickPrint</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSpeed</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">PRINTING_PRESS</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

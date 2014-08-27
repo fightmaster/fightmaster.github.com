@@ -1,0 +1,23 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//массив исходных данных</span>
+<span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span><span class="c1">//8 операций</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="c1">//4 операций</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="c1">//0 оперций</span>
+    <span class="c1">//ваши данные</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$inputData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$inputData</span><span class="p">;</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">calculateOperations</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$result</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">calculateOperations</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$numberOfOperations</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//ваш код</span>
+
+    <span class="k">return</span> <span class="nv">$numberOfOperations</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

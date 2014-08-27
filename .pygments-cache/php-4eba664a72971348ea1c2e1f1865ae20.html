@@ -1,0 +1,80 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="sd">/**</span>
+<span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
+<span class="sd"> */</span>
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">AbstractMachine</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="no">PRINTING_PRESS</span> <span class="o">=</span> <span class="s1">&#39;printing press&#39;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">UV_PRESS</span> <span class="o">=</span> <span class="s1">&#39;uv press&#39;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">LAMINATING_MACHINE</span> <span class="o">=</span> <span class="s1">&#39;laminating machine&#39;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">COPIER</span> <span class="o">=</span> <span class="s1">&#39;copier&#39;</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$vendorName</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$year</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">();</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getVendorName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">vendorName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $vendorName</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setVendorName</span><span class="p">(</span><span class="nv">$vendorName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">vendorName</span> <span class="o">=</span> <span class="nv">$vendorName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getYear</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param integer $year</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setYear</span><span class="p">(</span><span class="nv">$year</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="nv">$year</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

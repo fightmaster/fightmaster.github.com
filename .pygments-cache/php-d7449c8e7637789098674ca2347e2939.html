@@ -1,0 +1,23 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//массив исходных данных</span>
+<span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Мачо, но по ночам.&#39;</span><span class="p">),</span><span class="c1">// YES</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Лев с ума даму свел&#39;</span><span class="p">),</span><span class="c1">//YES</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Пеле нелеп&#39;</span><span class="p">),</span><span class="c1">//YES</span>
+    <span class="c1">//ваши данные</span>
+
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$word</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">isPalindrome</span><span class="p">(</span><span class="nv">$word</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;YES&#39;</span> <span class="o">:</span> <span class="s1">&#39;NO&#39;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="nv">$word</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$isPalindrome</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="c1">//ваш код</span>
+
+    <span class="k">return</span> <span class="nv">$isPalindrome</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

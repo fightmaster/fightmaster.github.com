@@ -1,0 +1,22 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//массив исходных данных</span>
+<span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="c1">//число k и массив очков в убывающем порядке</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span><span class="c1">//6 участников</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="c1">//0 участников</span>
+    <span class="c1">//ваши данные</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$basicData</span> <span class="k">as</span> <span class="nv">$inputData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">list</span><span class="p">(</span><span class="nv">$k</span><span class="p">,</span> <span class="nv">$points</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$inputData</span><span class="p">;</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">calculateMembersOfNextRound</span><span class="p">(</span><span class="nv">$k</span><span class="p">,</span> <span class="nv">$points</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$result</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">calculateMembersOfNextRound</span><span class="p">(</span><span class="nv">$k</span><span class="p">,</span> <span class="nv">$points</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$membersOfNextRound</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//ваш код</span>
+
+    <span class="k">return</span> <span class="nv">$membersOfNextRound</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

@@ -1,0 +1,14 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//код другого программиста</span>
+<span class="nv">$mailService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MailService</span><span class="p">();</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;user@google.com&#39;</span><span class="p">;</span>
+<span class="c1">//тут идет еще какой-то код</span>
+<span class="c1">//тут идет еще какой-то код</span>
+<span class="c1">//и тут с течением времени остается следующая строка</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">recipient</span> <span class="o">=</span> <span class="s1">&#39;unknown email&#39;</span><span class="p">;</span>
+
+<span class="c1">//тут снова код и спустя 100-200 строк</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">subject</span> <span class="o">=</span> <span class="s1">&#39;Заголовок&#39;</span><span class="p">;</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s1">&#39;Сообщение&#39;</span><span class="p">;</span>
+<span class="nv">$mailService</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>

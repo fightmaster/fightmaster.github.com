@@ -1,0 +1,21 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">Child</span> <span class="k">extends</span> <span class="nx">ParentClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$d</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">_printVars</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nb">printf</span><span class="p">(</span>
+            <span class="s1">&#39;$a = %s; $b = %s; $c = %s; $d = %d;&#39;</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">?</span> <span class="s1">&#39;true&#39;</span> <span class="o">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span><span class="p">,</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">d</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">printData</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nb">get_class</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_printVars</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

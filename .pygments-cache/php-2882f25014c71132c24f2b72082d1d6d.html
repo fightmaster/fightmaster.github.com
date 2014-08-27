@@ -1,0 +1,21 @@
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nb">spl_autoload_register</span><span class="p">(</span><span class="s1">&#39;autoload_function&#39;</span><span class="p">);</span>
+<span class="k">function</span> <span class="nf">autoload_function</span><span class="p">(</span><span class="nv">$className</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$className</span> <span class="o">=</span> <span class="nb">ltrim</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">);</span>
+    <span class="nv">$fileName</span>  <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="nv">$namespace</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$lastNsPos</span> <span class="o">=</span> <span class="nb">strrpos</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$namespace</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$lastNsPos</span><span class="p">);</span>
+        <span class="nv">$className</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="nv">$lastNsPos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="nv">$fileName</span>  <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;\\&#39;</span><span class="p">,</span> <span class="nx">DIRECTORY_SEPARATOR</span><span class="p">,</span> <span class="nv">$namespace</span><span class="p">)</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$fileName</span> <span class="o">.=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="nx">DIRECTORY_SEPARATOR</span><span class="p">,</span> <span class="nv">$className</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+
+    <span class="k">require</span> <span class="nv">$fileName</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster\PHPLecture</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster_PHPLectureUnderscore</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster\underscore_directory\PHPLecture</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="k">new</span> <span class="nx">\Fightmaster\PHP_Lecture</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
+</pre></div>
