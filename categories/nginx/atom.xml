@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nginx | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/nginx/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-08-28T08:58:15+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up Symfony with Nginx server]]></title>
+    <link href="http://fightmaster.github.io//blog/2013/02/12/setting-up-symfony-with-nginx-server.html"/>
+    <updated>2013-02-12T23:21:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2013/02/12/setting-up-symfony-with-nginx-server</id>
+    <content type="html"><![CDATA[<p>Каждый раз, когда я обновляю систему или nginx, я постоянно мучаюсь с настройкой.
+С переходом на <code>php 5.4</code> я столкнулся с новой проблемой <code>access denied</code>.
+Ниже выкладываю рабочий конфиг для <code>nginx/1.2.6</code> и <code>symfony2</code>;</p>
+
+<!-- more -->
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>nginx/conf.d/project (project)</span> <a href='/downloads/code/nginx/conf.d/project'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'><span class="vg">server</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">    </span><span class="vg">listen</span><span class="w">  </span><span class="il">80</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">server_name</span><span class="w"> </span><span class="vg">project_name</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">root</span><span class="w"> </span><span class="o">/</span><span class="vg">project_path</span><span class="o">/</span><span class="vg">web</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">index</span><span class="w"> </span><span class="vg">app_dev</span><span class="o">.</span><span class="vg">php</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">php</span><span class="w"> </span><span class="vg">app_test</span><span class="o">.</span><span class="vg">php</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="err">##</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">умолчанию</span><span class="w"> </span><span class="err">работает</span><span class="w"> </span><span class="err">под</span><span class="w"> </span><span class="vg">dev</span><span class="w"> </span><span class="vg">env</span>
+</span><span class='line'><span class="w">    </span><span class="vg">rewrite</span><span class="w"> </span><span class="o">^/</span><span class="vg">app_dev</span><span class="o">\.</span><span class="vg">php</span><span class="o">/?</span><span class="p">(</span><span class="o">.*</span><span class="p">)</span><span class="err">$</span><span class="w"> </span><span class="o">/</span><span class="err">$</span><span class="il">1</span><span class="w"> </span><span class="vg">permanent</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="err">##</span><span class="w"> </span><span class="err">данный</span><span class="w"> </span><span class="err">блок</span><span class="w"> </span><span class="err">актуален</span><span class="w"> </span><span class="err">для</span><span class="w"> </span><span class="err">настройки</span><span class="w"> </span><span class="vg">OPTIONS</span>
+</span><span class='line'><span class="w">        </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="err">$</span><span class="vg">request_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">OPTIONS</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">            </span><span class="err">##</span><span class="w"> </span><span class="err">при</span><span class="w"> </span><span class="err">необходимости</span><span class="w"> </span><span class="err">можно</span><span class="w"> </span><span class="err">указать</span><span class="w"> </span><span class="err">специфический</span><span class="w"> </span><span class="vg">url</span>
+</span><span class='line'><span class="w">            </span><span class="vg">add_header</span><span class="w"> </span><span class="vg">Access</span><span class="o">-</span><span class="vg">Control</span><span class="o">-</span><span class="vg">Allow</span><span class="o">-</span><span class="vg">Origin</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="w">            </span><span class="vg">add_header</span><span class="w"> </span><span class="vg">Access</span><span class="o">-</span><span class="vg">Control</span><span class="o">-</span><span class="vg">Allow</span><span class="o">-</span><span class="vg">Methods</span><span class="w"> </span><span class="s2">&quot;GET, OPTIONS, POST, PUT, DELETE&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="w">            </span><span class="err">##</span><span class="w"> </span><span class="err">при</span><span class="w"> </span><span class="err">необходимсти</span><span class="w"> </span><span class="err">добавить</span><span class="w"> </span><span class="err">заголовки</span><span class="p">,</span><span class="w"> </span><span class="err">например</span><span class="w"> </span><span class="vg">X</span><span class="o">-</span><span class="vg">WSSE</span>
+</span><span class='line'><span class="w">            </span><span class="vg">add_header</span><span class="w"> </span><span class="vg">Access</span><span class="o">-</span><span class="vg">Control</span><span class="o">-</span><span class="vg">Allow</span><span class="o">-</span><span class="vg">Headers</span><span class="w"> </span><span class="s2">&quot;origin, accept&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="w">            </span><span class="vg">add_header</span><span class="w"> </span><span class="vg">Access</span><span class="o">-</span><span class="vg">Control</span><span class="o">-</span><span class="vg">Allow</span><span class="o">-</span><span class="vg">Credentials</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="w">            </span><span class="vg">add_header</span><span class="w"> </span><span class="vg">Content</span><span class="o">-</span><span class="vg">Length</span><span class="w"> </span><span class="il">0</span><span class="p">;</span>
+</span><span class='line'><span class="w">            </span><span class="vg">return</span><span class="w"> </span><span class="il">200</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">        </span><span class="vg">index</span><span class="w"> </span><span class="vg">app_dev</span><span class="o">.</span><span class="vg">php</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">try_files</span><span class="w"> </span><span class="err">$</span><span class="vg">uri</span><span class="w"> </span><span class="err">@</span><span class="vg">rewriteapp</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="err">@</span><span class="vg">rewriteapp</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">rewrite</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="o">.*</span><span class="p">)</span><span class="err">$</span><span class="w"> </span><span class="o">/</span><span class="vg">app_dev</span><span class="o">.</span><span class="vg">php</span><span class="o">/</span><span class="err">$</span><span class="il">1</span><span class="w"> </span><span class="vg">last</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="err">##</span><span class="w"> </span><span class="vg">pass</span><span class="w"> </span><span class="vg">php</span><span class="w"> </span><span class="vg">scripts</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">fastcgi</span>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="o">^/</span><span class="p">(</span><span class="vg">app</span><span class="o">|</span><span class="vg">app_dev</span><span class="o">|</span><span class="vg">app_test</span><span class="p">)</span><span class="o">\.</span><span class="vg">php</span><span class="p">(</span><span class="o">/|</span><span class="err">$</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_pass</span><span class="w"> </span><span class="nl">unix:</span><span class="o">/</span><span class="vg">tmp</span><span class="o">/</span><span class="vg">php</span><span class="o">-</span><span class="vg">fpm</span><span class="o">.</span><span class="vg">socket</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_split_path_info</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="o">.+\.</span><span class="vg">php</span><span class="p">)(</span><span class="o">/.*</span><span class="p">)</span><span class="err">$</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">include</span><span class="w"> </span><span class="o">/</span><span class="vg">etc</span><span class="o">/</span><span class="vg">nginx</span><span class="o">/</span><span class="vg">fastcgi_params</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w">  </span><span class="vg">SCRIPT_FILENAME</span><span class="w"> </span><span class="err">$</span><span class="vg">document_root$fastcgi_script_name</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w">  </span><span class="vg">HTTPS</span><span class="w"> </span><span class="vg">off</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w"> </span><span class="vg">PATH_INFO</span><span class="w"> </span><span class="err">$</span><span class="vg">fastcgi_path_info</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w"> </span><span class="vg">PATH_TRANSLATED</span><span class="w"> </span><span class="err">$</span><span class="vg">document_root$fastcgi_path_info</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="err">##</span><span class="w"> </span><span class="vg">disable</span><span class="w"> </span><span class="vg">viewing</span><span class="w"> </span><span class="o">.</span><span class="vg">htaccess</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">.</span><span class="vg">htpassword</span>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="o">/\.</span><span class="vg">ht</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">deny</span><span class="w">  </span><span class="vg">all</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="vg">server</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">    </span><span class="vg">listen</span><span class="w"> </span><span class="il">443</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">server_name</span><span class="w"> </span><span class="vg">project_name</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">root</span><span class="w"> </span><span class="o">/</span><span class="vg">project_path</span><span class="o">/</span><span class="vg">web</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="vg">ssl</span><span class="w"> </span><span class="vg">on</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">ssl_certificate</span><span class="w"> </span><span class="o">/</span><span class="vg">etc</span><span class="o">/</span><span class="vg">ssl</span><span class="o">/</span><span class="vg">certs</span><span class="o">/</span><span class="vg">project</span><span class="o">.</span><span class="vg">crt</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="vg">ssl_certificate_key</span><span class="w"> </span><span class="o">/</span><span class="vg">etc</span><span class="o">/</span><span class="vg">ssl</span><span class="o">/</span><span class="vg">private</span><span class="o">/</span><span class="vg">project</span><span class="o">.</span><span class="vg">key</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="vg">strip</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">php</span><span class="o">/</span><span class="w"> </span><span class="vg">prefix</span><span class="w"> </span><span class="vg">if</span><span class="w"> </span><span class="vg">it</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">present</span>
+</span><span class='line'><span class="w">    </span><span class="vg">rewrite</span><span class="w"> </span><span class="o">^/</span><span class="vg">app_dev</span><span class="o">\.</span><span class="vg">php</span><span class="o">/?</span><span class="p">(</span><span class="o">.*</span><span class="p">)</span><span class="err">$</span><span class="w"> </span><span class="o">/</span><span class="err">$</span><span class="il">1</span><span class="w"> </span><span class="vg">permanent</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">index</span><span class="w"> </span><span class="vg">app_dev</span><span class="o">.</span><span class="vg">php</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">try_files</span><span class="w"> </span><span class="err">$</span><span class="vg">uri</span><span class="w"> </span><span class="err">@</span><span class="vg">rewriteapp</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="err">@</span><span class="vg">rewriteapp</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">rewrite</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="o">.*</span><span class="p">)</span><span class="err">$</span><span class="w"> </span><span class="o">/</span><span class="vg">app_dev</span><span class="o">.</span><span class="vg">php</span><span class="o">/</span><span class="err">$</span><span class="il">1</span><span class="w"> </span><span class="vg">last</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="vg">pass</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">PHP</span><span class="w"> </span><span class="vg">scripts</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">FastCGI</span><span class="w"> </span><span class="vg">server</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">9000</span>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="o">^/</span><span class="p">(</span><span class="vg">app</span><span class="o">|</span><span class="vg">app_dev</span><span class="o">|</span><span class="vg">app_test</span><span class="p">)</span><span class="o">\.</span><span class="vg">php</span><span class="p">(</span><span class="o">/|</span><span class="err">$</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_pass</span><span class="w"> </span><span class="nl">unix:</span><span class="o">/</span><span class="vg">tmp</span><span class="o">/</span><span class="vg">php</span><span class="o">-</span><span class="vg">fpm</span><span class="o">.</span><span class="vg">socket</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_split_path_info</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="o">.+\.</span><span class="vg">php</span><span class="p">)(</span><span class="o">/.*</span><span class="p">)</span><span class="err">$</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">include</span><span class="w"> </span><span class="o">/</span><span class="vg">etc</span><span class="o">/</span><span class="vg">nginx</span><span class="o">/</span><span class="vg">fastcgi_params</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w"> </span><span class="vg">SCRIPT_FILENAME</span><span class="w"> </span><span class="err">$</span><span class="vg">document_root$fastcgi_script_name</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w"> </span><span class="vg">HTTPS</span><span class="w"> </span><span class="vg">on</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w"> </span><span class="vg">PATH_INFO</span><span class="w"> </span><span class="err">$</span><span class="vg">fastcgi_path_info</span><span class="p">;</span>
+</span><span class='line'><span class="w">        </span><span class="vg">fastcgi_param</span><span class="w"> </span><span class="vg">PATH_TRANSLATED</span><span class="w"> </span><span class="err">$</span><span class="vg">document_root$fastcgi_path_info</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'><span class="err">##</span><span class="w"> </span><span class="vg">disable</span><span class="w"> </span><span class="vg">viewing</span><span class="w"> </span><span class="o">.</span><span class="vg">htaccess</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">.</span><span class="vg">htpassword</span>
+</span><span class='line'><span class="w">    </span><span class="vg">location</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="o">/\.</span><span class="vg">ht</span><span class="w"> </span><span class="p">{</span>
+</span><span class='line'><span class="w">        </span><span class="vg">deny</span><span class="w"> </span><span class="vg">all</span><span class="p">;</span>
+</span><span class='line'><span class="w">    </span><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Полезная ссылка по теме: <a href="http://wiki.nginx.org/Symfony">http://wiki.nginx.org/Symfony</a></p>
+]]></content>
+  </entry>
+  
+</feed>

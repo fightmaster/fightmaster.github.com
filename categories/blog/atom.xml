@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blog | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/blog/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-08-28T08:58:15+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Поехали!]]></title>
+    <link href="http://fightmaster.github.io//blog/2013/02/09/go-go-go.html"/>
+    <updated>2013-02-09T17:36:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2013/02/09/go-go-go</id>
+    <content type="html"><![CDATA[<p>О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.</p>
+
+<p>Итак, со вторника я начинаю читать лекции по php. Благодаря github и octopress я надеюсь мечта идиота сбудется,
+и блог начнет свою жизнь.</p>
+]]></content>
+  </entry>
+  
+</feed>

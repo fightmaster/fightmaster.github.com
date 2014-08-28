@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: boolean attribute | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/boolean-attribute/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-08-28T08:58:15+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Чистый код. Boolean attribute]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/02/02/clean-code-boolean-attribute.html"/>
+    <updated>2014-02-02T11:43:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/02/02/clean-code-boolean-attribute</id>
+    <content type="html"><![CDATA[<p>Прошло два месяца с момента публикации последнего поста. Все настолько сильно перевернулось в моих рабочих буднях, что никак не войду в нужный ритм. Прошу извинить.</p>
+
+<p>Но сегодня пойдет речь не об этом. На работе споткнулся на два интересных момента, а я обещал вам писать о своих приключениях. Попробую рассказать об одном из них.</p>
+
+<!-- more -->
+
+<h3>Boolean Attribute</h3>
+
+<p>На мой взгляд, <code>Boolean Attribute</code> особенный итем/тип/термин в ООП. Кажется, что он намного проще <code>Exception</code>, подумаешь, всего лишь два возможных значения: <code>true</code> и <code>false</code>.
+Но то ли я книжек в своей жизни уже перечитал, то ли опыт рефакторинга легаси проекта сказывается.
+Я стал замечать у себя приступы ненависти, самоуничтожения при виде, как люди могут работать с такими атрибутами.</p>
+
+<h4>Пример номер 1</h4>
+
+<p>В каком-то контроллере какого-то проекта кто-то решил изменить статус.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$vacancy</span><span class="o">-&gt;</span><span class="na">getStatus</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$vacancy</span><span class="o">-&gt;</span><span class="na">setStatus</span><span class="p">(</span><span class="nv">$status</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Сколько претензий у вас к этому коду? Лично я затрудняюсь определить для себя, с какой стороны этот код обругать.
+По-моему, автор сам себя запутал. Вообще, это глобальная проблема программиста, что он не знает чего хочет и пишет код.
+Милый друг, остановись и подумай, прекрати смотреть и копипастить.</p>
+
+<h4>Пример номер два</h4>
+
+<p>Бытовой пример, есть некий класс с атрибутом. Если человек когда-нибудь слышал про <code>is*</code>, то он обязательно напишет слудующее.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$isActivated</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$enabled</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setIsActivated</span><span class="p">(</span><span class="nv">$isActivated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isActivated</span> <span class="o">=</span> <span class="nv">$isActivated</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getIsActivated</span><span class="p">(</span><span class="nv">$isActivated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isActivated</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">    public function isIsActivated($isActivated)</span>
+<span class="cm">    {</span>
+<span class="cm">        return $this-&gt;isActivated;</span>
+<span class="cm">    }</span>
+
+<span class="cm">    public function isActivated($isActivated)</span>
+<span class="cm">    {</span>
+<span class="cm">        return $this-&gt;isActivated;</span>
+<span class="cm">    }</span>
+<span class="cm">    */</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setEnabled</span><span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="nv">$enabled</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEnabled</span><span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">    public function isEnabled($enabled)</span>
+<span class="cm">    {</span>
+<span class="cm">        return $this-&gt;enabled;</span>
+<span class="cm">    }</span>
+<span class="cm">    */</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Вообще всевозможных вариаций трудно представить, в зависимости от конекста они вызывают разное &quot;фи&quot;.</p>
+
+<h4>Это же php</h4>
+
+<p>Этот параграф специально для тех, кто любит поржать над <code>php</code>. Как вы знаете и понимаете, создав <code>setEnabled</code>,
+вы можете вызвать <code>$user-&gt;setEnabled(&#39;Ha-ha&#39;); $user-&gt;setEnabled(1); $user-&gt;setEnabled(0);</code>. Немного неприятно.</p>
+
+<h4>Скрытые проблемы</h4>
+
+<p>На самом деле проблема лежит не в самом классе, а там где его используют. Программисты порой создают булевые атрибуты в качестве индикаторов чего-то.
+И зачастую вызов стандартных <code>set*, get*</code> превращает код в какую-то паутину. Вы не сразу вспоминаете или понимаете, а что на самом деле здесь происходит.
+Это не является какой-то причиной появления гавнокода, но это один из шагов к нему. Трудно превести конкретный пример, искать/описывать лень, но если представить...</p>
+
+<p>Если мы завели какой-то флаг, значит он для чего-то нужен. Скорее всего, это будет какой-то <code>if</code>, а возможно и не один.
+Соответственно нам не нужен в большинстве случаев <code>get*</code>.
+Самое худшее, если этот флаг влияет на поведение другого атрибута этого объекта.
+Вызов казалось бы обычного <code>setDeleted</code> может привести к невалидности соседнего атрибута.
+А пихать дополнительную логику в этот сеттер - еще хуже.</p>
+
+<h4>Лекарство, но не пуля</h4>
+
+<p>Лично я предпочитаю следующие правила. Атрибуты делать причастиями: <code>enabled</code>, <code>deleted</code>, <code>activated</code>.
+Вместо <code>get*</code> использовать <code>is*</code>: <code>isEnabled</code>, <code>isDeleted</code>, <code>isActivated</code>.
+Вместо <code>set*</code> создавать методы-глаголы действия: <code>enable</code>, <code>disable</code>, <code>delete</code>, <code>restore</code>, <code>activate</code>, <code>deactivate</code>.</p>
+
+<p>В случаях, когда все-таки ваш фреймворк требует <code>set*</code> метод, использовать что-то вроде этого:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">enable</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">disable</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">setEnabled</span><span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$enabled</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enable</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">disable</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4>Проблемы с наименованием</h4>
+
+<p>В текущем проекте несколько раз сталкивались с слишком замудренными атрибутами, к которым хороший глагол сразу не подберешь.
+Мне кажется тут две проблемы: похой скилл подбора имен и сложная логика, пора начать рефакторинг.</p>
+
+<p>Всегда можно однозначно дать определение состояния, в котором находится объект при данном значении атрибута.
+Соответсвенно есть и название переходов из одного состояния в другое.</p>
+
+<p>Если же состояние определяется сразу несколькими значениями, его формулировка занимает два-три предложения, навряд ли предложенная схема вам подойдет и поможет.
+Скорее всего, она запутает код еще больше. Лучше всего задуматься о пересмотре этого куска кода, попробовать вынести логику в отдельный resolver.</p>
+]]></content>
+  </entry>
+  
+</feed>

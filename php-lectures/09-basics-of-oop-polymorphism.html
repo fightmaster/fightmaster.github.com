@@ -1,36 +1,32 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Основы ООП. Полиморфизм - fightmaster's blog</title>
-  <meta name="author" content="fightmaster">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  
-  <meta name="description" content="Основы ООП. Полиморфизм Apr 4th, 2013 Краткое содержание лекции Теоретические задания |
-Практические задания В отличие от двух предыдущих лекций, я &hellip;">
-  
+    <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://fightmaster.github.io/php-lectures/09-basics-of-oop-polymorphism.html">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <title>
+    
+      Основы ООП. Полиморфизм &middot; Fightmaster's blog
+    
+  </title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -47,70 +43,277 @@
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">fightmaster's blog</a></h1>
-  
-    <h2>Скромный персональный блог</h2>
-  
-</hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:fightmaster.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-    <li><a href="/">Блог</a></li>
-    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
-    <li><a href="/blog/archives">Архив</a></li>
-</ul>
+    <body>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article role="article">
-  
-  <header>
-    <h1 class="entry-title">Основы ООП. Полиморфизм</h1>
-    <p class="meta">
+        <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+            <img src="/public/avatar.jpeg">
+        </a>
+      </h1>
+      <p class="lead">Скромный персональный блог <a href="https://twitter.com/old_fightmaster" target="_blank">@old_fightmaster</a></p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Блог</a>
+      <a class="sidebar-nav-item" href="/php-lectures/00-contents.html">PHP-лекции</a>
+      <a class="sidebar-nav-item" href="/blog/archives/index.html">Архив</a>
+
+      
+
+      <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/blog/archives/index.html">Blog Archive</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/life/index.html">Category: life</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/blog/index.html">Category: blog</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/php/index.html">Category: php</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/lectures/index.html">Category: lectures</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/nginx/index.html">Category: nginx</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/symfony2/index.html">Category: symfony2</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/ubuntu/index.html">Category: ubuntu</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/usa/index.html">Category: usa</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/design-patterns/index.html">Category: design patterns</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/unit-tests/index.html">Category: unit tests</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/code-review/index.html">Category: code review</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/clean-code/index.html">Category: clean code</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/handbook/index.html">Category: handbook</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/sport/index.html">Category: sport</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/run/index.html">Category: run</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/data-provider/index.html">Category: data provider</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/refactoring/index.html">Category: refactoring</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/amazon/index.html">Category: amazon</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/kindle-paperwhite/index.html">Category: kindle paperwhite</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/boolean-attribute/index.html">Category: boolean attribute</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-04T04:00:00+04:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time></p>
-  </header>
-  
+    <div class="content container">
+        <div class="page">
+  <h1 class="page-title">Основы ООП. Полиморфизм</h1>
   <h3>Краткое содержание лекции</h3>
 
 <p><a href="09-basics-of-oop-polymorphism-theoretical-tasks.html">Теоретические задания</a> |
 <a href="09-basics-of-oop-polymorphism-practical-tasks.html">Практические задания</a></p>
 
 <p>В отличие от двух предыдущих лекций, я не буду заставлять вас самостоятельно искать определение полиморфизма.
-При подготовке к лекции я убедился, что поиск &ldquo;полиморфизм php&rdquo; занятие гибельное.
-Поэтому прочтите лучше статьи о &ldquo;полиморфизм java&rdquo;. Мне понравились следующие: <a href="http://strongexperts.narod.ru/ru/articles/archive/java2/2006/apr2006-004/apr2006-004.htm">Полиморфизм в Java</a>, <a href="http://echuprina.blogspot.ru/2012/01/blog-post.html">Объектно-ориентированное программирование. Полиморфизм</a>.</p>
+При подготовке к лекции я убедился, что поиск &quot;полиморфизм php&quot; занятие гибельное.
+Поэтому прочтите лучше статьи о &quot;полиморфизм java&quot;. Мне понравились следующие: <a href="http://strongexperts.narod.ru/ru/articles/archive/java2/2006/apr2006-004/apr2006-004.htm">Полиморфизм в Java</a>, <a href="http://echuprina.blogspot.ru/2012/01/blog-post.html">Объектно-ориентированное программирование. Полиморфизм</a>.</p>
 
-<p>Но главная суть полиморфизма: &ldquo;Один интерфейс, множество реализаций&rdquo;. Давайте рассмотрим примеры на php.</p>
+<p>Но главная суть полиморфизма: &quot;Один интерфейс, множество реализаций&quot;. Давайте рассмотрим примеры на php.</p>
 
-<p>Начнем с самого простого. Как я говорил раньше, с php5 появился стандартный интерфейс Countable. Он состоит из 1 метода <code>count()</code>. Этот интерфейс могут имплементировать совершенно разные классы: от объектов коллекций до обычных моделей.</p>
+<p>Начнем с самого простого. Как я говорил раньше, с php5 появился стандартный интерфейс Countable. Он состоит из 1 метода <code>count()</code>. Этот интерфейс могут имплементировать совершенно разные классы: от объектов коллекций до обычных моделей. </p>
 
-<figure class='code'><figcaption><span> (Collection.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/Collection.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Collection.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/Collection.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -160,7 +363,7 @@
 <span class='line-number'>47</span>
 <span class='line-number'>48</span>
 <span class='line-number'>49</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="k">namespace</span> <span class="nx">Fightmaster</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">use</span> <span class="nx">Countable</span><span class="p">;</span>
@@ -209,10 +412,9 @@
 </span><span class='line'>        <span class="k">return</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">items</span><span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (News.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/News.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (News.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/News.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -233,7 +435,7 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="k">namespace</span> <span class="nx">Fightmaster</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">use</span> <span class="nx">Countable</span><span class="p">;</span>
@@ -253,31 +455,29 @@
 </span><span class='line'>        <span class="k">return</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comments</span><span class="p">);</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>В приведенном выше примере у нас есть классы и есть какой-то интерфейс, и мы обязываем классы их реализовать.
 Но к этому вопросу можно подойти и с другой стороны. У нас есть задача для некоего сервиса: есть данные и нужно их отсортировать, при этом желательно иметь несколько реализаций.</p>
 
 <p>Чаще всего, вы встретите следующее ренешение.</p>
 
-<figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step1/index.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step1/index.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
 </span><span class='line'><span class="nv">$service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Service</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$service</span><span class="o">-&gt;</span><span class="na">doSomething</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step1/Service.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step1/Service.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -305,7 +505,7 @@
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -332,13 +532,12 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//code</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Но у этого решения проблема с динамическим выбором алгоритма. А также, алгоритмов сортировки много, а сервис у нас отвечает не только за сортировку.
 Несовсем корректно копить столько кода в классе. Привлекательнее вариант с тем, чтобы разнести алгоритмы по классам.</p>
 
-<figure class='code'><figcaption><span> (QuickSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/QuickSort.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (QuickSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/QuickSort.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -350,7 +549,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -361,10 +560,9 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (ShellSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/ShellSort.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (ShellSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/ShellSort.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -376,7 +574,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -387,10 +585,9 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/Service.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/Service.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -410,7 +607,7 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -429,29 +626,27 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//code</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/index.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step2/index.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
 </span><span class='line'><span class="nv">$service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Service</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$service</span><span class="o">-&gt;</span><span class="na">doSomething</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>При таком исполнении не очень понятно, а что стало лучше. Бросается в глаза проблема с наименованием метода в классе сортировок.
 Разумно их заменить на просто <code>count</code>.</p>
 
-<figure class='code'><figcaption><span> (QuickSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/QuickSort.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (QuickSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/QuickSort.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -463,7 +658,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -474,10 +669,9 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (ShellSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/ShellSort.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (ShellSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/ShellSort.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -489,7 +683,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -500,10 +694,9 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/Service.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/Service.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -523,7 +716,7 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -542,42 +735,39 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//code</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/index.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step3/index.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
 </span><span class='line'><span class="nv">$service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Service</span><span class="p">();</span>
 </span><span class='line'><span class="nv">$service</span><span class="o">-&gt;</span><span class="na">doSomething</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Но теперь случилась ситуация, что у нас несколько реализаций одного и того же, при этом наш код имеет только условные договоренности, что метод будет называться <code>count</code>. И возникает естественное желание эту условную договоренность перевести в письменные обязательства.</p>
 
-<figure class='code'><figcaption><span> (SortInterface.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step4/SortInterface.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (SortInterface.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step4/SortInterface.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="k">interface</span> <span class="nx">SortInterface</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">public</span> <span class="k">function</span> <span class="nf">sort</span><span class="p">();</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (QuickSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step4/QuickSort.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (QuickSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step4/QuickSort.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -589,7 +779,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -600,10 +790,9 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (ShellSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step4/ShellSort.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (ShellSort.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step4/ShellSort.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -615,7 +804,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -626,13 +815,12 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>Теперь осталась одна проблема, рассмотрение которой не совсем входит в текущий курс.
+<p>Теперь осталась одна проблема, рассмотрение которой не совсем входит в текущий курс. 
 Данный код тяжело будет протестировать. Так как объект сортировке создается непосредственно в методе <code>doSomething</code>.</p>
 
-<figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step5/Service.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Service.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step5/Service.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -661,7 +849,7 @@
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -689,10 +877,9 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//code</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step5/index.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (index.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-polymorphism/sorts/step5/index.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -701,7 +888,7 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -709,359 +896,25 @@
 </span><span class='line'><span class="c1">//$sortAlgorithm = new ShellSort();</span>
 </span><span class='line'><span class="nv">$service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Service</span><span class="p">(</span><span class="nv">$sortAlgorithm</span><span class="p">);</span>
 </span><span class='line'><span class="nv">$service</span><span class="o">-&gt;</span><span class="na">doSomething</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Дальше мы не будем производить рефакторинг.</p>
 
-<p>Отмечу еще раз факт, во втором примере мы не создаем еще одну реализацию интерфейса.
+<p>Отмечу еще раз факт, во втором примере мы не создаем еще одну реализацию интерфейса. 
 Мы в процессе рефакторинга приходим к тому, что у нас существуют как минимум две разные реализации одного и того же, которые хочется стандартизировать. Стоит обратить внимание на конструктор класса <code>Service</code>. Он принимает не конкретную реализацию, и сам класс работает теперь не с чем-то конкретным. Наш <code>Service</code> теперь лишь знает о интерфейсе <code>SortInterface</code> и его интересует лишь только это. Он сможет работать с любым классом, который заключил контракт и обязался выполнять его условия, а значит <code>Service</code> сможет воспользоваться любым количеством реализаций.</p>
 
 <p>У нас на проекте есть более сложные примеры, где в аналогичной ситуации вынесено несколько методов под интерфейс, и несколько классов его имплементируют. Уместно задать вопрос, а почему тогда не воспользоваться наследованием?</p>
 
 <p>В принципе, вам никто не мешает это сделать. Но, если общие методы говорят вам о преимуществах полезной пищи, при этом один класс говорит о тараканах, другой о человеке, третий о автомобилях, четвертый о войне. В этой ситуации, на мой взгляд, наличие общего родителя лишь введет в заблуждение.</p>
 
-  
-    <footer>
-      <p class="meta">
-        
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-04T04:00:00+04:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time>
-        
-      </p>
-      
-        <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-lectures/09-basics-of-oop-polymorphism.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-lectures/09-basics-of-oop-polymorphism.html" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
 </div>
-
-      
-    </footer>
-  
-</article>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Список лекций</h1>
-  <ul id="php_lectures">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-exceptions.html">Исключения в PHP</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-encapsulation.html">Основы ООП. Инкапсуляция</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-objects-and-classes-basic-syntax.html">Объекты и классы в PHP. Основы синтаксиса</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/07-working-with-filesystem.html">Работа с файловой системой</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/03-control-structures.html">Управляющие структуры</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/00-contents.html">Содержание</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/01-introduction-to-php.html">Введение в PHP</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-polymorphism.html">Основы ООП. Полиморфизм</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-inheritance.html">Основы ООП. Наследование</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/08-global-variables.html">Глобальные переменные в PHP</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-magic-methods-in-php.html">Магия в PHP</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/06-regular-expressions.html">Регулярные выражения</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/10-coding-standard.html">Стандарты кодирования</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </ul>
-</section>
-
-  
-</aside>
-
 
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - fightmaster -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
-  
+        
 
 
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+        
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -1073,8 +926,26 @@
   </script>
 
 
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
+        
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
-</body>
+
+    </body>
 </html>

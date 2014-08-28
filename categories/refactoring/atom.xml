@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: refactoring | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/refactoring/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-08-28T08:58:15+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Все дело в том, что так бывает...]]></title>
+    <link href="http://fightmaster.github.io//blog/2013/10/17/the-whole-point-is-that-it-happens.html"/>
+    <updated>2013-10-17T23:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2013/10/17/the-whole-point-is-that-it-happens</id>
+    <content type="html"><![CDATA[<p>Именно так начинается одно из моих любимых стихотворений. Я собирался сегодня прийти домой и пописать код, но внезапно мне пришла в голову мораль одной басни, сюжет которой случился днем. Рекомендую уделить немного времени, хотя бы потому что это случалось с вами.</p>
+
+<!-- more -->
+
+<p>В статье про <a href="http://fightmaster.github.io/blog/2013/09/25/code-review.html">код ревью</a> был &quot;запрос&quot; на практическую сторону. Но руки не доходят написать что-то, да и сделать это достаточно сложно, по крайней мере в том виде, в котором я вижу. Скорее всего, она появится из таких маленьких статей, как эта.</p>
+
+<h3>Кусочек сыра</h3>
+
+<p>Сегодня попался на глаза вот такой кусочек кода.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">//code</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">Utilities</span><span class="o">::</span><span class="na">arrayContains</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//code</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Думаю что-то не так. Создают функцию в классе <code>Utilities</code> только тогда, когда не могут определить ее принадлежность. Что уже странно. Во-вторых, ну название. Вроде бы и понятно все, с другой стороны, не внушает какого-то доверия.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * @param array $array1</span>
+<span class="sd"> * @param array $array2</span>
+<span class="sd"> * @return boolean</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">arrayContains</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array1</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$array2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array1</span> <span class="k">as</span> <span class="nv">$value1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$value1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Действительно, несколько раз пробегаю глазами, так как боюсь упустить что-то, заставляя себя поверить в увиденное. Аккуратно оставляю предложение заменить содержание на <code>&lt;?php empty(array_diff($array1, $array2));?&gt;</code>, переименовать или удалить метод.</p>
+
+<p>В итоге вечером получаем...</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * @param array $array1</span>
+<span class="sd"> * @param array $array2</span>
+<span class="sd"> * @return boolean</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">isArrayDiff</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array1</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$array2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$diff</span> <span class="o">=</span> <span class="nb">array_diff</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$diff</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3>Про лису</h3>
+
+<p>Хитрый лис не скажет вороне: &quot;Дай сыр, птица&quot;. Во-первых, она может не дать его. Во-вторых, навряд ли это чему-то научит, басня-то не получится и морали не будет. Поэтому идеальный вариант для ревью - это подача чего угодно в наилучшем виде для автора кода. В более сложных случаях я и свой вариант содержания не предлагаю, так как его у меня просто нет. Просто прошу еще раз подумать, в сложных ситуациях спасает парное программирование. При этом не надо выступать в роли оратора или диктатора. Если вы хотите думать за всех, пишите проект один тогда. Не могу сказать, что у меня всегда получается быть хитропопой лисой, но я стараюсь.</p>
+
+<h3>Про чистый код и ворону</h3>
+
+<p>Я думаю, что знаю на 99 процентов причину появления такого метода. Конечно, человек уже наелся определенного куска проекта. Метод вызывается в очень неприятном месте с кучей условных конструкций, хотелось как-то лучше разгрести. Скорее всего, в голову не пришла функция <code>array_diff</code>, и вынос <code>foreach</code> в отдельный метод - правильный выбор.</p>
+
+<p>Но сам урок начался позже. Методы из двух строчек имеют место быть, все дело в названии. В последнем варианте мы получили обертку над стандартной функцией. В данном контексте она бессмысленна. Если мы захотим реализовать работу со стеком в ООП стиле и обернуть <code>array_pop</code> и <code>array_push</code> в класс и методы, то у нас будет цель и причина всего этого. Здесь цель не прослеживается.</p>
+
+<p>Так что же делать в данном случае? Я бы подумал над куском кода, где это вызывается. Возможно, существует определение этой операции в целом. Ведь массивы что-то содержат, у них есть нормальные имена (в статье они преднамеренно переведены в <code>array1</code> и <code>array2</code>).</p>
+
+<p>Например, если бы <code>array1</code> содержал права пользователя, а <code>array2</code> все необходимые права на просмотр страницы. Тогда, на мой скромный взгляд, метод имеет место быть на 101 процент, с каким-нибудь именем <code>isAllow*</code>.</p>
+
+<p>Если мы не можем как-то определить и выделить по смыслу эти строчки, то и выносить их, скорее всего, нет смысла.</p>
+
+<h3>Мораль басни</h3>
+
+<p>Я думаю, стервятники и любители поржать даже не зайдут в этот скромный блог. В чем же я увидел &quot;мораль&quot; и почему такое название статьи? </p>
+
+<p>Вы что-то прочитали, у вас куча идей и желание все перехерачить. А что-то идеальное лежит почему-то всегда на &quot;горном перевале&quot;. Так бывает, что на эмоциях мы проскакиваем его. Прочитали о паттернах - давай плодить из plain php кучу классов, выстраивать архитектуру, которая в итоге ничуть не понятнее. Прочитали дядюшку Боба - давай все дробить без остановки. Прочитали про agile - давай ломать работу проекта. Прочитали статью - давай сразу внедрять.</p>
+
+<p>Я сам постоянно допускаю подобные ошибки, но при этом думаю, что это правильно. Продолжая горную тему: это лучше, чем сидеть перед перевалом всю жизнь, не совершая каких-то дерзких попыток покорения вершин, или вообще спуститься в долину со словами: &quot;Да ну нафиг эти горы&quot;. С приобретением опыта наши просчеты уменьшаются, а какими путниками мы станем, зависит только от нас.</p>
+
+<p>Статью завершу словами: &quot;Лучше гор могут быть только горы, на которых никто не бывал&quot;.</p>
+]]></content>
+  </entry>
+  
+</feed>

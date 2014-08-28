@@ -1,36 +1,32 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Управляющие структуры - fightmaster's blog</title>
-  <meta name="author" content="fightmaster">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  
-  <meta name="description" content="Управляющие структуры Feb 14th, 2013 Практические задания Краткое содержание лекции |
-Теоретические задания Задание состоит из 3 типовых и простых &hellip;">
-  
+    <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://fightmaster.github.io/php-lectures/03-control-structures-practical-tasks.html">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <title>
+    
+      Управляющие структуры &middot; Fightmaster's blog
+    
+  </title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -47,56 +43,263 @@
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">fightmaster's blog</a></h1>
-  
-    <h2>Скромный персональный блог</h2>
-  
-</hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:fightmaster.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-    <li><a href="/">Блог</a></li>
-    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
-    <li><a href="/blog/archives">Архив</a></li>
-</ul>
+    <body>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article role="article">
-  
-  <header>
-    <h1 class="entry-title">Управляющие структуры</h1>
-    <p class="meta">
+        <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+            <img src="/public/avatar.jpeg">
+        </a>
+      </h1>
+      <p class="lead">Скромный персональный блог <a href="https://twitter.com/old_fightmaster" target="_blank">@old_fightmaster</a></p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Блог</a>
+      <a class="sidebar-nav-item" href="/php-lectures/00-contents.html">PHP-лекции</a>
+      <a class="sidebar-nav-item" href="/blog/archives/index.html">Архив</a>
+
+      
+
+      <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/blog/archives/index.html">Blog Archive</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/life/index.html">Category: life</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/blog/index.html">Category: blog</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/php/index.html">Category: php</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/lectures/index.html">Category: lectures</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/nginx/index.html">Category: nginx</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/symfony2/index.html">Category: symfony2</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/ubuntu/index.html">Category: ubuntu</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/usa/index.html">Category: usa</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/design-patterns/index.html">Category: design patterns</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/unit-tests/index.html">Category: unit tests</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/code-review/index.html">Category: code review</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/clean-code/index.html">Category: clean code</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/handbook/index.html">Category: handbook</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/sport/index.html">Category: sport</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/run/index.html">Category: run</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/data-provider/index.html">Category: data provider</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/refactoring/index.html">Category: refactoring</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/amazon/index.html">Category: amazon</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/kindle-paperwhite/index.html">Category: kindle paperwhite</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/boolean-attribute/index.html">Category: boolean attribute</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-14T23:13:00+04:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time></p>
-  </header>
-  
+    <div class="content container">
+        <div class="page">
+  <h1 class="page-title">Управляющие структуры</h1>
   <h3>Практические задания</h3>
 
 <p><a href="03-control-structures.html">Краткое содержание лекции</a> |
@@ -123,7 +326,7 @@
 
 <p>Запустить файл можно командой <code>php subtraction.php</code>.</p>
 
-<figure class='code'><figcaption><span> (subtraction.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/subtraction.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (subtraction.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/subtraction.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -146,7 +349,7 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="c1">//массив исходных данных</span>
 </span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
 </span><span class='line'>    <span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span><span class="c1">//8 операций</span>
@@ -168,15 +371,14 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="k">return</span> <span class="nv">$numberOfOperations</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3>Следующий раунд</h3>
 
 <h4>Условие</h4>
 
-<p>&ldquo;Участник выходит в следующий раунд соревнований, если он набрал не меньше баллов, чем участник, занявший k-е место, при условии,
-что набранное им число баллов строго положительно&hellip;&rdquo; — выдержка из правил соревнований.</p>
+<p>&quot;Участник выходит в следующий раунд соревнований, если он набрал не меньше баллов, чем участник, занявший k-е место, при условии,
+что набранное им число баллов строго положительно...&quot; — выдержка из правил соревнований.</p>
 
 <p>Всего в соревновании было n участников (n ≥ k и 1 ≤ k ≤ n ≤ 50), и вам уже известны их баллы. Определите, сколько участников выйдет в следующий раунд.</p>
 
@@ -184,7 +386,7 @@
 
 <p>Запустить файл можно командой <code>php next_round.php</code>.</p>
 
-<figure class='code'><figcaption><span> (next_round.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/next_round.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (next_round.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/next_round.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -206,7 +408,7 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="c1">//массив исходных данных</span>
 </span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
 </span><span class='line'>    <span class="c1">//число k и массив очков в убывающем порядке</span>
@@ -227,8 +429,7 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="k">return</span> <span class="nv">$membersOfNextRound</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3>Double cola</h3>
 
@@ -249,7 +450,7 @@
 
 <p>Запустить файл можно командой <code>php double_cola.php</code>.</p>
 
-<figure class='code'><figcaption><span> (double_cola.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/double_cola.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (double_cola.php)</span> <a href='/downloads/code/php-lectures/03-control-structures-practical-tasks/double_cola.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -270,7 +471,7 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="c1">//массив исходных данных</span>
 </span><span class='line'><span class="nv">$basicData</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
 </span><span class='line'>    <span class="mi">1</span><span class="p">,</span> <span class="c1">//Шелдон</span>
@@ -290,352 +491,16 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="k">return</span> <span class="nv">$name</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-  
-    <footer>
-      <p class="meta">
-        
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-14T23:13:00+04:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time>
-        
-      </p>
-      
-        <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-lectures/03-control-structures-practical-tasks.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-lectures/03-control-structures-practical-tasks.html" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-      
-    </footer>
-  
-</article>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Список лекций</h1>
-  <ul id="php_lectures">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-exceptions.html">Исключения в PHP</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-encapsulation.html">Основы ООП. Инкапсуляция</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-objects-and-classes-basic-syntax.html">Объекты и классы в PHP. Основы синтаксиса</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/07-working-with-filesystem.html">Работа с файловой системой</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/03-control-structures.html">Управляющие структуры</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/00-contents.html">Содержание</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/01-introduction-to-php.html">Введение в PHP</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-polymorphism.html">Основы ООП. Полиморфизм</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-inheritance.html">Основы ООП. Наследование</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/08-global-variables.html">Глобальные переменные в PHP</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-magic-methods-in-php.html">Магия в PHP</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/06-regular-expressions.html">Регулярные выражения</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/10-coding-standard.html">Стандарты кодирования</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </ul>
-</section>
-
-  
-</aside>
-
 
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - fightmaster -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
-  
+        
 
 
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+        
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -647,8 +512,26 @@
   </script>
 
 
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
+        
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
-</body>
+
+    </body>
 </html>

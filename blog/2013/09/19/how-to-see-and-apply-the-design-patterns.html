@@ -1,35 +1,32 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Как увидеть и применить паттерны проектирования? - fightmaster's blog</title>
-  <meta name="author" content="fightmaster">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  
-  <meta name="description" content="Anthony Ferrara aka ircmaxell опубликовал пост Beyond Design Patterns, прочтя который я не cмог промолчать. Он настолько попал для меня в десятку, &hellip;">
-  
+    <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://fightmaster.github.io/blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <title>
+    
+      Как увидеть и применить паттерны проектирования? &middot; Fightmaster's blog
+    
+  </title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -46,121 +43,303 @@
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">fightmaster's blog</a></h1>
-  
-    <h2>Скромный персональный блог</h2>
-  
-</hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:fightmaster.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-    <li><a href="/">Блог</a></li>
-    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
-    <li><a href="/blog/archives">Архив</a></li>
-</ul>
+    <body>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Как увидеть и применить паттерны проектирования?</h1>
-    
-    
-      <p class="meta">
-        
+        <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+            <img src="/public/avatar.jpeg">
+        </a>
+      </h1>
+      <p class="lead">Скромный персональный блог <a href="https://twitter.com/old_fightmaster" target="_blank">@old_fightmaster</a></p>
+    </div>
 
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Блог</a>
+      <a class="sidebar-nav-item" href="/php-lectures/00-contents.html">PHP-лекции</a>
+      <a class="sidebar-nav-item" href="/blog/archives/index.html">Архив</a>
 
+      
 
+      <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/blog/archives/index.html">Blog Archive</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/life/index.html">Category: life</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/blog/index.html">Category: blog</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/php/index.html">Category: php</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/lectures/index.html">Category: lectures</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/nginx/index.html">Category: nginx</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/symfony2/index.html">Category: symfony2</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/ubuntu/index.html">Category: ubuntu</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/usa/index.html">Category: usa</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/design-patterns/index.html">Category: design patterns</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/unit-tests/index.html">Category: unit tests</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/code-review/index.html">Category: code review</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/clean-code/index.html">Category: clean code</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/handbook/index.html">Category: handbook</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/sport/index.html">Category: sport</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/run/index.html">Category: run</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/data-provider/index.html">Category: data provider</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/refactoring/index.html">Category: refactoring</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/amazon/index.html">Category: amazon</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/kindle-paperwhite/index.html">Category: kindle paperwhite</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/boolean-attribute/index.html">Category: boolean attribute</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+    </nav>
 
-
-
-
-
-  
-
-
-<time datetime="2013-09-19T23:22:00+04:00" pubdate data-updated="true">Sep 19<span>th</span>, 2013</time>
-        
-           | <a href="#disqus_thread"
-             data-disqus-identifier="http://fightmaster.github.io">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Anthony Ferrara aka ircmaxell опубликовал пост <a href="http://blog.ircmaxell.com/2013/09/beyond-design-patterns.html">Beyond Design Patterns</a>, прочтя который я не cмог промолчать. Он настолько попал для меня в десятку, что моим эмоциям и восторгу нет предела.</p>
-
-<!-- more -->
-
-
-<p>Я снимаю шляпу перед Энтони, так как он сформулировал кратко, понятно, доступно мои мысли, которые я стараюсь донести до своих ребят в последнее время.</p>
-
-<p>Многие программисты знают кучу паттернов, перечитывают банду четерех, но при этом никогда не понимают как это применить, когда и в какой ситуации. Я и сам эту книжку перечитываю/перелистываю ежегодно для освежения материала. Хочу отметить, что каждый раз нахожу что-то новенькое для себя. В этом году пришел к выводу, что нельзя в банде четерех читать реализацию паттерна, особенно человеку, который первый раз берет книжку. Абсолютно неважно, как это реализовывать. Главное понимать, знать и ощущать: что? где? когда? зачем? и почему? Своим &ldquo;протеже&rdquo; я даже запретил читать реализацию. Если вы точно скажете: &ldquo;ага, запахло паттерном Хранитель&rdquo;, вы всегда откроете книжку или гугл, и посмотрите реализацию. Но уделяя большое внимание при чтении реализации, разбираясь в каждой запятой, вы забываете самое главное: что? где? когда? зачем? и почему? Поверьте, придет время, когда вам нужно будет применить паттерн, тогда вы откроете этот каталог и сделаете как вам лучше.</p>
-
-<p>Простой пример, сегодня утром меня попросили совета по проблеме. У ребят возникла какая-то задача, они совместно ее решали, нарисовали uml диаграмму, чтобы затем обсудить. Первые слова, которые прозвучали: &ldquo;У нас есть объект, нам нужно иметь возможность сохранить его состояние и при возможности откатиться до него&rdquo;. Фраза уже сама по себе отвечает на вопросы &ldquo;что нам нужно и зачем&rdquo;.</p>
-
-<blockquote><p>Не нарушая инкапсуляции, фиксирует и выносит за пределы объекта его внутренее состояние так, чтобы позднее можно было бы восстановить в нем объект.</p><footer><strong>[Банда четырех. Паттерн Memento. Назначение. 2012 г.]</strong></footer></blockquote>
-
-
-<p>В среднем раз в неделю я задаю вопросы ребятам на код ревью: &ldquo;а что делает код? почему именно он это делает? а что можно еще изменить?&rdquo;, с целью обратить внимание на содержание кода и существующих в нем предпосылок к чему-то. Все лежит на поверхности, нужно лишь знать чего вы хотите, что вам нужно, или что делает уже существующий код.</p>
-
-<p>Поэтому, если вам нужны еще советы как перейти от теории к практике, гоу: <a href="http://blog.ircmaxell.com/2013/09/beyond-design-patterns.html">Beyond Design Patterns</a>.</p>
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
 </div>
 
 
-  <footer>
+    <div class="content container">
+        <div class="post">
+  <h1 class="post-title">Как увидеть и применить паттерны проектирования?</h1>
+  <span class="post-date">19 Sep 2013</span>
+  <p>Anthony Ferrara aka ircmaxell опубликовал пост <a href="http://blog.ircmaxell.com/2013/09/beyond-design-patterns.html">Beyond Design Patterns</a>, прочтя который я не cмог промолчать. Он настолько попал для меня в десятку, что моим эмоциям и восторгу нет предела.</p>
+
+<!-- more -->
+
+<p>Я снимаю шляпу перед Энтони, так как он сформулировал кратко, понятно, доступно мои мысли, которые я стараюсь донести до своих ребят в последнее время.</p>
+
+<p>Многие программисты знают кучу паттернов, перечитывают банду четерех, но при этом никогда не понимают как это применить, когда и в какой ситуации. Я и сам эту книжку перечитываю/перелистываю ежегодно для освежения материала. Хочу отметить, что каждый раз нахожу что-то новенькое для себя. В этом году пришел к выводу, что нельзя в банде четерех читать реализацию паттерна, особенно человеку, который первый раз берет книжку. Абсолютно неважно, как это реализовывать. Главное понимать, знать и ощущать: что? где? когда? зачем? и почему? Своим &quot;протеже&quot; я даже запретил читать реализацию. Если вы точно скажете: &quot;ага, запахло паттерном Хранитель&quot;, вы всегда откроете книжку или гугл, и посмотрите реализацию. Но уделяя большое внимание при чтении реализации, разбираясь в каждой запятой, вы забываете самое главное: что? где? когда? зачем? и почему? Поверьте, придет время, когда вам нужно будет применить паттерн, тогда вы откроете этот каталог и сделаете как вам лучше.</p>
+
+<p>Простой пример, сегодня утром меня попросили совета по проблеме. У ребят возникла какая-то задача, они совместно ее решали, нарисовали uml диаграмму, чтобы затем обсудить. Первые слова, которые прозвучали: &quot;У нас есть объект, нам нужно иметь возможность сохранить его состояние и при возможности откатиться до него&quot;. Фраза уже сама по себе отвечает на вопросы &quot;что нам нужно и зачем&quot;.</p>
+
+<blockquote><p>Не нарушая инкапсуляции, фиксирует и выносит за пределы объекта его внутренее состояние так, чтобы позднее можно было бы восстановить в нем объект.</p><footer><strong>[Банда четырех. Паттерн Memento. Назначение. 2012 г.]</strong></footer></blockquote>
+
+<p>В среднем раз в неделю я задаю вопросы ребятам на код ревью: &quot;а что делает код? почему именно он это делает? а что можно еще изменить?&quot;, с целью обратить внимание на содержание кода и существующих в нем предпосылок к чему-то. Все лежит на поверхности, нужно лишь знать чего вы хотите, что вам нужно, или что делает уже существующий код.</p>
+
+<p>Поэтому, если вам нужны еще советы как перейти от теории к практике, гоу: <a href="http://blog.ircmaxell.com/2013/09/beyond-design-patterns.html">Beyond Design Patterns</a>.</p>
+
+</div>
+
+<footer>
     <p class="meta">
-      
+        
   
 
 <span class="byline author vcard">Posted by <span class="fn">fightmaster</span></span>
 
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-19T23:22:00+04:00" pubdate data-updated="true">Sep 19<span>th</span>, 2013</time>
-      
+        
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/design-patterns/'>design patterns</a>
+    <a class='category' href='/categories/design-patterns/'>design patterns</a>
   
 </span>
 
 
     </p>
     
-      <div class="sharing">
+    <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -172,116 +351,70 @@
 
     
     <p class="meta">
-      
+        
         <a class="basic-alignment left" href="/blog/2013/09/16/a-room-and-a-half.html" title="Previous Post: Полторы комнаты">&laquo; Полторы комнаты</a>
-      
-      
+        
+        
         <a class="basic-alignment right" href="/blog/2013/09/23/unit-tests.html" title="Next Post: Unit Tests">Unit Tests &raquo;</a>
-      
+        
     </p>
-  </footer>
-</article>
+</footer>
 
-  <section>
+<section>
+    <div class="related">
+      <h2>Related Posts</h2>
+      <ul class="related-posts">
+        
+          <li>
+            <h4>
+              <a href="/blog/2014/02/02/clean-code-boolean-attribute.html">
+                Чистый код. Boolean attribute
+                <small>02 Feb 2014</small>
+              </a>
+            </h4>
+          </li>
+        
+          <li>
+            <h4>
+              <a href="/blog/2013/10/30/amazon-or-the-client-always-right.html">
+                Amazon, или клиент всегда прав
+                <small>30 Oct 2013</small>
+              </a>
+            </h4>
+          </li>
+        
+          <li>
+            <h4>
+              <a href="/blog/2013/10/17/the-whole-point-is-that-it-happens.html">
+                Все дело в том, что так бывает...
+                <small>17 Oct 2013</small>
+              </a>
+            </h4>
+          </li>
+        
+      </ul>
+    </div>
+</section>
+
+
+<section>
     <h1>Comments</h1>
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/02/02/clean-code-boolean-attribute.html">Чистый код. Boolean Attribute</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/30/amazon-or-the-client-always-right.html">Amazon, или клиент всегда прав</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/17/the-whole-point-is-that-it-happens.html">Все дело в том, что так бывает...</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/05/unit-tests-data-provider-without-a-headache.html">Unit Tests. Data Provider без головной боли</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/28/ohio-river-greenway-5-k.html">Ohio River Greenway 5K</a>
-      </li>
-    
-  </ul>
 </section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/fightmaster">@fightmaster</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'fightmaster',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/100149299742617855998?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
 
 
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - fightmaster -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
-  
+        
 
 <script type="text/javascript">
       var disqus_shortname = 'fightmaster';
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://fightmaster.github.io/blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html';
-        var disqus_url = 'http://fightmaster.github.io/blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html';
+        var disqus_identifier = 'http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html';
+        var disqus_url = 'http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -292,28 +425,7 @@
 </script>
 
 
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+        
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -325,8 +437,26 @@
   </script>
 
 
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
+        
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
-</body>
+
+    </body>
 </html>

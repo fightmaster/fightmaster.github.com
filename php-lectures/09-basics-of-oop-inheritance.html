@@ -1,36 +1,32 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Основы ООП. Наследование - fightmaster's blog</title>
-  <meta name="author" content="fightmaster">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  
-  <meta name="description" content="Основы ООП. Наследование Apr 2nd, 2013 Краткое содержание лекции Теоретические задания |
-Практические задания С наследованием мы частично &hellip;">
-  
+    <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://fightmaster.github.io/php-lectures/09-basics-of-oop-inheritance.html">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="fightmaster's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <title>
+    
+      Основы ООП. Наследование &middot; Fightmaster's blog
+    
+  </title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -47,56 +43,263 @@
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">fightmaster's blog</a></h1>
-  
-    <h2>Скромный персональный блог</h2>
-  
-</hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:fightmaster.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-    <li><a href="/">Блог</a></li>
-    <li><a href="/php-lectures/00-contents.html">Лекции по PHP</a></li>
-    <li><a href="/blog/archives">Архив</a></li>
-</ul>
+    <body>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article role="article">
-  
-  <header>
-    <h1 class="entry-title">Основы ООП. Наследование</h1>
-    <p class="meta">
+        <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+            <img src="/public/avatar.jpeg">
+        </a>
+      </h1>
+      <p class="lead">Скромный персональный блог <a href="https://twitter.com/old_fightmaster" target="_blank">@old_fightmaster</a></p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Блог</a>
+      <a class="sidebar-nav-item" href="/php-lectures/00-contents.html">PHP-лекции</a>
+      <a class="sidebar-nav-item" href="/blog/archives/index.html">Архив</a>
+
+      
+
+      <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/blog/archives/index.html">Blog Archive</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/life/index.html">Category: life</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/blog/index.html">Category: blog</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/php/index.html">Category: php</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/lectures/index.html">Category: lectures</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/nginx/index.html">Category: nginx</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/symfony2/index.html">Category: symfony2</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/ubuntu/index.html">Category: ubuntu</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/usa/index.html">Category: usa</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/design-patterns/index.html">Category: design patterns</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/unit-tests/index.html">Category: unit tests</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/code-review/index.html">Category: code review</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/clean-code/index.html">Category: clean code</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/handbook/index.html">Category: handbook</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/sport/index.html">Category: sport</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/run/index.html">Category: run</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/data-provider/index.html">Category: data provider</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/refactoring/index.html">Category: refactoring</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/amazon/index.html">Category: amazon</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/kindle-paperwhite/index.html">Category: kindle paperwhite</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/boolean-attribute/index.html">Category: boolean attribute</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-02T03:00:00+04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time></p>
-  </header>
-  
+    <div class="content container">
+        <div class="page">
+  <h1 class="page-title">Основы ООП. Наследование</h1>
   <h3>Краткое содержание лекции</h3>
 
 <p><a href="09-basics-of-oop-inheritance-theoretical-tasks.html">Теоретические задания</a> |
@@ -106,13 +309,13 @@
 При условии, что такое наследование вам известно, мы начнем сразу с практики.</p>
 
 <p>Хороший код сразу написать трудно, также трудно учесть всевозможные ситуации, пожалуй, даже неправильно учитывать того, чего не существует.
-Пишите код для того, что вам действительно нужно.</p>
+Пишите код для того, что вам действительно нужно. </p>
 
 <p>Если у вас есть группа объектов, которые имеют общие свойства, методы, <strong>возможно</strong>, вам стоит прибегнуть к наследованию, что сократит дублирование кода.</p>
 
 <p>Я долго думал над примером, не хотелось что-то мифического. На своей работе я имею дело с печатным производством. На печатной фабрике большая разновидность машин: различные виды печатных станков (printing press, uv press), ламинатор (laminating machine), ксерокс (copier) и так далее.</p>
 
-<figure class='code'><figcaption><span> (AbstractMachine.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/AbstractMachine.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (AbstractMachine.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/AbstractMachine.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -192,7 +395,7 @@
 <span class='line-number'>77</span>
 <span class='line-number'>78</span>
 <span class='line-number'>79</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -271,10 +474,9 @@
 </span><span class='line'>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="nv">$year</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (PrintingPress.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/PrintingPress.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (PrintingPress.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/PrintingPress.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -318,7 +520,7 @@
 <span class='line-number'>41</span>
 <span class='line-number'>42</span>
 <span class='line-number'>43</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -361,10 +563,9 @@
 </span><span class='line'>        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">PRINTING_PRESS</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (UvPress.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/UvPress.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (UvPress.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/UvPress.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -379,7 +580,7 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -393,10 +594,9 @@
 </span><span class='line'>        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">UV_PRESS</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (LaminatingMachine.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/LaminatingMachine.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (LaminatingMachine.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/LaminatingMachine.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -411,7 +611,7 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -425,10 +625,9 @@
 </span><span class='line'>        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">LAMINATING_MACHINE</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (Copier.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/Copier.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Copier.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/machines/Copier.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -459,7 +658,7 @@
 <span class='line-number'>28</span>
 <span class='line-number'>29</span>
 <span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -489,15 +688,14 @@
 </span><span class='line'>        <span class="k">return</span> <span class="mi">10</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Мы вынесли общие части связанных объектов в абстрактный класс, а специфические свойства реализовали в классах потомках.
 Какие потенциальные ошибки мы при этом допустили? Исправьте код.</p>
 
 <p>Еще часто прибегают к наследованию, когда у вас есть какой-то класс (возможно из другой библиотеки), и вам понадобилось расширить его функционал.</p>
 
-<figure class='code'><figcaption><span> (User.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/users/User.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (User.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/users/User.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -529,7 +727,7 @@
 <span class='line-number'>29</span>
 <span class='line-number'>30</span>
 <span class='line-number'>31</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -560,10 +758,9 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//another methods</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (AdminUser.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/users/AdminUser.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (AdminUser.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/users/AdminUser.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -586,7 +783,7 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -608,14 +805,13 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p><strong>Наследование</strong> &ndash; это не золотая пуля.</p>
+<p><strong>Наследование</strong> - это не золотая пуля.</p>
 
 <p>Практически все классы, работающие с базой данных, имеют поле <code>id</code>. Но это не означает, что нужно создать базовый класс и наследовать от него все остальные.</p>
 
-<figure class='code'><figcaption><span> (BasicClass.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/ids/BasicClass.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (BasicClass.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/ids/BasicClass.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -627,7 +823,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -638,10 +834,9 @@
 </span><span class='line'><span class="sd">     */</span>
 </span><span class='line'>    <span class="k">protected</span> <span class="nv">$id</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (User.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/ids/User.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (User.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/ids/User.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -668,7 +863,7 @@
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -694,10 +889,9 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//another methods</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (News.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/ids/News.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (News.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/ids/News.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -716,7 +910,7 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -734,12 +928,11 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="c1">//another methods</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>Не стоит также смешивать с полиморфизмом. Машина и велосипед имеют колеса, но наличие колес в данном случае - это не некая общность, которую обязательно следует вынести в общий класс.</p>
 
-<p>Не стоит также смешивать с полиморфизмом. Машина и велосипед имеют колеса, но наличие колес в данном случае &ndash; это не некая общность, которую обязательно следует вынести в общий класс.</p>
-
-<figure class='code'><figcaption><span> (Wheel.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/wheels/Wheel.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Wheel.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/wheels/Wheel.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -762,7 +955,7 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="sd">/**</span>
 </span><span class='line'><span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 </span><span class='line'><span class="sd"> */</span>
@@ -784,380 +977,42 @@
 </span><span class='line'>        <span class="c1">//code</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (Auto.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/wheels/Auto.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Auto.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/wheels/Auto.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="k">class</span> <span class="nc">Auto</span> <span class="k">extends</span> <span class="nx">Wheel</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<figure class='code'><figcaption><span> (Bicycle.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/wheels/Bicycle.php'>download</a></figcaption>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (Bicycle.php)</span> <a href='/downloads/code/php-lectures/09-basics-of-oop-inheritance/wheels/Bicycle.php'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
 </span><span class='line'><span class="k">class</span> <span class="nc">Bicycle</span> <span class="k">extends</span> <span class="nx">Wheel</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="c1">//code</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-  
-    <footer>
-      <p class="meta">
-        
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-02T03:00:00+04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
-        
-      </p>
-      
-        <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io/php-lectures/09-basics-of-oop-inheritance.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io/php-lectures/09-basics-of-oop-inheritance.html" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-      
-    </footer>
-  
-</article>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Список лекций</h1>
-  <ul id="php_lectures">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-exceptions.html">Исключения в PHP</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-encapsulation.html">Основы ООП. Инкапсуляция</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/02-php-basics.html">Основы PHP</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/04-working-with-arrays.html">Работа с массивами</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-objects-and-classes-basic-syntax.html">Объекты и классы в PHP. Основы синтаксиса</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/07-working-with-filesystem.html">Работа с файловой системой</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/03-control-structures.html">Управляющие структуры</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/00-contents.html">Содержание</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/01-introduction-to-php.html">Введение в PHP</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-polymorphism.html">Основы ООП. Полиморфизм</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-basics-of-oop-inheritance.html">Основы ООП. Наследование</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/08-global-variables.html">Глобальные переменные в PHP</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/05-working-with-strings.html">Работа со строками</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/09-magic-methods-in-php.html">Магия в PHP</a>
-          </li>
-      
-    
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/06-regular-expressions.html">Регулярные выражения</a>
-          </li>
-      
-    
-      
-          <li class="post">
-            <a href="/php-lectures/10-coding-standard.html">Стандарты кодирования</a>
-          </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </ul>
-</section>
-
-  
-</aside>
-
 
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - fightmaster -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
-  
+        
 
 
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+        
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -1169,8 +1024,26 @@
   </script>
 
 
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
+        
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
-</body>
+
+    </body>
 </html>
