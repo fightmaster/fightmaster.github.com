@@ -4,13 +4,33 @@
  <title>Fightmaster's blog</title>
  <link href="http://fightmaster.github.io//atom.xml" rel="self"/>
  <link href="http://fightmaster.github.io//"/>
- <updated>2014-08-28T11:05:45+04:00</updated>
+ <updated>2014-09-04T20:15:04+04:00</updated>
  <id>http://fightmaster.github.io/</id>
  <author>
    <name>fightmaster</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Рекомендации по php</title>
+   <link href="http://fightmaster.github.io//blog/2014/09/04/recommendations-for-junior-php-developer.html"/>
+   <updated>2014-09-04T21:00:00+04:00</updated>
+   <id>http://fightmaster.github.io//blog/2014/09/04/recommendations-for-junior-php-developer</id>
+   <content type="html">&lt;p&gt;Вначале 2014 года я делал подборку рекомендаций по пхп. Наконец-то она &lt;a href=&quot;http://fightmaster.github.com/recommendations/for-junior-php-developer.html&quot;&gt;опубликована&lt;/a&gt;.
+Будет пополняться и изменяться со временем.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Новая жизнь</title>
+   <link href="http://fightmaster.github.io//blog/2014/09/03/new-life.html"/>
+   <updated>2014-09-03T21:00:00+04:00</updated>
+   <id>http://fightmaster.github.io//blog/2014/09/03/new-life</id>
+   <content type="html">&lt;p&gt;В жизни настали перемены и я решил возобновить работу в блоге. Неделю назад я обновил дизайн, отказавшись от octopress.
+Теперь используется нативный &lt;em&gt;Jekyll&lt;/em&gt; движок. К сожалению, я потерял комментарии на disqus. Ждите появления большого количества информации :).&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Чистый код. Boolean attribute</title>

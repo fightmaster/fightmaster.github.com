@@ -4,13 +4,23 @@
   <title><![CDATA[Category: life | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/life/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2014-08-28T11:05:45+04:00</updated>
+  <updated>2014-09-04T20:15:04+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Новая жизнь]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/09/03/new-life.html"/>
+    <updated>2014-09-03T21:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/09/03/new-life</id>
+    <content type="html"><![CDATA[<p>В жизни настали перемены и я решил возобновить работу в блоге. Неделю назад я обновил дизайн, отказавшись от octopress.
+Теперь используется нативный <em>Jekyll</em> движок. К сожалению, я потерял комментарии на disqus. Ждите появления большого количества информации :).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Amazon, или клиент всегда прав]]></title>
@@ -156,18 +166,6 @@
 
 <p>Вчера, 2 марта, сын занял 2 место на первенстве области по у-шу. Эх, тяжело мне с ним дается все, но вроде мой новый график работы и занятия с ним дают результат. И кстати, именно в этот день, как 1.5 года нет моего отца и его дедушки, которого он безумно любил...
 Эх, как мне его не хватает, знали бы вы.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Поехали!]]></title>
-    <link href="http://fightmaster.github.io//blog/2013/02/09/go-go-go.html"/>
-    <updated>2013-02-09T17:36:00+04:00</updated>
-    <id>http://fightmaster.github.io//blog/2013/02/09/go-go-go</id>
-    <content type="html"><![CDATA[<p>О создании личного блога мечтал последние два года. За это время в личной жизни и на работе много всего произошло.</p>
-
-<p>Итак, со вторника я начинаю читать лекции по php. Благодаря github и octopress я надеюсь мечта идиота сбудется,
-и блог начнет свою жизнь.</p>
 ]]></content>
   </entry>
   

@@ -4,13 +4,23 @@
   <title><![CDATA[Category: php | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/php/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2014-08-28T11:05:45+04:00</updated>
+  <updated>2014-09-04T20:15:04+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Рекомендации по php]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/09/04/recommendations-for-junior-php-developer.html"/>
+    <updated>2014-09-04T21:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/09/04/recommendations-for-junior-php-developer</id>
+    <content type="html"><![CDATA[<p>Вначале 2014 года я делал подборку рекомендаций по пхп. Наконец-то она <a href="http://fightmaster.github.com/recommendations/for-junior-php-developer.html">опубликована</a>.
+Будет пополняться и изменяться со временем.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Чистый код. Boolean attribute]]></title>
@@ -834,16 +844,6 @@
     <id>http://fightmaster.github.io//blog/2013/02/24/four-lecture-working-with-strings</id>
     <content type="html"><![CDATA[<p>С небольшим опозданием выложены <a href="/php-lectures/05-working-with-strings.html">задания</a> к четвертой лекции.
 Задача про палиндромы имеет подводные камни, будьте внимательны.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Вторая лекция: Управляющие структуры]]></title>
-    <link href="http://fightmaster.github.io//blog/2013/02/14/second-lecture-control-structures.html"/>
-    <updated>2013-02-14T02:30:00+04:00</updated>
-    <id>http://fightmaster.github.io//blog/2013/02/14/second-lecture-control-structures</id>
-    <content type="html"><![CDATA[<p>Выложены <a href="/php-lectures/03-control-structures.html">материалы</a> ко второй лекции. Встретимся через 5.5 часов:).
-Домашнее задание будет доступно в субботу.</p>
 ]]></content>
   </entry>
   

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: recommendations | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/recommendations/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-09-04T20:15:04+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Рекомендации по php]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/09/04/recommendations-for-junior-php-developer.html"/>
+    <updated>2014-09-04T21:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/09/04/recommendations-for-junior-php-developer</id>
+    <content type="html"><![CDATA[<p>Вначале 2014 года я делал подборку рекомендаций по пхп. Наконец-то она <a href="http://fightmaster.github.com/recommendations/for-junior-php-developer.html">опубликована</a>.
+Будет пополняться и изменяться со временем.</p>
+]]></content>
+  </entry>
+  
+</feed>

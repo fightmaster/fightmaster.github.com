@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+    <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Рекомендации по php для младшего php-разработчика &middot; Fightmaster's blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38362255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'fightmaster'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</head>
+
+
+    <body>
+
+        <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+            <img src="/public/avatar.jpeg">
+        </a>
+      </h1>
+      <p class="lead">Скромный персональный блог <a href="https://twitter.com/old_fightmaster" target="_blank">@old_fightmaster</a></p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Блог</a>
+      <a class="sidebar-nav-item" href="/php-lectures/00-contents.html">PHP-лекции</a>
+      <a class="sidebar-nav-item" href="/recommendations/for-junior-php-developer.html">Рекомендации по php</a>
+      <a class="sidebar-nav-item" href="/blog/archives/index.html">Архив</a>
+
+      
+
+      <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/blog/archives/index.html">Blog Archive</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/life/index.html">Category: life</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/blog/index.html">Category: blog</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/php/index.html">Category: php</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/lectures/index.html">Category: lectures</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/nginx/index.html">Category: nginx</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/symfony2/index.html">Category: symfony2</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/ubuntu/index.html">Category: ubuntu</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/usa/index.html">Category: usa</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/design-patterns/index.html">Category: design patterns</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/unit-tests/index.html">Category: unit tests</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/code-review/index.html">Category: code review</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/clean-code/index.html">Category: clean code</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/handbook/index.html">Category: handbook</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/sport/index.html">Category: sport</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/run/index.html">Category: run</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/data-provider/index.html">Category: data provider</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/refactoring/index.html">Category: refactoring</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/amazon/index.html">Category: amazon</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/kindle-paperwhite/index.html">Category: kindle paperwhite</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/boolean-attribute/index.html">Category: boolean attribute</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/opensoft/index.html">Category: opensoft</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/recommendations/index.html">Category: recommendations</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+        <div class="page">
+  <h1 class="page-title">Рекомендации по php для младшего php-разработчика</h1>
+  <h3>О подборке</h3>
+
+<p>Ниже изложенный материал может помочь начать идти в ногу со временем в php мире.
+Данная подборка создана вначале 2014 года и раздавалась всем желающим после собеседований.</p>
+
+<h3>Ссылки</h3>
+
+<p>Существует много аналогичных сайтов <a href="http://www.phptherightway.com/">http://www.phptherightway.com/</a>, где изложены различные полезные ссылки.
+Если вас интересует mysql, javascript - google вам поможет.</p>
+
+<h3>Первые шаги</h3>
+
+<p><strong>Code style</strong> у каждого фреймворка или команды может быть свой, но так или иначе есть базовая основа: <a href="https://github.com/php-fig/fig-standards/tree/master/accepted">PSR</a>.
+ Это как алфавит, его нужно обязательно знать, до самых мелочей. Тогда вам не будет стыдно что-то закомитить в тот же <strong>open source</strong>, или переходить на другую работу, или в другой проект.</p>
+
+<p>Современная разработка направлена на гибкость, на получение результата с хорошим качеством.
+Совокупность Agile и code review вынуждает обращать внимание на децентрализованные системы контроля версий, например git.</p>
+
+<p>Наверное, “вечная” статья про разработку <a href="http://nvie.com/posts/a-successful-git-branching-model/">a-successful-git-branching-model</a> (<a href="http://habrahabr.ru/post/106912/">перевод</a>).</p>
+
+<p>Из полезных титуриалов можно выделить:</p>
+
+<ul>
+<li><a href="http://try.github.io/levels/1/challenges/1">try.github.io</a></li>
+<li><a href="http://git-scm.com/docs">git-scm.com</a></li>
+<li><a href="http://ndpsoftware.com/git-cheatsheet.html">git-cheatsheet</a></li>
+<li><a href="https://na1.salesforce.com/help/pdfs/en/salesforce_git_developer_cheatsheet.pdf">salesforce<em>git</em>developer_cheatsheet.pdf</a></li>
+<li><a href="http://gitref.org/">http://gitref.org/</a></li>
+<li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">squashing-commits</a></li>
+</ul>
+
+<p>Основные темы: stash, rebase, merge, различия между rebase и merge, cherry-pick, checkout, squash, alias.</p>
+
+<p>Изначально, когда разрабатывается продукт, встает выбор подключения зависимостей.
+В наше время уже существуют менеджеры зависимостей: <a href="https://getcomposer.org/">composer</a>, <a href="http://bower.io/">bower</a>.
+Если мы посмотрим на все современные версии библиотек и фреймворков, мы обязательно встретим там конфиги для этих менеджеров.</p>
+
+<h3>Базовый набор книжек.</h3>
+
+<p>У меня есть традиционный набор книжек, с которых я рекомендую начать читать техническую литературу.
+По-моему мнению, их обязан прочитать каждый, хотя бы раз. Кто-то найдет в них что-то новое и перевернет свое мировоззрение,
+кто-то утвердит свое &quot;я&quot; и полученный опыт, найдя абсолютную поддержку от авторов.</p>
+
+<ul>
+<li>Рефакторинг. Улучшение существующего кода. Мартин Фаулер. (Refactoring: Improving the Design of Existing Code)
+Хороший стартап по данной теме. http://refactoring.guru/</li>
+<li>Чистый код: создание, анализ и рефакторинг. Роберт Мартин или просто uncle Bob. (Clean Code: A Handbook of Agile Software Craftsmanship)</li>
+</ul>
+
+<p>Не стоит браться за банду четерех (Design Patterns: Elements of Reusable Object-Oriented Software/Приёмы объектно-ориентированного проектирования. Паттерны проектирования) на первых своих шагах.
+Вы можете выучить все паттерны в теории, но без знания и опыта проведения рефакторинга вы никогда не примените их на практике.
+Если все же решите читать, уделяйте при первом прочтении только азам (<strong>название</strong>, <strong>назначение</strong>, <strong>мотивация</strong>, <strong>применение</strong>) и не читайте и не забивайте голову реализацией.
+Сначала надо научится сразу сопоставлять в своей голове задачу поставленную перед вами, к каким проблемам она относится и с помощью чего ее можно решить более изящно и полезно для проекта.
+Хорошая альтернатива банде четырех для начинающих это серия head first (паттерны проектирования).</p>
+
+<p>Будьте современны, следите за тем, что происходит в современном мире.
+Очень неплохой <a href="http://habrahabr.ru/users/pronskiy/topics/">дайждест</a> новостей ведет <a href="https://twitter.com/pronskiy">@pronskiy</a>, с периодичностью раз в две недели.
+Я не буду давать ссылки на блоги разработчиков, которые предпочитаю лично я, вы сами найдете своих авторов.</p>
+
+<h3>Немного рекламы</h3>
+
+<p>Почти все начинающие программисты имеют одни те же пробелы в своих знаниях. Кто-то ищет сам что-то, кто-то просто плывет по своему течению.</p>
+
+<p>Некоторые базовые вещи я с какой-то периодичностью стараюсь описывать в своем блоге.</p>
+
+<p>Во-первых, тут есть наброски <a href="http://fightmaster.github.io/php-lectures/00-contents.html">лекций</a> про PHP.
+Почти все темы содержат какие-то тезисы-оглавления, теоретические и практические задания.
+<strong>Особое внимание</strong>, хочется обратить именно на 9 пункт, про <strong>ООП</strong>.
+Где в принципе изложены полноценные лекции, я очень надеюсь, что они прояснят много информации.</p>
+
+<p>Если у вас проблемы с базовыми знаниями php, рекомендую читать официальную документацию к языку, опираясь на содержание лекций и заданий.</p>
+
+<p>Во-вторых, я неравнодушен к тестированию. И в блоге можно найти несколько статей на эту тему.
+Может они дадут вам некий толчок к познанию тех же <strong>unit test</strong>, и покажут вам, что можно жить без <strong>дебага</strong>, <strong>print_r</strong> и <strong>die</strong>.</p>
+
+<h3>Пожелания</h3>
+
+<p>Попробуйте начать с первых шагов и не бойтесь применять новые знания на практике. Какие-то попытки будут удачные, какие-то нет.</p>
+
+<p>Вы всегда можете связаться с нами <a href="http://opensoftdev.ru/">opensoft</a> и договориться о встрече, где вы сможете обсудить любые вопросы, получить совет для дальнейшего развития.</p>
+
+</div>
+
+    </div>
+
+        
+
+<script type="text/javascript">
+      var disqus_shortname = 'fightmaster';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fightmaster.github.io//recommendations/for-junior-php-developer.html';
+        var disqus_url = 'http://fightmaster.github.io//recommendations/for-junior-php-developer.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+        
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+        
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+    </body>
+</html>
