@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: merge | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/merge/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-09-05T08:23:14+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GIT: ff-only merge]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/09/05/ff-only-merge.html"/>
+    <updated>2014-09-05T09:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/09/05/ff-only-merge</id>
+    <content type="html"><![CDATA[<p>Если что-то мне не нравится при использовании github/bitbucket, как тулзу для код ревью, это <strong>merge</strong> commit.
+<a href="https://github.com/fabpot">Fabien Potencier</a> пошутил на конференции, что раньше он был главным контрибьютером, а теперь главным мерж коммитером.</p>
+
+<!-- more -->
+
+<p>Не хочется вдаваться в детали <a href="http://nvie.com/posts/a-successful-git-branching-model/">a-successful-git-branching-model</a>,
+но там советуют использовать всегда <code>--no-ff</code> c <strong>merge</strong> commit.</p>
+
+<p>В моем окружении пришли к выводу, что пользы нет никакой. После длительного совещания решили на новом проекте использовать только <code>ff-only</code>.
+В этом случае не создается merge commit, но накладывается ограничение на ветку, она всегда должна быть актуальной.
+То есть вам всегда нужно делать rebase, даже если нет конфликтов.</p>
+
+<p>В итоге merge PR всегда представлял нечто такое:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git fetch amazing-developer
+git checkout -b TICKET-1001 --track amazing-developer/TICKET-1001
+git rebase develop
+git push amazing-developer TICKET-1001 -f
+git checkout develop
+git merge --ff-only amazing-developer/TICKET-1001
+git branch -D TICKET-1001
+git push amazing-developer :TICKET-1001
+</code></pre></div>
+<p>Есть у меня подозрения, что на гитхабе четвертая строка не нужна, но у битбакета с этим проблемы. Поэтому админ вынужден иметь write доступ на форки.</p>
+
+<p>И так вот мы работали почти год, никаких проблем не возникало при применении такой политики. Неделю назад я решил написать простой bash script.</p>
+
+<p><script src="https://gist.github.com/fightmaster/4b95a298c8d0d17b1cdc.js?file=ff-only-merge.bash"> </script></p>
+
+<p>Он делает за вас рутиный ввод команд в консоли, но не отменяет работу головой.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -11,7 +11,7 @@
 
   <title>
     
-      Как увидеть и применить паттерны проектирования? &middot; Fightmaster's blog
+      GIT: ff-only merge &middot; Fightmaster's blog
     
   </title>
 
@@ -357,23 +357,37 @@
 
     <div class="content container">
         <div class="post">
-  <h1 class="post-title">Как увидеть и применить паттерны проектирования?</h1>
-  <span class="post-date">19 Sep 2013</span>
-  <p>Anthony Ferrara aka ircmaxell опубликовал пост <a href="http://blog.ircmaxell.com/2013/09/beyond-design-patterns.html">Beyond Design Patterns</a>, прочтя который я не cмог промолчать. Он настолько попал для меня в десятку, что моим эмоциям и восторгу нет предела.</p>
+  <h1 class="post-title">GIT: ff-only merge</h1>
+  <span class="post-date">05 Sep 2014</span>
+  <p>Если что-то мне не нравится при использовании github/bitbucket, как тулзу для код ревью, это <strong>merge</strong> commit.
+<a href="https://github.com/fabpot">Fabien Potencier</a> пошутил на конференции, что раньше он был главным контрибьютером, а теперь главным мерж коммитером.</p>
 
 <!-- more -->
 
-<p>Я снимаю шляпу перед Энтони, так как он сформулировал кратко, понятно, доступно мои мысли, которые я стараюсь донести до своих ребят в последнее время.</p>
+<p>Не хочется вдаваться в детали <a href="http://nvie.com/posts/a-successful-git-branching-model/">a-successful-git-branching-model</a>,
+но там советуют использовать всегда <code>--no-ff</code> c <strong>merge</strong> commit.</p>
 
-<p>Многие программисты знают кучу паттернов, перечитывают банду четерех, но при этом никогда не понимают как это применить, когда и в какой ситуации. Я и сам эту книжку перечитываю/перелистываю ежегодно для освежения материала. Хочу отметить, что каждый раз нахожу что-то новенькое для себя. В этом году пришел к выводу, что нельзя в банде четерех читать реализацию паттерна, особенно человеку, который первый раз берет книжку. Абсолютно неважно, как это реализовывать. Главное понимать, знать и ощущать: что? где? когда? зачем? и почему? Своим &quot;протеже&quot; я даже запретил читать реализацию. Если вы точно скажете: &quot;ага, запахло паттерном Хранитель&quot;, вы всегда откроете книжку или гугл, и посмотрите реализацию. Но уделяя большое внимание при чтении реализации, разбираясь в каждой запятой, вы забываете самое главное: что? где? когда? зачем? и почему? Поверьте, придет время, когда вам нужно будет применить паттерн, тогда вы откроете этот каталог и сделаете как вам лучше.</p>
+<p>В моем окружении пришли к выводу, что пользы нет никакой. После длительного совещания решили на новом проекте использовать только <code>ff-only</code>.
+В этом случае не создается merge commit, но накладывается ограничение на ветку, она всегда должна быть актуальной.
+То есть вам всегда нужно делать rebase, даже если нет конфликтов.</p>
 
-<p>Простой пример, сегодня утром меня попросили совета по проблеме. У ребят возникла какая-то задача, они совместно ее решали, нарисовали uml диаграмму, чтобы затем обсудить. Первые слова, которые прозвучали: &quot;У нас есть объект, нам нужно иметь возможность сохранить его состояние и при возможности откатиться до него&quot;. Фраза уже сама по себе отвечает на вопросы &quot;что нам нужно и зачем&quot;.</p>
+<p>В итоге merge PR всегда представлял нечто такое:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git fetch amazing-developer
+git checkout -b TICKET-1001 --track amazing-developer/TICKET-1001
+git rebase develop
+git push amazing-developer TICKET-1001 -f
+git checkout develop
+git merge --ff-only amazing-developer/TICKET-1001
+git branch -D TICKET-1001
+git push amazing-developer :TICKET-1001
+</code></pre></div>
+<p>Есть у меня подозрения, что на гитхабе четвертая строка не нужна, но у битбакета с этим проблемы. Поэтому админ вынужден иметь write доступ на форки.</p>
 
-<blockquote><p>Не нарушая инкапсуляции, фиксирует и выносит за пределы объекта его внутренее состояние так, чтобы позднее можно было бы восстановить в нем объект.</p><footer><strong>[Банда четырех. Паттерн Memento. Назначение. 2012 г.]</strong></footer></blockquote>
+<p>И так вот мы работали почти год, никаких проблем не возникало при применении такой политики. Неделю назад я решил написать простой bash script.</p>
 
-<p>В среднем раз в неделю я задаю вопросы ребятам на код ревью: &quot;а что делает код? почему именно он это делает? а что можно еще изменить?&quot;, с целью обратить внимание на содержание кода и существующих в нем предпосылок к чему-то. Все лежит на поверхности, нужно лишь знать чего вы хотите, что вам нужно, или что делает уже существующий код.</p>
+<script src="https://gist.github.com/fightmaster/4b95a298c8d0d17b1cdc.js?file=ff-only-merge.bash"> </script>
 
-<p>Поэтому, если вам нужны еще советы как перейти от теории к практике, гоу: <a href="http://blog.ircmaxell.com/2013/09/beyond-design-patterns.html">Beyond Design Patterns</a>.</p>
+<p>Он делает за вас рутиный ввод команд в консоли, но не отменяет работу головой.</p>
 
 </div>
 
@@ -388,7 +402,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/categories/design-patterns/'>design patterns</a>
+    <a class='category' href='/categories/git/'>git</a>, <a class='category' href='/categories/merge/'>merge</a>
   
 </span>
 
@@ -397,7 +411,7 @@
     
     <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://fightmaster.github.io//blog/2014/09/05/ff-only-merge.html" data-via="old_fightmaster" data-counturl="http://fightmaster.github.io//blog/2014/09/05/ff-only-merge.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -410,10 +424,8 @@
     
     <p class="meta">
         
-        <a class="basic-alignment left" href="/blog/2013/09/16/a-room-and-a-half.html" title="Previous Post: Полторы комнаты">&laquo; Полторы комнаты</a>
+        <a class="basic-alignment left" href="/blog/2014/09/04/recommendations-for-junior-php-developer.html" title="Previous Post: Рекомендации по php">&laquo; Рекомендации по php</a>
         
-        
-        <a class="basic-alignment right" href="/blog/2013/09/23/unit-tests.html" title="Next Post: Unit Tests">Unit Tests &raquo;</a>
         
     </p>
 </footer>
@@ -422,15 +434,6 @@
     <div class="related">
       <h2>Related Posts</h2>
       <ul class="related-posts">
-        
-          <li>
-            <h4>
-              <a href="/blog/2014/09/05/ff-only-merge.html">
-                GIT: ff-only merge
-                <small>05 Sep 2014</small>
-              </a>
-            </h4>
-          </li>
         
           <li>
             <h4>
@@ -446,6 +449,15 @@
               <a href="/blog/2014/09/03/new-life.html">
                 Новая жизнь
                 <small>03 Sep 2014</small>
+              </a>
+            </h4>
+          </li>
+        
+          <li>
+            <h4>
+              <a href="/blog/2014/02/02/clean-code-boolean-attribute.html">
+                Чистый код. Boolean attribute
+                <small>02 Feb 2014</small>
               </a>
             </h4>
           </li>
@@ -471,8 +483,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html';
-        var disqus_url = 'http://fightmaster.github.io//blog/2013/09/19/how-to-see-and-apply-the-design-patterns.html';
+        var disqus_identifier = 'http://fightmaster.github.io//blog/2014/09/05/ff-only-merge.html';
+        var disqus_url = 'http://fightmaster.github.io//blog/2014/09/05/ff-only-merge.html';
         var disqus_script = 'embed.js';
       
     (function () {
