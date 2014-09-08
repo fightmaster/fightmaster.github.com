@@ -4,13 +4,30 @@
   <title><![CDATA[Category: git | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/git/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2014-09-08T12:21:19+04:00</updated>
+  <updated>2014-09-08T23:15:35+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Deploy блога]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/09/08/blog-deploy.html"/>
+    <updated>2014-09-08T22:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/09/08/blog-deploy</id>
+    <content type="html"><![CDATA[<p>Кратко решил написать о том, как я теперь деплою блог.</p>
+
+<!-- more -->
+
+<p>Как я написал ранее, решил отказаться от движка octopress, вообще, заметил эту тенденцию в интернете.
+При этом мне очень нравилось, что в ветке  <code>source</code> хранился исходный код, а в <code>master</code> сам сайт. И github
+это тоже любил :). Недолго думая, набросал следующие строки. Вдруг кому-то еще пригодится.</p>
+
+<p><script src="https://gist.github.com/fightmaster/4908ebc8ab2bf30dad9e.js?file=deploy-jekyll.bash"> </script></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GIT: ff-only merge]]></title>

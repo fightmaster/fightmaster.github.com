@@ -4,13 +4,30 @@
  <title>Fightmaster's blog</title>
  <link href="http://fightmaster.github.io//atom.xml" rel="self"/>
  <link href="http://fightmaster.github.io//"/>
- <updated>2014-09-08T12:21:19+04:00</updated>
+ <updated>2014-09-08T23:15:35+04:00</updated>
  <id>http://fightmaster.github.io/</id>
  <author>
    <name>fightmaster</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Deploy блога</title>
+   <link href="http://fightmaster.github.io//blog/2014/09/08/blog-deploy.html"/>
+   <updated>2014-09-08T22:00:00+04:00</updated>
+   <id>http://fightmaster.github.io//blog/2014/09/08/blog-deploy</id>
+   <content type="html">&lt;p&gt;Кратко решил написать о том, как я теперь деплою блог.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Как я написал ранее, решил отказаться от движка octopress, вообще, заметил эту тенденцию в интернете.
+При этом мне очень нравилось, что в ветке  &lt;code&gt;source&lt;/code&gt; хранился исходный код, а в &lt;code&gt;master&lt;/code&gt; сам сайт. И github
+это тоже любил :). Недолго думая, набросал следующие строки. Вдруг кому-то еще пригодится.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/fightmaster/4908ebc8ab2bf30dad9e.js?file=deploy-jekyll.bash&quot;&gt; &lt;/script&gt;
+</content>
+ </entry>
  
  <entry>
    <title>GIT: ff-only merge</title>
