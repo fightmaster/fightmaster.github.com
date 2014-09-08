@@ -4,7 +4,7 @@
   <title><![CDATA[Category: blog | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/blog/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2014-09-08T23:15:35+04:00</updated>
+  <updated>2014-09-08T23:23:28+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -26,6 +26,8 @@
 это тоже любил :). Недолго думая, набросал следующие строки. Вдруг кому-то еще пригодится.</p>
 
 <p><script src="https://gist.github.com/fightmaster/4908ebc8ab2bf30dad9e.js?file=deploy-jekyll.bash"> </script></p>
+
+<p>В итоге теперь просто пишу пост и запускаю команду на деплой.</p>
 ]]></content>
   </entry>
   

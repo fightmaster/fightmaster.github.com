@@ -4,7 +4,7 @@
  <title>Fightmaster's blog</title>
  <link href="http://fightmaster.github.io//atom.xml" rel="self"/>
  <link href="http://fightmaster.github.io//"/>
- <updated>2014-09-08T23:15:35+04:00</updated>
+ <updated>2014-09-08T23:23:28+04:00</updated>
  <id>http://fightmaster.github.io/</id>
  <author>
    <name>fightmaster</name>
@@ -26,6 +26,8 @@
 это тоже любил :). Недолго думая, набросал следующие строки. Вдруг кому-то еще пригодится.&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/fightmaster/4908ebc8ab2bf30dad9e.js?file=deploy-jekyll.bash&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;В итоге теперь просто пишу пост и запускаю команду на деплой.&lt;/p&gt;
 </content>
  </entry>
  
