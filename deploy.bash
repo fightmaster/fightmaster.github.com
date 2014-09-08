@@ -7,7 +7,7 @@ git clone git@github.com:fightmaster/fightmaster.github.com.git _deploy
 cp -R _site/* _deploy/
 cd _deploy
 git add .
-git ci -m "Site updated at $(date +%Y-%m-%d:%H:%M:%S)"
+git commit -m "Site updated at $(date +%Y-%m-%d:%H:%M:%S)"
 git push origin master
 cd ../
 echo "End deploy"
