@@ -30,6 +30,8 @@ collections:
         output: true
     recommendations:
         output: true
+    php-lectures-2014-2015:
+        output: true
 saas:
     style: compressed
     saas_dir: _saas
