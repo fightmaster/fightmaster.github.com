@@ -13,6 +13,4 @@ categories: [git, blog]
 При этом мне очень нравилось, что в ветке  ```source``` хранился исходный код, а в ```master``` сам сайт. И github
 это тоже любил :). Недолго думая, набросал следующие строки. Вдруг кому-то еще пригодится.
 
-{% gist fightmaster/4908ebc8ab2bf30dad9e deploy-jekyll.bash %}
-
-В итоге теперь просто пишу пост и запускаю команду на деплой.
+{% gist fightmaster/4908ebc8ab2bf30dad9e deploy_jekyll.bash %}
