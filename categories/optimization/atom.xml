@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: optimization | Fightmaster's blog]]></title>
+  <link href="http://fightmaster.github.io//categories/optimization/atom.xml" rel="self"/>
+  <link href="http://fightmaster.github.io//"/>
+  <updated>2014-09-30T00:10:15+04:00</updated>
+  <id>http://fightmaster.github.io//</id>
+  <author>
+    <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Оптимизация. Поиск/хранилище временных объектов]]></title>
+    <link href="http://fightmaster.github.io//blog/2014/09/29/object-search-optimization.html"/>
+    <updated>2014-09-29T23:00:00+04:00</updated>
+    <id>http://fightmaster.github.io//blog/2014/09/29/object-search-optimization</id>
+    <content type="html"><![CDATA[<p>В сентябре я сменил работу. Хотел как-то об этом написать, но все некогда. Придет время, опишу подробнее куда-зачем-и-почему. Да и нельзя сейчас о многом говорить.
+Последние дни занимаюсь высокими нагрузками, и некоторые моменты делаешь иначе, нежели раньше. Самое интересное, к ним приходишь сам, а не с чей-то руки.
+Вот смотрю на себя со стороны, и вроде ничего не изменилось, а вроде и код немного другой уже, мышление.
+Возможно, сказывается тоска по &quot;кодингу&quot;, я не писал &quot;активно&quot; почти полгода. Ну и нельзя отрицать тот факт, что мне везет с тасками.
+Хоть я и не мальчик для битья, но в проекте новичок и могу &quot;позволить&quot; себе шалости и вольности.</p>
+
+<!-- more -->
+
+<p>Позволю последнее лирическое отступление. Мне кажется, что <code>rest api</code> преследует меня.
+Мы измучались с ним на ProFIT (первое знакомство с rest) и как итог выступление на конференции SymfonyCamp 2012.
+Изрядно улучшили архитектуру на следующем проекте, и даже можно было бы об этом рассказать вновь на конференции.
+И вот на новом месте меня ждет снова <code>rest api</code>, теперь предстоит работа в сторону производительности.</p>
+
+<p>Сегодня я обратил внимание на один класс. Сам по себе он не представляет ничего сложного, но вызывается постоянно.
+Поэтому решил проверить, а нет ли чего в нем интересного. Я не стал бы писать статью, если такой кусок кода не писало большинство из читателей.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Manager</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$cachedData</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$valueObject</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$object</span><span class="p">,</span> <span class="nv">$cachedData</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$cachedData</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$valueObject</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//your code</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>По сути речь идет о внутреннем кеше. Такое мы делаем часто, когда хотим сохранить в памяти объект или сделать bulk insert.
+В нашем конкретном случае мы имели дело с Value Object. То есть объект у которого не изменяется состояние.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">ValueObject</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$a</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$b</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$c</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">=</span> <span class="nv">$b</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span> <span class="o">=</span> <span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getA</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getB</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getC</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Давайте устроим скромный тест нашему коду на моем современном macbook pro. Мы 100 000 раз попробуем добавить объект.
+Количество возможных объектов ограничем: 8, 1000, 8000.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="nv">$collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ValueObject</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
+    <span class="c1">//$object = new ValueObject(rand(1,10), rand(1,10), rand(1,10));</span>
+    <span class="c1">//$object = new ValueObject(rand(1,20), rand(1,20), rand(1,20));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$object</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$collection</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$object</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s1">&#39;Elements: &#39;</span> <span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$collection</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">memory_get_usage</span><span class="p">(</span><span class="k">true</span><span class="p">)</span><span class="o">/</span><span class="mi">1048576</span><span class="p">,</span><span class="mi">2</span> <span class="o">.</span> <span class="s1">&#39;Mb&#39;</span><span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="o">-</span> <span class="nv">$startTime</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Результаты следующие:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+0.252Mb
+0.12847399711609
+
+Elements: 1000
+0.752Mb
+2.2713990211487
+
+Elements: 8000
+42Mb
+18.371023893356
+</code></pre></div>
+<p>Получается, что уже на 1000 простых объектов с 3 аттрибутами мы имеем уже приличную задержку. С ростом количества аттрибутов и самих объектов, время будет только расти.</p>
+
+<p>Первое, что приходит на ум, это избавиться от сравнения объектов.
+Ведь <code>in_array</code> выдаст <code>true</code> только при равенстве всех аттрибутов.</p>
+
+<p>Напомню, у нас Value Object, и мы уверенны в неизменности его состояния. Так создадим же метод <code>__toString</code>.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">.</span> <span class="s1">&#39;_&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">.</span> <span class="s1">&#39;_&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Если вы работаете с Value Object, то настоятельно рекомендую при конвертации в строку передавать все аттрибуты.
+Таким образом, вы полноправны создать обратный метод <code>public static parse($string)</code>.</p>
+
+<p>Спросите, а что делать с этим методом? М-м-м, на помощь нам придет мой любимый <code>array_key_exists</code>. Обновим наш тест.</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+
+<span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="nv">$collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ValueObject</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
+    <span class="c1">//$object = new ValueObject(rand(1,10), rand(1,10), rand(1,10));</span>
+    <span class="c1">//$object = new ValueObject(rand(1,20), rand(1,20), rand(1,20));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="nv">$string</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$object</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$collection</span><span class="p">[</span><span class="nv">$string</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$object</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s1">&#39;Elements: &#39;</span> <span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$collection</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">memory_get_usage</span><span class="p">(</span><span class="k">true</span><span class="p">)</span><span class="o">/</span><span class="mi">1048576</span><span class="p">,</span><span class="mi">2</span> <span class="o">.</span> <span class="s1">&#39;Mb&#39;</span><span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="o">-</span> <span class="nv">$startTime</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Результаты ниже. Стоит заметить, что &quot;пожирание&quot; памяти осталось таким же, а вот время исполнения скрипта &quot;перестало&quot; расти.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+0.252Mb
+0.1604528427124
+
+Elements: 1000
+0.752Mb
+0.15253686904907
+
+Elements: 8000
+42Mb
+0.18381094932556
+</code></pre></div>
+<p>В нашем случае, можно пойти дальше, хранить не сам объект, а его строковое представление (не только в ключе, но и в значении).
+Тогда будет решена проблема с &quot;пожиранием&quot; памяти. Естественно, как расплата за это, вам придется создать метод <code>parse</code> и восстанавливать объект при обращении.</p>
+
+<p>В любом случае, это уже зависит от частностей.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+0.252Mb
+0.16275596618652
+
+Elements: 1000
+0.52Mb
+0.16516399383545
+
+Elements: 8000
+1.752Mb
+0.16776394844055
+</code></pre></div>
+<p>Еще занимательный факт, что если вы оставите <code>in_array()</code>, но уже для строк, то код будет работать еще медленее, чем с объектами.</p>
+
+<p>В заключении, хочется сказать, что объяснение лежит на поверхности и вы его легко найдете.</p>
+
+<p>Так что применяйте смелее основы php core, и ваш проект будет вас радовать! Да, и ArrayCollection у doctrine не самаяя быстрая вещь ;).</p>
+]]></content>
+  </entry>
+  
+</feed>
