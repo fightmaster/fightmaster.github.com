@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -438,11 +448,11 @@
 <p>Но не смотря на наличие библиотеки, задача есть.</p>
 
 <p>Чтобы избежать постоянных merge коммитов, мой воркфлоу таков:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ git fetch developer
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>$ git fetch developer
 $ git merge --ff-only developer/some-branch
 </code></pre></div>
 <p>Но если есть два PR, то так сработает толко для одного. Для другого необходимо делать rebase.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ git fetch developer
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>$ git fetch developer
 $ git checkout -b sme-branch --track developer/some-branch
 $ git rebase develop
 $ git push developer some-branch -f

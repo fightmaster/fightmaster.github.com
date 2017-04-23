@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -471,7 +481,7 @@
 <li><code>\s</code> === <code>[ \t\v\r\n\f]</code> Пробельный символ</li>
 <li><code>\S</code> === <code>[^\s]</code> Не пробельный символ</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
   <span class="s1">&#39;/(\d\d)\d/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;123456 789 a10b11c12&#39;</span><span class="p">,</span>
@@ -579,7 +589,7 @@
 <li><p><code>\G</code> Предыдущий успешный поиск   <code>\Ga</code> <strong><em>aaa</em></strong> aaa (поиск остановился на 4-й позиции — там, где не нашлось a)</p></li>
 <li></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
   <span class="s1">&#39;/(\d\d)\b\D/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;123456 789 a10b11c12&#39;</span><span class="p">,</span>
@@ -693,7 +703,7 @@
 <li><p><code>?</code> Ноль или одно   {0,1}  <code>colou?r</code> соответствует <code>color, colour</code></p></li>
 <li><p>Жадность <code>?</code> после квантификатора</p></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
     <span class="s1">&#39;/&lt;.*&gt;/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;&lt;h1&gt;Header&lt;/h1&gt;&lt;div&gt;body&lt;/div&gt;&#39;</span><span class="p">,</span>
@@ -733,7 +743,7 @@
 <ul>
 <li>Захватывание <code>+</code> после квантификатора</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
     <span class="s1">&#39;/ab(xa)*+a/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;abxaabxaa&#39;</span><span class="p">,</span>
@@ -749,7 +759,7 @@
 <li><code>the ((red|white) (king|queen))</code></li>
 <li><code>the ((?:red|white) (king|queen))</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
     <span class="s1">&#39;/(?:Chapter|Section) [1-9][0-9]{0,1}/U&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Chapter 50  Section 85&#39;</span><span class="p">,</span>
@@ -772,7 +782,7 @@
 <li><code>(?i:saturday|sunday)</code> === <code>(?:(?i)saturday|sunday)</code></li>
 <li><code>(?:(Sat)ur|(Sun))day</code> vs <code>(?|(Sat)ur|(Sun))day</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
     <span class="s1">&#39;/(?:(Chapter)|(Section)) [1-9][0-9]{0,1}/U&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Chapter 50  Section 85&#39;</span><span class="p">,</span>
@@ -878,7 +888,7 @@
 </ul>
 
 <p>Обращение к подмаскам <code>(?P=name)</code>, <code>\k&lt;name&gt;</code>, <code>k&#39;name&#39;</code>, <code>\1</code>, <code>\g1</code>, <code>\g{1}</code></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
   <span class="s1">&#39;/(та|ту)-\1/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;та-та ту-ту та-ту&#39;</span><span class="p">,</span>
@@ -924,7 +934,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Что необходимо изменить в последнем примере для получения результата?</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
   <span class="s1">&#39;/(\d\d)\d \1/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;123456 459 a10b11c12&#39;</span><span class="p">,</span>
@@ -949,7 +959,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h4>Однократные подмаски ```(?&gt;\d+)bar</h4>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
   <span class="s1">&#39;/\d+foo/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;123456bar&#39;</span><span class="p">,</span>
@@ -1037,7 +1047,7 @@
 <li><p><code>mixed preg_filter ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]] )</code></p></li>
 <li><p><code>mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]] )</code></p></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$subject</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;а&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;б&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;А&#39;</span><span class="p">,</span> <span class="s1">&#39;Б&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">);</span> 
 <span class="nv">$pattern</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;/\d/&#39;</span><span class="p">,</span> <span class="s1">&#39;/[а-я]/&#39;</span><span class="p">,</span> <span class="s1">&#39;/[1а]/&#39;</span><span class="p">);</span> 
 <span class="nv">$replace</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;А:$0&#39;</span><span class="p">,</span> <span class="s1">&#39;Б:$0&#39;</span><span class="p">,</span> <span class="s1">&#39;В:$0&#39;</span><span class="p">);</span> 
@@ -1076,7 +1086,7 @@
 <ul>
 <li><code>array preg_split ( string $pattern , string $subject [, int $limit = -1 [, int $flags = 0 ]] )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$keywords</span> <span class="o">=</span> <span class="nb">preg_split</span><span class="p">(</span><span class="s2">&quot;/[\s,]+/&quot;</span><span class="p">,</span> <span class="s2">&quot;hypertext language, programming&quot;</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$keywords</span><span class="p">);</span>
 <span class="cm">/*</span>
@@ -1165,7 +1175,7 @@
 <ul>
 <li><code>int preg_match ( string $pattern , string $subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$subject</span> <span class="o">=</span> <span class="s2">&quot;abcdef&quot;</span><span class="p">;</span>
 <span class="nv">$pattern</span> <span class="o">=</span> <span class="s1">&#39;/^def/&#39;</span><span class="p">;</span>
 <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">,</span> <span class="nx">PREG_OFFSET_CAPTURE</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
@@ -1212,7 +1222,7 @@
 <ul>
 <li><code>int preg_match_all ( string $pattern , string $subject [, array &amp;$matches [, int $flags = PREG_PATTERN_ORDER [, int $offset = 0 ]]] )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">preg_match_all</span><span class="p">(</span>
     <span class="s2">&quot;|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U&quot;</span><span class="p">,</span>
     <span class="s2">&quot;&lt;b&gt;пример: &lt;/b&gt;&lt;div align=left&gt;это тест&lt;/div&gt;&quot;</span><span class="p">,</span>

@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -431,65 +441,65 @@
   <h5>Описание</h5>
 
 <p>Потенциально роутинг для рест апи может выглядеть так.</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">fightmaster_admin_api_district_cget</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/districts.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">cget</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">GET</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_cget</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/districts.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">cget</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">fightmaster_admin_api_district_get</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">get</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">GET</span>
-    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_get</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/district/{id}.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">get</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
+    <span class=" -Error">   </span><span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">\d+</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">fightmaster_admin_api_district_post</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">post</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">POST</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_post</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/district.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">post</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">POST</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">fightmaster_admin_api_district_cpost</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">cpost</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">POST</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_cpost</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/district.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">cpost</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">POST</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">fightmaster_admin_api_district_put</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">put</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">PUT</span>
-    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_put</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/district/{id}.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">put</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">PUT</span>
+    <span class=" -Error">   </span><span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">\d+</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">fightmaster_admin_api_district_patch</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">patch</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">PATCH</span><span class="p-Indicator">,</span><span class="nv">POST</span><span class="p-Indicator">]</span>
-    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_patch</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/district/{id}.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">patch</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">PATCH</span><span class="p p-Indicator">,</span><span class="nv">POST</span><span class="p p-Indicator">]</span>
+    <span class=" -Error">   </span><span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">\d+</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">fightmaster_admin_api_district_delete</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/district/{id}.{_format}</span>
-    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p-Indicator">:</span><span class="nv">Api\District</span><span class="p-Indicator">:</span><span class="nv">delete</span><span class="p-Indicator">,</span> <span class="nv">_format</span><span class="p-Indicator">:</span> <span class="nv">json</span> <span class="p-Indicator">}</span>
-    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">_method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DELETE</span>
-    <span class="-Error">   </span><span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\d+</span>
-    <span class="l-Scalar-Plain">options</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">expose</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">fightmaster_admin_api_district_delete</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/district/{id}.{_format}</span>
+    <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="nv">_controller</span><span class="p p-Indicator">:</span> <span class="nv">FightmasterAdminBundle</span><span class="p p-Indicator">:</span><span class="nv">Api\District</span><span class="p p-Indicator">:</span><span class="nv">delete</span><span class="p p-Indicator">,</span> <span class="nv">_format</span><span class="p p-Indicator">:</span> <span class="nv">json</span> <span class="p p-Indicator">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">_method</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE</span>
+    <span class=" -Error">   </span><span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">\d+</span>
+    <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">expose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <p>А теперь внмательно посмотрите, что надо сделать, чтобы создать роутинг для аналогичного ресурса? Скопировать?</p>
 

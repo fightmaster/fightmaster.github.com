@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -434,7 +444,7 @@
 <a href="09-objects-and-classes-basic-syntax-practical-tasks.html">Практические задания</a></p>
 
 <p>Именем класса может быть любое слово, которое не входит в список <strong>зарезервированных</strong> слов PHP, начинающееся с буквы или символа подчеркивания и за которым следует любое количество букв, цифр или символов подчеркивания.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Publication</span>
 <span class="p">{</span>
 
@@ -447,7 +457,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>В контексте класса можно создать новый объект через new self и new parent.</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Publication</span>
 <span class="p">{</span>
     <span class="k">static</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getInstance</span><span class="p">()</span>
@@ -458,7 +468,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Publication</span>
 <span class="p">{</span>
     <span class="c1">//bad practice</span>
@@ -467,12 +477,12 @@
     <span class="k">public</span> <span class="nv">$text</span> <span class="o">=</span> <span class="s1">&#39;Text of the publication&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$publication</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Publication</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">text</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Publication</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;Title&#39;</span><span class="p">;</span>
@@ -480,7 +490,7 @@
     <span class="k">private</span> <span class="nv">$views</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$publication</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Publication</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="c1">// FATAL ERROR</span>
@@ -488,7 +498,7 @@
 <span class="c1">// FATAL ERROR</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">views</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Publication</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;Title&#39;</span><span class="p">;</span>
@@ -527,7 +537,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$publication</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Publication</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">getText</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
@@ -535,7 +545,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>Что необходимо изменить в классе Publication?</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -607,7 +617,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>Как правильно добавить константу? Чем следующий пример плох?</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -680,7 +690,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">echo</span> <span class="nx">Publication</span><span class="o">::</span><span class="na">author</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">::</span><span class="na">author</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="c1">// FATAL ERROR</span>
@@ -688,7 +698,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>Добавим конструктор с &quot;тупым&quot; комментарием</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -721,7 +731,7 @@
 <span class="sd">     *</span>
 <span class="sd">     * @todo remove stupid comment</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">creationDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -782,7 +792,7 @@
 <li>В дополнение к публикации вносится Новость</li>
 <li>Отличие новости от публикации в том, что автор не является константой.</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -794,7 +804,7 @@
     <span class="k">private</span> <span class="nv">$author</span><span class="p">;</span>
 
     <span class="c1">//такая запись конструктора в дочернем объекте эквивалентна ее отсутствию</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
     <span class="p">}</span>
@@ -816,7 +826,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$news</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">News</span><span class="p">();</span>
 <span class="nv">$news</span><span class="o">-&gt;</span><span class="na">setAuthor</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$news</span><span class="o">-&gt;</span><span class="na">getAuthor</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
@@ -828,7 +838,7 @@
 <li>Оставить как есть</li>
 <li>Добавить методы <code>getAuthor;</code> и <code>setAuthor($author);</code> с поведением по умолчанию.</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -921,7 +931,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$publication</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Publication</span><span class="p">();</span>
 <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">setAuthor</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">getAuthor</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
@@ -932,7 +942,7 @@
 <ul>
 <li>Необходимо добавить аттрибут slug</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1051,14 +1061,14 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$publication</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Publication</span><span class="p">();</span>
 <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="s1">&#39;Test slug&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$publication</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">()</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>Создадим интерфейс SignedInterface</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1077,7 +1087,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>Кто его будет имплементировать?</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1196,7 +1206,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$publication</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Publication</span><span class="p">();</span>
 <span class="nv">$news</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">News</span><span class="p">();</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$publication</span> <span class="nx">instanceof</span> <span class="nx">SignedInterface</span> <span class="o">&amp;&amp;</span> <span class="nv">$news</span> <span class="nx">instanceof</span> <span class="nx">SignedInterface</span><span class="p">)</span> <span class="p">{</span>
@@ -1216,7 +1226,7 @@
 <p><strong>Класс может быть объявлен, как абстрактный и не содержать абстрактных методов</strong></p>
 
 <p><strong>Если класс имеет абстрактные методы, он обязан быть объялен как абстрактный</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1337,7 +1347,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p><strong>Добавим абстрактный метод <code>getType()</code></strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1462,7 +1472,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1477,7 +1487,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1518,7 +1528,7 @@
 <li>Создадим класс комментарий</li>
 <li>Создадим интерфейс Commentable</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1567,7 +1577,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1584,7 +1594,7 @@
     <span class="k">function</span> <span class="nf">addComment</span><span class="p">(</span><span class="nx">Comment</span> <span class="nv">$comment</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1641,7 +1651,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$comment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Comment</span><span class="p">();</span>
 <span class="nv">$news</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">News</span><span class="p">();</span>
 <span class="nv">$news</span><span class="o">-&gt;</span><span class="na">addComment</span><span class="p">(</span><span class="nv">$comment</span><span class="p">);</span>
@@ -1655,7 +1665,7 @@
 <li>Добавим метод <code>view</code></li>
 <li>Удалим метод <code>setViews</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @author Dmitry Petrov &lt;dmitry.petrov@opensoftdev.ru&gt;</span>
 <span class="sd"> */</span>
@@ -1788,7 +1798,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">();</span>
 <span class="nv">$comment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Comment</span><span class="p">();</span>
 <span class="nv">$news</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">News</span><span class="p">();</span>
@@ -1806,7 +1816,7 @@
 <p>*<em>Что будет, если заменить <code>self</code> на <code>static</code> У аттрибута <code>allViews</code>? *</em></p>
 
 <p><strong>Ключевое слово <code>final</code></strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">News</span>
 <span class="p">{</span>
 
@@ -1836,7 +1846,7 @@ abstract class Publication
 </code></p>
 
 <h4>Namespace</h4>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">BBC</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">News</span>
@@ -1844,7 +1854,7 @@ abstract class Publication
 
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">Lenta</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">News</span>
@@ -1855,7 +1865,7 @@ abstract class Publication
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">use</span> <span class="nx">BBC\News</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Lenta\News</span> <span class="k">as</span> <span class="nx">LentaNews</span><span class="p">;</span>
 

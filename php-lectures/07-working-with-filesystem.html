@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -452,7 +462,7 @@
 <li><code>readdir</code></li>
 <li><code>closedir</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$dir</span> <span class="o">=</span> <span class="s2">&quot;/etc/php5/&quot;</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$dir</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$handle</span> <span class="o">=</span> <span class="nb">opendir</span><span class="p">(</span><span class="nv">$dir</span><span class="p">))</span> <span class="p">{</span>
@@ -471,7 +481,7 @@
 <li><p><code>void rewinddir ([ resource $dir_handle ] )</code></p></li>
 <li><p><code>Directory dir ( string $directory [, resource $context ] )</code></p></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nx">Directory</span> <span class="p">{</span>
 <span class="k">public</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">;</span>
 <span class="k">public</span> <span class="nx">resource</span> <span class="nv">$handle</span> <span class="p">;</span>
@@ -480,7 +490,7 @@
 <span class="k">public</span> <span class="nx">void</span> <span class="nb">rewind</span> <span class="p">([</span> <span class="nx">resource</span> <span class="nv">$dir_handle</span> <span class="p">]</span> <span class="p">)</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$dir</span> <span class="o">=</span> <span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;/etc/php5/&quot;</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$dir</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="k">false</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$entry</span> <span class="o">=</span> <span class="nv">$dir</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">()))</span> <span class="p">{</span>
@@ -498,7 +508,7 @@
 <li><code>bool mkdir ( string $pathname [, int $mode = 0777 [, bool $recursive = false [, resource $context ]]] )</code></li>
 <li><code>bool rmdir ( string $dirname [, resource $context ] )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">mkdir</span><span class="p">(</span><span class="s2">&quot;/tmp/new_folder/test&quot;</span><span class="p">,</span> <span class="mo">0700</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
@@ -508,7 +518,7 @@
 <li><code>string file_get_contents ( string $filename [, bool $use_include_path = false [, resource $context [, int $offset = -1 [, int $maxlen ]]]] )</code></li>
 <li><code>int file_put_contents ( string $filename , mixed $data [, int $flags = 0 [, resource $context ]] )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$file</span> <span class="o">=</span> <span class="s1">&#39;/tmp/numbers.txt&#39;</span><span class="p">;</span>
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="nv">$i</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">,</span> <span class="nx">FILE_APPEND</span> <span class="o">|</span> <span class="nx">LOCK_EX</span><span class="p">);</span>
@@ -527,13 +537,13 @@
 <li><code>array fgetcsv ( resource $handle [, int $length = 0 [, string $delimiter = &#39;,&#39; [, string $enclosure = &#39;&quot;&#39; [, string $escape = &#39;\\&#39; ]]]] )</code></li>
 <li><code>int fputcsv ( resource $handle , array $fields [, string $delimiter = &#39;,&#39; [, string $enclosure = &#39;&quot;&#39; ]] )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$filename</span> <span class="o">=</span> <span class="s2">&quot;/tmp/text.txt&quot;</span><span class="p">;</span>
 <span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
 <span class="nv">$contents</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$handle</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="nv">$filename</span><span class="p">));</span>
 <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$filename</span> <span class="o">=</span> <span class="s2">&quot;/tmp/text.txt&quot;</span><span class="p">;</span>
 <span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">);</span>
 <span class="nb">rewind</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
@@ -544,7 +554,7 @@
 <ul>
 <li><code>int fpassthru ( resource $handle )</code></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// открываем файл в бинарном режиме</span>
 <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;ok.png&#39;</span><span class="p">;</span>
 <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">);</span>
@@ -572,7 +582,7 @@
 <li><p><code>string realpath ( string $path )</code></p></li>
 <li><p><code>string basename ( string $path [, string $suffix ] )</code></p></li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;/home/fightmaster/&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nb">realpath</span><span class="p">(</span><span class="s1">&#39;./../../etc/nginx&#39;</span><span class="p">);</span> <span class="c1">//etc/nginx</span>
 <span class="cp">?&gt;</span><span class="x"></span>

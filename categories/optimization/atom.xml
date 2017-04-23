@@ -4,7 +4,7 @@
   <title><![CDATA[Category: optimization | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/optimization/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2017-01-09T14:22:59+04:00</updated>
+  <updated>2017-04-23T18:09:53+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -32,7 +32,7 @@
 
 <p>Сегодня я обратил внимание на один класс. Сам по себе он не представляет ничего сложного, но вызывается постоянно.
 Поэтому решил проверить, а нет ли чего в нем интересного. Я не стал бы писать статью, если такой кусок кода не писало большинство из читателей.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Manager</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$cachedData</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
@@ -50,14 +50,14 @@
 </code></pre></div>
 <p>По сути речь идет о внутреннем кеше. Такое мы делаем часто, когда хотим сохранить в памяти объект или сделать bulk insert.
 В нашем конкретном случае мы имели дело с Value Object. То есть объект у которого не изменяется состояние.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">ValueObject</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$a</span><span class="p">;</span>
     <span class="k">private</span> <span class="nv">$b</span><span class="p">;</span>
     <span class="k">private</span> <span class="nv">$c</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">=</span> <span class="nv">$b</span><span class="p">;</span>
@@ -83,7 +83,7 @@
 </code></pre></div>
 <p>Давайте устроим скромный тест нашему коду на моем современном macbook pro. Мы 100 000 раз попробуем добавить объект.
 Количество возможных объектов ограничем: 8, 1000, 8000.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 <span class="nv">$collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
@@ -102,7 +102,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Результаты следующие:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>Elements: 8
 0.252Mb
 0.12847399711609
 
@@ -120,8 +120,8 @@ Elements: 8000
 Ведь <code>in_array</code> выдаст <code>true</code> только при равенстве всех аттрибутов.</p>
 
 <p>Напомню, у нас Value Object, и мы уверенны в неизменности его состояния. Так создадим же метод <code>__toString</code>.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">.</span> <span class="s1">&#39;_&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">.</span> <span class="s1">&#39;_&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span><span class="p">;</span>
     <span class="p">}</span>
@@ -131,7 +131,7 @@ Elements: 8000
 Таким образом, вы полноправны создать обратный метод <code>public static parse($string)</code>.</p>
 
 <p>Спросите, а что делать с этим методом? М-м-м, на помощь нам придет мой любимый <code>array_key_exists</code>. Обновим наш тест.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 
 
 <span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
@@ -152,7 +152,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Результаты ниже. Стоит заметить, что &quot;пожирание&quot; памяти осталось таким же, а вот время исполнения скрипта &quot;перестало&quot; расти.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>Elements: 8
 0.252Mb
 0.1604528427124
 
@@ -168,7 +168,7 @@ Elements: 8000
 Тогда будет решена проблема с &quot;пожиранием&quot; памяти. Естественно, как расплата за это, вам придется создать метод <code>parse</code> и восстанавливать объект при обращении.</p>
 
 <p>В любом случае, это уже зависит от частностей.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>Elements: 8
 0.252Mb
 0.16275596618652
 

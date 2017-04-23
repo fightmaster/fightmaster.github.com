@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -443,7 +453,7 @@
 <li>Полезен при необходимости задать первоначальное состояние объекта</li>
 <li>Используется при внедрении зависимости через конструктор</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
@@ -451,13 +461,13 @@
 <span class="sd">     */</span>
     <span class="k">private</span> <span class="nv">$creaionDate</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">creationDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
@@ -465,7 +475,7 @@
 <span class="sd">     */</span>
     <span class="k">private</span> <span class="nv">$service</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">\Service</span> <span class="nv">$service</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">\Service</span> <span class="nv">$service</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span> <span class="o">=</span> <span class="nv">$service</span><span class="p">;</span>
     <span class="p">}</span>
@@ -479,7 +489,7 @@
 <li>Порядок выполнения деструкторов не гарантируется.</li>
 <li>Полезен, если ваш класс использует в своих свойствах тип данных <code>resource</code>.</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
@@ -487,12 +497,12 @@
 <span class="sd">     */</span>
     <span class="k">private</span> <span class="nv">$file</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/tmp/log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nb">fclose</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">);</span>
     <span class="p">}</span>
@@ -507,7 +517,7 @@
 <li>Примененимо при лжерефакторинге.</li>
 <li>При желании проглатывать всевозможные методы, возможно, soap service?</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
@@ -519,7 +529,7 @@
 <span class="sd">     * @var string $method</span>
 <span class="sd">     * @var array $args</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$args</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$args</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nv">$method</span> <span class="o">==</span> <span class="s1">&#39;getName&#39;</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUsername</span><span class="p">();</span>
@@ -534,14 +544,14 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * @var string $method</span>
 <span class="sd">     * @var array $args</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$args</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span> <span class="nv">$args</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="k">echo</span> <span class="s2">&quot;unknown method &quot;</span> <span class="o">.</span> <span class="nv">$method</span><span class="p">;</span>
 
@@ -558,7 +568,7 @@
 <li>Применимо при попытки избавиться от сеттеров и геттеров.</li>
 <li>Грозит потерей инкапсуляции</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
@@ -569,7 +579,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var string $name</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nv">$name</span> <span class="o">==</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">;</span>
@@ -579,29 +589,29 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$test</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$test</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$firstField</span><span class="p">;</span>
     <span class="k">private</span> <span class="nv">$secondField</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__get</span><span class="p">(</span><span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">property_exists</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$property</span><span class="p">))</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$property</span><span class="p">;</span>
             <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__set</span><span class="p">(</span><span class="nv">$property</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nv">$property</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">property_exists</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$property</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$property</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$test</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$test</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
 <span class="nv">$test</span><span class="o">-&gt;</span><span class="na">firstField</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
@@ -617,14 +627,14 @@
 <li><code>__wakeup()</code> вызывается при вызове <code>unserialize()</code></li>
 <li>При желании восстановить какие-нибудь соединения</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="c1">//Example from http://php.net/manual/ru/language.oop5.magic.php</span>
 <span class="k">class</span> <span class="nc">Connection</span>
 <span class="p">{</span>
     <span class="k">protected</span> <span class="nv">$link</span><span class="p">;</span>
     <span class="k">private</span> <span class="nv">$server</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$db</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$db</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$db</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">server</span> <span class="o">=</span> <span class="nv">$server</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span> <span class="o">=</span> <span class="nv">$username</span><span class="p">;</span>
@@ -639,12 +649,12 @@
         <span class="nb">mysql_select_db</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__sleep</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__sleep</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;db&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__wakeup</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__wakeup</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">();</span>
     <span class="p">}</span>
@@ -663,23 +673,23 @@
 <li>Вызывается при попытке преобразовать объект в строку</li>
 <li>Разумное применение, когда объект имеет строкове представление</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">News</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s1">&#39;News #&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$news</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">News</span><span class="p">();</span>
 <span class="nv">$news</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nv">$news</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Workflow</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$action</span><span class="p">;</span>
@@ -692,7 +702,7 @@
 <span class="sd">     *</span>
 <span class="sd">     * @param string $workflowAsString</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$workflowAsString</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$workflowAsString</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$tmp</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nv">$workflowAsString</span><span class="p">);</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">=</span> <span class="nv">$tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
@@ -700,7 +710,7 @@
         <span class="nb">unset</span><span class="p">(</span><span class="nv">$tmp</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">.</span> <span class="s1">&#39;:&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">action</span><span class="p">;</span>
     <span class="p">}</span>
@@ -712,18 +722,18 @@
 <ul>
 <li>Вызывается при попытке выполнить объект как функцию.</li>
 </ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">News</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__invoke</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$news</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">News</span><span class="p">();</span>
 <span class="nv">$news</span><span class="p">(</span><span class="mi">45</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$news</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>

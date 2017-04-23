@@ -404,6 +404,16 @@
       <!---->
         <!---->
           <!---->
+            <!--<a class="sidebar-nav-item" href="/categories/trieilranningh/">Category: трейлраннинг</a>-->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!---->
+        <!---->
+          <!---->
         <!---->
       <!---->
         <!---->
@@ -434,26 +444,26 @@
 <a href="04-working-with-arrays-practical-tasks.html">Практические задания</a></p>
 
 <p>Что выведут на экран следующие блоки кода?</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$str</span> <span class="o">=</span> <span class="s1">&#39;one|two|three|four&#39;</span><span class="p">;</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">));</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;lastname&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">);</span>
 <span class="nv">$string</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$string</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">());</span>
 <span class="k">echo</span> <span class="nb">implode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">));</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$letter</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$letter</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$letter</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$letter</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$array1</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;fruit&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;1&quot;</span><span class="p">);</span>
 <span class="nv">$array2</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Moscow&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;fruit&quot;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span> <span class="o">=&gt;</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">);</span>
@@ -461,12 +471,12 @@
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nb">array_merge_recursive</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;numbers&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
               <span class="s1">&#39;letters&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">));</span>
 <span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="nx">COUNT_RECURSIVE</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Neo&quot;</span><span class="p">,</span> <span class="s2">&quot;Morpheus&quot;</span><span class="p">,</span> <span class="s2">&quot;Trinity&quot;</span><span class="p">,</span> <span class="s2">&quot;Cypher&quot;</span><span class="p">,</span> <span class="s2">&quot;Tank&quot;</span><span class="p">);</span>
 <span class="k">list</span> <span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$input</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
@@ -480,7 +490,7 @@
 
 <span class="k">list</span> <span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="nb">array_flip</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="nx">\PHP_EOL</span><span class="p">;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="nv">$input</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s1">&#39;Содержится в массиве&#39;</span><span class="p">;</span>
@@ -494,11 +504,11 @@
     <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">echo</span> <span class="s1">&#39;Содержится в массиве&#39;</span><span class="p">;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 <span class="nv">$keys</span> <span class="o">=</span> <span class="nb">array_keys</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$keys</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="nv">$b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
@@ -508,12 +518,12 @@
 <span class="nv">$vars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nb">compact</span><span class="p">(</span><span class="nv">$vars</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">sort</span><span class="p">(</span><span class="nv">$input</span><span class="p">));</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">rsort</span><span class="p">(</span><span class="nv">$input</span><span class="p">));</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">asort</span><span class="p">(</span><span class="nv">$input</span><span class="p">));</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$input</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 <span class="nb">sort</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
@@ -521,7 +531,7 @@
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <span class="nb">asort</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="c1">//массив исходных данных</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
 <span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="o">&amp;</span><span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>

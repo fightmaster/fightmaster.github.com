@@ -4,7 +4,7 @@
   <title><![CDATA[Category: data provider | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/data-provider/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2017-01-09T14:22:59+04:00</updated>
+  <updated>2017-04-23T18:09:53+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -24,7 +24,7 @@
 <p>Мы с вами не на пробежке, разогреваться нам не надо, начнем сразу с кода. Примеры вымышленные, и я буду использовать аббревиатуру uut (Unit Under Test).</p>
 
 <h3>isPositiveNumber($number)</h3>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">isPositiveNumber</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nv">$number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
@@ -32,7 +32,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Тест мог бы выглядеть так:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> */</span>
@@ -50,7 +50,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Или так:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> */</span>
@@ -74,7 +74,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Мы пишем и пишем так тесты, пока кто-то не прочитает официальную документацию и не узнает, а что такое Data Providers: <a href="http://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">phpunit.de</a>. Чаще всего нам необходимо протестировать метод с разными входными данными и проверить результат. Вот для избежания дублирования тестов и придумали эти провайдеры.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider isPositiveNumberProvider</span>
@@ -120,7 +120,7 @@
 <p>Медленно мысли о &quot;надо написать&quot; перерастают в &quot;как написать&quot;. В голове прокручиваются воспоминания о том, а что же делает код. У вас есть некие данные, из которых собирается какая-то сущность. При этом накладывается куча всевозможных &quot;бизнес&quot; ограничений на входную информацию. Что-то вроде сахар не может быть синим, а картошка не может доставлена в ресторан без лука, а помол кофе может быть лишь трех видов, а третий вид поставляется только из Африки. Вроде и валидация, а с другой стороны ничего стандартного не прикрепишь.</p>
 
 <p>В итоге в отведенные два часа из трех вы вчера написали что-то наподобие этому, plain php.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @param Model $model</span>
 <span class="sd"> * @throws CustomException</span>
@@ -140,7 +140,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Проснувшись и преодолев чувство стыда за написанное, вы пишите быстренько тест.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider checkSomethingRestrictionsProvider</span>
@@ -208,7 +208,7 @@
 <p>Вторая сторона, это добавить что-то в тест. Мы не знаем куда именно добавлять наш вариант. Все равно куда - не дело. А может наш вариант уже добавлен?</p>
 
 <p>Первое и самое простое, что приходит в голову, оставить просто пояснения, в двух или трех словах выражающие особенность этого кейса.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * @return array</span>
@@ -254,7 +254,7 @@
 <p>В первых строках этой главы я завис на несколько минут. Все дело в том, что я очень редко вижу методы с большим набором входных параметров. Все знают, что это имеет плачевные последствия, и никто так не пишет нынче. Но почему-то все забывают эти правила при написании тестов. Мне кажется это феномен. Я наблюдал это в других проектах. Да, и где-то в глубине души существует искра надежды, что вы делали также.</p>
 
 <p>Чаще всего в тесте нам нужно сконфигурировать определенную ситуацию. В предыдущей главе это достигалось с помощью фикстур. Часто используются моки или даже сами объекты, последнее конечно неправильно. Но в данных примерах именно они и будут. Так как работа с мок объектами - это целое искуство, и я не хочу все смешивать.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @backupGlobals enabled</span>
@@ -287,7 +287,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Такой вот незамысловатый пример. Через некоторое время использование дата провайдера таким образом превращается в привычку. И в результате...</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider findBySearchMappingProvider</span>
@@ -351,7 +351,7 @@
 <p>Когда это видишь первый раз на ревью, сначала прощаешь или не придаешь значение. Но команда - это лавина, особенно, если задание в релизе способствует появлению таких провайдеров. Иногда количество параметров достигало до 15. И в какой-то момент понимаешь, что надо брать ситуацию под контроль. Это осознание усиливается, когда в одном PR (Pull Request) несколько таких примеров. Что же делать?</p>
 
 <p>Естественно, сначала оставляем комментарии, что-то вроде такого.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @return array</span>
 <span class="sd"> */</span>
@@ -385,7 +385,7 @@
 <p>Спустя время мы нашли несколько решений. До сих пор у меня нет объяснения, почему они сразу не всплыли. Вспомним цитату выше. Нам нужно всего лишь показать, что мы хотим протестировать. А многочисленные <code>null</code> лишь говорят о том, что эти значения нас не интересуют для этого теста.</p>
 
 <p>Воспользуемся советом дядюшки Боба.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @return array</span>
 <span class="sd"> */</span>
@@ -473,7 +473,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Вуаля, ассоциативные массивы спасают этот мир. Ключ массива выступает в роли комментария, и необходимость онного чаще всего излишне теперь (хотя НЕ всегда). Осталось теперь поправить сам код теста.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider findBySearchMappingProvider</span>
@@ -510,7 +510,7 @@
 <p>Но негоже оставлять в таком виде тест, вдруг кто-то решит взять на заметку этот совет. </p>
 
 <p>Во-первых, блок, получающий ожидаемые объекты, един как минимум для этого тест кейса. Во-вторых, тоже самое можно сказать про создание конфигурируемого объекта. При этом чаще всего это мок объект, и он используется в других тестах. В-третьих, я ненавижу параметр $expectedCounts, тем более когда есть набор ожидаемых объектов.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider findBySearchMappingProvider</span>

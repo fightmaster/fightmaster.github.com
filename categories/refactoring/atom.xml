@@ -4,7 +4,7 @@
   <title><![CDATA[Category: refactoring | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/refactoring/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2017-01-09T14:22:59+04:00</updated>
+  <updated>2017-04-23T18:09:53+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -26,7 +26,7 @@
 <h3>Кусочек сыра</h3>
 
 <p>Сегодня попался на глаза вот такой кусочек кода.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="c1">//code</span>
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">Utilities</span><span class="o">::</span><span class="na">arrayContains</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
@@ -35,7 +35,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Думаю что-то не так. Создают функцию в классе <code>Utilities</code> только тогда, когда не могут определить ее принадлежность. Что уже странно. Во-вторых, ну название. Вроде бы и понятно все, с другой стороны, не внушает какого-то доверия.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @param array $array1</span>
 <span class="sd"> * @param array $array2</span>
@@ -56,7 +56,7 @@
 <p>Действительно, несколько раз пробегаю глазами, так как боюсь упустить что-то, заставляя себя поверить в увиденное. Аккуратно оставляю предложение заменить содержание на <code>&lt;?php empty(array_diff($array1, $array2));?&gt;</code>, переименовать или удалить метод.</p>
 
 <p>В итоге вечером получаем...</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @param array $array1</span>
 <span class="sd"> * @param array $array2</span>

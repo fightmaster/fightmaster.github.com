@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/git/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2017-01-09T14:22:59+04:00</updated>
+  <updated>2017-04-23T18:09:53+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -50,7 +50,7 @@
 То есть вам всегда нужно делать rebase, даже если нет конфликтов.</p>
 
 <p>В итоге merge PR всегда представлял нечто такое:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git fetch amazing-developer
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>git fetch amazing-developer
 git checkout -b TICKET-1001 --track amazing-developer/TICKET-1001
 git rebase develop
 git push amazing-developer TICKET-1001 -f

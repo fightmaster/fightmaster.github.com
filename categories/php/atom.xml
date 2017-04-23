@@ -4,7 +4,7 @@
   <title><![CDATA[Category: php | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/php/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2017-01-09T14:22:59+04:00</updated>
+  <updated>2017-04-23T18:09:53+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -32,7 +32,7 @@
 
 <p>Сегодня я обратил внимание на один класс. Сам по себе он не представляет ничего сложного, но вызывается постоянно.
 Поэтому решил проверить, а нет ли чего в нем интересного. Я не стал бы писать статью, если такой кусок кода не писало большинство из читателей.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Manager</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$cachedData</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
@@ -50,14 +50,14 @@
 </code></pre></div>
 <p>По сути речь идет о внутреннем кеше. Такое мы делаем часто, когда хотим сохранить в памяти объект или сделать bulk insert.
 В нашем конкретном случае мы имели дело с Value Object. То есть объект у которого не изменяется состояние.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">ValueObject</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$a</span><span class="p">;</span>
     <span class="k">private</span> <span class="nv">$b</span><span class="p">;</span>
     <span class="k">private</span> <span class="nv">$c</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">=</span> <span class="nv">$b</span><span class="p">;</span>
@@ -83,7 +83,7 @@
 </code></pre></div>
 <p>Давайте устроим скромный тест нашему коду на моем современном macbook pro. Мы 100 000 раз попробуем добавить объект.
 Количество возможных объектов ограничем: 8, 1000, 8000.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 <span class="nv">$collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
@@ -102,7 +102,7 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Результаты следующие:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>Elements: 8
 0.252Mb
 0.12847399711609
 
@@ -120,8 +120,8 @@ Elements: 8000
 Ведь <code>in_array</code> выдаст <code>true</code> только при равенстве всех аттрибутов.</p>
 
 <p>Напомню, у нас Value Object, и мы уверенны в неизменности его состояния. Так создадим же метод <code>__toString</code>.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">a</span> <span class="o">.</span> <span class="s1">&#39;_&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">b</span> <span class="o">.</span> <span class="s1">&#39;_&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">c</span><span class="p">;</span>
     <span class="p">}</span>
@@ -131,7 +131,7 @@ Elements: 8000
 Таким образом, вы полноправны создать обратный метод <code>public static parse($string)</code>.</p>
 
 <p>Спросите, а что делать с этим методом? М-м-м, на помощь нам придет мой любимый <code>array_key_exists</code>. Обновим наш тест.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 
 
 <span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
@@ -152,7 +152,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Результаты ниже. Стоит заметить, что &quot;пожирание&quot; памяти осталось таким же, а вот время исполнения скрипта &quot;перестало&quot; расти.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>Elements: 8
 0.252Mb
 0.1604528427124
 
@@ -168,7 +168,7 @@ Elements: 8000
 Тогда будет решена проблема с &quot;пожиранием&quot; памяти. Естественно, как расплата за это, вам придется создать метод <code>parse</code> и восстанавливать объект при обращении.</p>
 
 <p>В любом случае, это уже зависит от частностей.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Elements: 8
+<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>Elements: 8
 0.252Mb
 0.16275596618652
 
@@ -218,7 +218,7 @@ Elements: 8000
 <h4>Пример номер 1</h4>
 
 <p>В каком-то контроллере какого-то проекта кто-то решил изменить статус.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$vacancy</span><span class="o">-&gt;</span><span class="na">getStatus</span><span class="p">())</span> <span class="p">{</span>
     <span class="nv">$status</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -235,7 +235,7 @@ Elements: 8000
 <h4>Пример номер два</h4>
 
 <p>Бытовой пример, есть некий класс с атрибутом. Если человек когда-нибудь слышал про <code>is*</code>, то он обязательно напишет слудующее.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">User</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="nv">$isActivated</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
@@ -307,7 +307,7 @@ Elements: 8000
 Вместо <code>set*</code> создавать методы-глаголы действия: <code>enable</code>, <code>disable</code>, <code>delete</code>, <code>restore</code>, <code>activate</code>, <code>deactivate</code>.</p>
 
 <p>В случаях, когда все-таки ваш фреймворк требует <code>set*</code> метод, использовать что-то вроде этого:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">enable</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">enabled</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
@@ -355,7 +355,7 @@ Elements: 8000
 <h3>Кусочек сыра</h3>
 
 <p>Сегодня попался на глаза вот такой кусочек кода.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="c1">//code</span>
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">Utilities</span><span class="o">::</span><span class="na">arrayContains</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
@@ -364,7 +364,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Думаю что-то не так. Создают функцию в классе <code>Utilities</code> только тогда, когда не могут определить ее принадлежность. Что уже странно. Во-вторых, ну название. Вроде бы и понятно все, с другой стороны, не внушает какого-то доверия.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @param array $array1</span>
 <span class="sd"> * @param array $array2</span>
@@ -385,7 +385,7 @@ Elements: 8000
 <p>Действительно, несколько раз пробегаю глазами, так как боюсь упустить что-то, заставляя себя поверить в увиденное. Аккуратно оставляю предложение заменить содержание на <code>&lt;?php empty(array_diff($array1, $array2));?&gt;</code>, переименовать или удалить метод.</p>
 
 <p>В итоге вечером получаем...</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @param array $array1</span>
 <span class="sd"> * @param array $array2</span>
@@ -439,7 +439,7 @@ Elements: 8000
 <p>Мы с вами не на пробежке, разогреваться нам не надо, начнем сразу с кода. Примеры вымышленные, и я буду использовать аббревиатуру uut (Unit Under Test).</p>
 
 <h3>isPositiveNumber($number)</h3>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="k">public</span> <span class="k">function</span> <span class="nf">isPositiveNumber</span><span class="p">(</span><span class="nv">$number</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nv">$number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
@@ -447,7 +447,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Тест мог бы выглядеть так:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> */</span>
@@ -465,7 +465,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Или так:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> */</span>
@@ -489,7 +489,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Мы пишем и пишем так тесты, пока кто-то не прочитает официальную документацию и не узнает, а что такое Data Providers: <a href="http://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers">phpunit.de</a>. Чаще всего нам необходимо протестировать метод с разными входными данными и проверить результат. Вот для избежания дублирования тестов и придумали эти провайдеры.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider isPositiveNumberProvider</span>
@@ -535,7 +535,7 @@ Elements: 8000
 <p>Медленно мысли о &quot;надо написать&quot; перерастают в &quot;как написать&quot;. В голове прокручиваются воспоминания о том, а что же делает код. У вас есть некие данные, из которых собирается какая-то сущность. При этом накладывается куча всевозможных &quot;бизнес&quot; ограничений на входную информацию. Что-то вроде сахар не может быть синим, а картошка не может доставлена в ресторан без лука, а помол кофе может быть лишь трех видов, а третий вид поставляется только из Африки. Вроде и валидация, а с другой стороны ничего стандартного не прикрепишь.</p>
 
 <p>В итоге в отведенные два часа из трех вы вчера написали что-то наподобие этому, plain php.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @param Model $model</span>
 <span class="sd"> * @throws CustomException</span>
@@ -555,7 +555,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Проснувшись и преодолев чувство стыда за написанное, вы пишите быстренько тест.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider checkSomethingRestrictionsProvider</span>
@@ -623,7 +623,7 @@ Elements: 8000
 <p>Вторая сторона, это добавить что-то в тест. Мы не знаем куда именно добавлять наш вариант. Все равно куда - не дело. А может наш вариант уже добавлен?</p>
 
 <p>Первое и самое простое, что приходит в голову, оставить просто пояснения, в двух или трех словах выражающие особенность этого кейса.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * @return array</span>
@@ -669,7 +669,7 @@ Elements: 8000
 <p>В первых строках этой главы я завис на несколько минут. Все дело в том, что я очень редко вижу методы с большим набором входных параметров. Все знают, что это имеет плачевные последствия, и никто так не пишет нынче. Но почему-то все забывают эти правила при написании тестов. Мне кажется это феномен. Я наблюдал это в других проектах. Да, и где-то в глубине души существует искра надежды, что вы делали также.</p>
 
 <p>Чаще всего в тесте нам нужно сконфигурировать определенную ситуацию. В предыдущей главе это достигалось с помощью фикстур. Часто используются моки или даже сами объекты, последнее конечно неправильно. Но в данных примерах именно они и будут. Так как работа с мок объектами - это целое искуство, и я не хочу все смешивать.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @backupGlobals enabled</span>
@@ -702,7 +702,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Такой вот незамысловатый пример. Через некоторое время использование дата провайдера таким образом превращается в привычку. И в результате...</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider findBySearchMappingProvider</span>
@@ -766,7 +766,7 @@ Elements: 8000
 <p>Когда это видишь первый раз на ревью, сначала прощаешь или не придаешь значение. Но команда - это лавина, особенно, если задание в релизе способствует появлению таких провайдеров. Иногда количество параметров достигало до 15. И в какой-то момент понимаешь, что надо брать ситуацию под контроль. Это осознание усиливается, когда в одном PR (Pull Request) несколько таких примеров. Что же делать?</p>
 
 <p>Естественно, сначала оставляем комментарии, что-то вроде такого.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @return array</span>
 <span class="sd"> */</span>
@@ -800,7 +800,7 @@ Elements: 8000
 <p>Спустя время мы нашли несколько решений. До сих пор у меня нет объяснения, почему они сразу не всплыли. Вспомним цитату выше. Нам нужно всего лишь показать, что мы хотим протестировать. А многочисленные <code>null</code> лишь говорят о том, что эти значения нас не интересуют для этого теста.</p>
 
 <p>Воспользуемся советом дядюшки Боба.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @return array</span>
 <span class="sd"> */</span>
@@ -888,7 +888,7 @@ Elements: 8000
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Вуаля, ассоциативные массивы спасают этот мир. Ключ массива выступает в роли комментария, и необходимость онного чаще всего излишне теперь (хотя НЕ всегда). Осталось теперь поправить сам код теста.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider findBySearchMappingProvider</span>
@@ -925,7 +925,7 @@ Elements: 8000
 <p>Но негоже оставлять в таком виде тест, вдруг кто-то решит взять на заметку этот совет. </p>
 
 <p>Во-первых, блок, получающий ожидаемые объекты, един как минимум для этого тест кейса. Во-вторых, тоже самое можно сказать про создание конфигурируемого объекта. При этом чаще всего это мок объект, и он используется в других тестах. В-третьих, я ненавижу параметр $expectedCounts, тем более когда есть набор ожидаемых объектов.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @test</span>
 <span class="sd"> * @dataProvider findBySearchMappingProvider</span>

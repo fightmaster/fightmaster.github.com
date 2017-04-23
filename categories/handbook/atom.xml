@@ -4,7 +4,7 @@
   <title><![CDATA[Category: handbook | Fightmaster's blog]]></title>
   <link href="http://fightmaster.github.io//categories/handbook/atom.xml" rel="self"/>
   <link href="http://fightmaster.github.io//"/>
-  <updated>2017-01-09T14:22:59+04:00</updated>
+  <updated>2017-04-23T18:09:53+04:00</updated>
   <id>http://fightmaster.github.io//</id>
   <author>
     <name><![CDATA[{"name"=>"fightmaster", "url"=>"https://twitter.com/old_fightmaster"}]]></name>
@@ -36,12 +36,12 @@
 <h3>Мы одна команда, одной крови</h3>
 
 <p>Рано или поздно возникнет ситуация, когда вы с соседом сделаете одну и ту же вещь по-разному. Сложно сразу что-то такое вспомнить. Хотя бы следующие простейшие примеры. </p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$string1</span> <span class="o">=</span> <span class="s1">&#39;$a = &#39;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s1">&#39;, $b = &#39;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s1">&#39;, $a + $b = &#39;</span> <span class="o">.</span> <span class="nv">$c</span><span class="p">;</span>
 <span class="c1">//or</span>
 <span class="nv">$string1</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;$a = %d, $b = %d, $a + $b = %d&#39;</span><span class="p">,</span> <span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+</code></pre></div><div class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="cp">&lt;?php</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
